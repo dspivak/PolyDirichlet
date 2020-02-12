@@ -400,8 +400,26 @@ Given a combinatorial species $A : \textbf{Fin}^{\cong} \to \smset$, its
 \emph{Cauchy generating functor} $X \mapsto \sum_{n : \textbf{Fin}} A_n \times X^n/n!$
 is the left Kan extension of $A$ along the inclusion $\textbf{Fin}^{\cong}
 \hookrightarrow \smset$, and the \emph{Dirichlet generating functor} $S \mapsto
-\sum_{n : \textbf{Fin}} A_n n^S$ is the left Kan extension of $A$ along the
-inclusion $\textbf{Fin}^{\cong} \hookrightarrow \smset^{\text{op}}$.
+\sum_{n : \textbf{Fin}} A_n n^S/n!$ is the left Kan extension of $A$ along the
+inclusion $\textbf{Fin}^{\cong} \hookrightarrow \smset^{\text{op}}$. These give
+functors
+\[
+  \begin{tikzcd}
+    & \textbf{CombSpecies} \arrow[dr, "|\cdot|_{\dir}"] \arrow[dl, "|\cdot|_{\poly}"']& \\
+    \poly & & \dir
+  \end{tikzcd}
+\]
+
+The Cauchy product $\otimes_{\poly}$ of combinatorial species is given by Day
+convolution from $+ : \textbf{Fin}^{\cong} \times \textbf{Fin}^{\cong}$, and
+$|\cdot|_{\poly}$ sends $\otimes_{\poly}$ to the cartesian product. On the
+other hand, the Dirichlet product $\otimes_{\dir}$ of combinatorial species is
+given by Day convolution from $\times : \textbf{Fin}^{\cong} \times
+\textbf{Fin}^{\cong}$, and this is sent by $|\cdot|_{\dir}$ to the cartesian
+product. This gives us an interpretation of the generating \emph{functors}
+associated to a species in which sum is coproduct and product is cartesian
+product -- the difference between the Cauchy generating functor and the
+Dirichlet generating functor is that the latter is contravariant.
 
 
 
