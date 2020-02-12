@@ -396,39 +396,12 @@ The functors $\poly\to\shv$, $\shv\to\poly$, $\dir\to\bun$, and $\bun\to\dir$ ar
 **
 \end{proof}
 
-\begin{theorem}
-  Isbell duality gives a contravariant adjunction
-  \[
-    \begin{tikzcd}
-      \poly\op \arrow[r, bend left, "\textbf{Spec}"] \arrow[r, leftarrow, bend
-      right, "\mathcal{O}"] & \dir
-    \end{tikzcd}
-  \]
-  Sending $P : \poly$ to $N \mapsto \textbf{Nat}(P, x^N)$ and sending $Q : \dir$
-  to $N \mapsto \textbf{Nat}(Q, N^x)$. 
-\end{theorem}
-\begin{proof}
-  We note by abstract nonsense that representables get sent to representables:
-  \begin{align*}
-    \textbf{Spec}(x^K) &:= N \mapsto \textbf{Nat}(x^K, x^N) \\
-                       &\cong N \mapsto \textbf{Fin}(N, K) \\
-    &=: K^x.
-  \end{align*}
-  The other is dual. Also, these functor send coproducts to products:
-  \begin{align*}
-    \textbf{Spec}(P + Q) &:= N \mapsto \textbf{Nat}(P + Q, x^N) \\
-                         &\cong N \mapsto \textbf{Nat}(P, x^N) \times \textbf{Nat}(Q, x^N) \\
-    &\cong 
-  \end{align*}
-\end{proof}
-
-
-Given a combinatorial species $A : \textbf{Fin}^{\cong} \to \Set$, its
+Given a combinatorial species $A : \textbf{Fin}^{\cong} \to \smset$, its
 \emph{Cauchy generating functor} $X \mapsto \sum_{n : \textbf{Fin}} A_n \times X^n/n!$
 is the left Kan extension of $A$ along the inclusion $\textbf{Fin}^{\cong}
-\hookrightarrow \Set$, and the \emph{Dirichlet generating functor} $S \mapsto
+\hookrightarrow \smset$, and the \emph{Dirichlet generating functor} $S \mapsto
 \sum_{n : \textbf{Fin}} A_n n^S$ is the left Kan extension of $A$ along the
-inclusion $\textbf{Fin}^{\cong} \hookrightarrow \Set^{\text{op}}$.
+inclusion $\textbf{Fin}^{\cong} \hookrightarrow \smset^{\text{op}}$.
 
 
 
