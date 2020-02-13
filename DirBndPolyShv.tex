@@ -234,7 +234,6 @@ replacement=\&]{}\ar[r,tick]\&{}\end{tikzcd}}
 \newcommand{\lens}{\Cat{Lens}}
 \newcommand{\core}{\Fun{Core}}
 \newcommand{\bun}{\Cat{Bun}}
-\newcommand{\shv}{\Cat{Shv}}
 
 
 \newcommand{\yon}{\mathcal{y}}
@@ -261,7 +260,7 @@ replacement=\&]{}\ar[r,tick]\&{}\end{tikzcd}}
 
 \begin{document}
 
-\title{Polynomials, sheaves, and sums of co-representables\\Dirichlets, bundles, and sums of representables}
+\title{Polynomials and lenses, Dirichlet series and bundles}
 
 \author{David(s?)}
 
@@ -292,19 +291,22 @@ Note that the functor $0^\yon$ is not the constant $0$ functor; it is given by
 
 A \emph{polynomial functor} \cite{GambinoKock} is a functor $P\colon\finset\to\finset$ that can be expressed as a finite sum of co-representable functors. Similarly, we define a \emph{Dirichlet functor} to be a functor $D\colon\finset\op\to\finset$ that can be expressed as a finite sum of representable functors:
 \[
-  P=\sum_{i\in P(1)}\yon^{p_i}
+  P=\sum_{i=1}^{P(1)}\yon^{p_i}
   \qqand
-  D=\sum_{i\in D(0)}(d_i)^\yon.
+  D=\sum_{i=1}^{D(0)}(d_i)^\yon.
 \]
+That is $P(X)=\sum_{i=1}^{P(1)}\finset(p_i,X)$ and $D(X)=\sum_{i=1}^{D(0)}\finset(X,d_i)$.
 
 For any small category $C$, let $\finset^C$ denote the category whose objects are the functors $C\to\finset$ and whose morphisms are the natural transformations between them.
 
-\begin{definition}
+\begin{definition}\label{def.poly_dir}
 The \emph{category of polynomial functors}, denoted $\poly$, is the full subcategory of $\finset^\finset$ spanned by finite sums $P$ of corepresentables. The \emph{category of Dirichlet functors}, denoted $\dir$, is the full subcategory of $\finset^{(\finset\op)}$ spanned by the finite sums $D$ of representables.
 \end{definition}
 
-\begin{remark}
+\begin{remark}\label{rem.products_coproducts}
+Sums and products of polynomials in the usual algebraic sense agrees exactly with sums and products in the categorical sense: if $P$ and $Q$ are polynomials, i.e.\ objects in $\poly$, then their coproduct is $P+Q$ and their product is $PQ$.
 
+The same is true for $\dir$: sums and products of finite Dirichlet series in the usual sense agrees exactly with sums and products in the categorical sense.
 \end{remark}
 
 There is a bijection between the respective object-sets of these two categories
@@ -313,61 +315,56 @@ There is a bijection between the respective object-sets of these two categories
 	\ob(\poly)&\To{\cong}\ob(\dir)\\\label{eqn.poly_dir}
 	\sum_{i=1}^n\yon^{k_i}&\mapsto\sum_{i=1}^n (k_i)^\yon
 \end{align}
-In fact, these are further in bijection with the set of maps between finite sets.
+We call this the \emph{Dirichlet transform} and denote it using an over-line $P\mapsto \overline{P}$.
+
 \begin{proposition}\label{prop.poly_function}
 There is a one-to-one correspondence between the set of polynomials in one variable, the set of finite Dirichlet series, and the set of (isomorphism classes of) functions $\pi\colon s\to t$ between finite sets.
 \end{proposition}
 \begin{proof}
-We already established a bijection between polynomials and finite Dirichlet series in \cref{eqn.poly_dir}.
+We already established a bijection $P\mapsto\overline{P}$ between polynomials and finite Dirichlet series in \cref{eqn.poly_dir}.
 
 Given a polynomial $P=a_n\yon^n+\cdots+a_0$, we first define a pair of sets and a function $\pi\colon s\to t$ between them. Let $t\coloneqq P(1)=a_n+\cdots+a_0$, let $s\coloneqq\sum_{i=1}^na_i*i$. An element in $s$ can be written in the form $(i,j)$ where $1\leq i\leq n$ and $1\leq j\leq a_i*i$. Thus we may define $\pi(i,j)\coloneqq i$.
 
-Given a function $\pi\colon s\to t$, we obtain a polynomial $P\coloneqq\sum_{i=1}^{t}\pi\inv(i)$. It is easy to see that the roundtrip for polynomials is identity, and that the round-trip for functions is a natural isomorphism.
+Given a function $\pi\colon s\to t$, let $k_i\coloneqq\pi\inv(i)$ for each $1\leq i\leq t$. We obtain a polynomial
+\begin{equation}\label{eqn.Ppi}
+	P_\pi\coloneqq\sum_{i=1}^{t}\yon^{k_i}.
+\end{equation}
+It is easy to see that the roundtrip for polynomials is identity, and that the round-trip for functions is a natural isomorphism.
 \end{proof}
 
 \begin{example}
-The polynomial $2\yon^5+\yon^4+\yon^2+3$ corresponds to the function
+The polynomial $2\yon^3+\yon^2+3$ corresponds to the function
 \begin{equation}\label{eqn.bundle}
 \begin{tikzpicture}[x=.5cm, y=.35cm, every label/.style={font=\scriptsize}, baseline=(f)]
 	\node[label={[above=-5pt]:$1$}] (Ya) {$\bullet$};
-	\node[right=1 of Ya,  label={[above=-5pt]:$2$}] (Yb) {$\bullet$};
-	\node[right=1 of Yb,  label={[above=-5pt]:$3$}] (Yc) {$\bullet$};
-	\node[right=1 of Yc,  label={[above=-5pt]:$4$}] (Yd) {$\bullet$};
-	\node[right=1 of Yd,  label={[above=-5pt]:$5$}] (Ye) {$\bullet$};
-	\node[right=1 of Ye,  label={[above=-5pt]:$6$}] (Yf) {$\bullet$};
-	\node[right=1 of Yf,  label={[above=-5pt]:$7$}] (Yg) {$\bullet$};
+	\node[right=1 of Ya,  label={[above=-5pt]:$2$}] (Yc) {$\bullet$};
+	\node[right=1 of Yc,  label={[above=-5pt]:$3$}] (Yd) {$\bullet$};
+	\node[right=1 of Yd,  label={[above=-5pt]:$4$}] (Ye) {$\bullet$};
+	\node[right=1 of Ye,  label={[above=-5pt]:$5$}] (Yf) {$\bullet$};
+	\node[right=1 of Yf,  label={[above=-5pt]:$6$}] (Yg) {$\bullet$};
 	\node[draw, inner ysep=4pt, fit={($(Ya)+(-1em,3ex)$) (Yg)}] (Y) {};
-	\node[left=0 of Y] (Ylab) {$7\cong$};
+	\node[left=0 of Y] (Ylab) {$6\cong$};
 %
   \node[above=4 of Ya, label={[above=-5pt]:$(1,1)$}] (X11) {$\bullet$};
   \node[above=1 of X11, label={[above=-5pt]:$(1,2)$}] (X12) {$\bullet$};
   \node[above=1 of X12, label={[above=-5pt]:$(1,3)$}] (X13) {$\bullet$};
-  \node[above=1 of X13, label={[above=-5pt]:$(1,4)$}] (X14) {$\bullet$};
-  \node[above=1 of X14, label={[above=-5pt]:$(1,5)$}] (X15) {$\bullet$};
 %
-  \node[above=4 of Yb, label={[above=-5pt]:$(2,1)$}] (X21) {$\bullet$};
-  \node[above=1 of X21, label={[above=-5pt]:$(2,2)$}] (X22) {$\bullet$};
-  \node[above=1 of X22, label={[above=-5pt]:$(2,3)$}] (X23) {$\bullet$};
-  \node[above=1 of X23, label={[above=-5pt]:$(2,4)$}] (X24) {$\bullet$};
-  \node[above=1 of X24, label={[above=-5pt]:$(2,5)$}] (X25) {$\bullet$};
+  \node[above=4 of Yc, label={[above=-5pt]:$(2,1)$}] (X31) {$\bullet$};
+  \node[above=1 of X31, label={[above=-5pt]:$(2,2)$}] (X32) {$\bullet$};
+  \node[above=1 of X32, label={[above=-5pt]:$(2,3)$}] (X33) {$\bullet$};
 %
-  \node[above=4 of Yc, label={[above=-5pt]:$(3,1)$}] (X31) {$\bullet$};
-  \node[above=1 of X31, label={[above=-5pt]:$(3,2)$}] (X32) {$\bullet$};
-  \node[above=1 of X32, label={[above=-5pt]:$(3,3)$}] (X33) {$\bullet$};
-  \node[above=1 of X33, label={[above=-5pt]:$(3,4)$}] (X34) {$\bullet$};
-%
-  \node[above=4 of Yd, label={[above=-5pt]:$(4,1)$}] (X41) {$\bullet$};
-  \node[above=1 of X41, label={[above=-5pt]:$(4,2)$}] (X42) {$\bullet$};
+  \node[above=4 of Yd, label={[above=-5pt]:$(3,1)$}] (X41) {$\bullet$};
+  \node[above=1 of X41, label={[above=-5pt]:$(3,2)$}] (X42) {$\bullet$};
   \node [above=4 of Yg] (xend) {};
-	\node[draw, inner ysep=3pt, fit={($(X15)+(-1em,3ex)$) ($(xend)+(.4,0)$)}] (X) {};
-	\node[left=0 of X] {$15\cong$};
+	\node[draw, inner ysep=3pt, fit={($(X13)+(-1em,3ex)$) ($(xend)+(.4,0)$)}] (X) {};
+	\node[left=0 of X] {$8\cong$};
 %
 	\draw[->, shorten <=3pt, shorten >=3pt] (X) to node[left] (f) {$\pi$} (Y);
 \end{tikzpicture}
 \end{equation}
 \end{example}
 
-We can think of a function $\pi\colon s\to t$, e.g.\ that shown in \eqref{eqn.bundle}, as a bundle. We can also think of it as a sheaf. Sheaves and bundles are often considered to be synonymous, and indeed on objects they are. But in \cref{def.sheaves_bundles} we define bundle morphisms and sheaf morphisms to have different variances. 
+We can think of a function $\pi\colon s\to t$, e.g.\ that shown in \eqref{eqn.bundle}, as a bundle. In \cref{def.sheaves_bundles} we define two different notions of morphism between them. 
 
 For any function $f\colon t\to t'$ and function $\pi'\colon s'\to t'$, denote by $f^*(\pi')$ the pullback function as shown
 \[
@@ -382,18 +379,61 @@ For any function $f\colon t\to t'$ and function $\pi'\colon s'\to t'$, denote by
 \begin{definition}\label{def.sheaves_bundles}
 Let $\pi\colon s\to t$ and $\pi'\colon s'\to t'$ be functions between finite sets.
 \begin{itemize}
-	\item a \emph{bundle morphism} consists of a pair $(f,f_\sharp)$ where $f\colon t\to t'$ and $f_\sharp\colon s\to f^*(\pi')$ are functions;
-	\item a \emph{sheaf morphism} consists of a pair $(f,f^\sharp)$ where $f\colon t\to t'$ and $f^\sharp\colon f^*(\pi')\to s$ are functions;
+	\item a \emph{bundle morphism} consists of a pair $(f,f_\sharp)$ where $f\colon t\to t'$ is a function and $f_\sharp\colon \pi\to f^*(\pi')$ is a morphism in the slice category over $t$;
+	\item a \emph{lens morphism} consists of a pair $(f,f^\sharp)$ where $f\colon t\to t'$ is a function and $f^\sharp\colon f^*(\pi')\to \pi$ is a morphism in the slice category over $t$.
 \end{itemize}
-Define $\bun$ (resp.\ $\shv$) to be the category for which an object is a function between finite sets and a morphism is a bundle morphism (resp.\ sheaf morphism).
+\[
+\begin{tikzcd}
+s\ar[dr, bend right=40pt, "\pi"']&[-5pt]
+t\times_{t'}s'\ar[r]\ar[d, "f^*\pi'"']\ar[from=l, "f_\sharp"]&
+s'\ar[d, "\pi'"]\\&
+t\ar[r, "f"']&
+t'\ar[ul, phantom, very near end, "\lrcorner"]
+\end{tikzcd}
+\hspace{.75in}
+\begin{tikzcd}
+s\ar[dr, bend right=40pt, "\pi"']&[-5pt]
+t\times_{t'}s'\ar[r]\ar[d, "f^*\pi'"']\ar[l, "f^\sharp"']&
+s'\ar[d, "\pi'"]\\&
+t\ar[r, "f"']&
+t'\ar[ul, phantom, very near end, "\lrcorner"]
+\end{tikzcd}
+\]
+Define $\bun$ (resp.\ $\lens$) to be the category for which an object is a function between finite sets and a morphism is a bundle morphism (resp.\ lens morphism).
 \end{definition}
 
+It is easy to check that $\bun\cong\finset^2$ is the category of morphisms and commuting squares in the category of finite sets. Next we show that it is also isomorphic to the category of Dirichlet functors from \cref{def.poly_dir}.
+
 \begin{theorem}
-$\poly$ is equivalent to the category of functions and sheaf morphisms; $\dir$ is equivalent to the category of functions and bundle morphisms.
+We have equivalences of categories
+\[
+\poly\cong\lens
+\qqand
+\dir\cong\bun.
+\]
 \end{theorem}
 \begin{proof}
-The functors $\poly\to\shv$, $\shv\to\poly$, $\dir\to\bun$, and $\bun\to\dir$ are all defined on objects as in \cref{prop.poly_function}. Let $P,P'$ be polynomial functors. Because products and coproducts of set-valued functors are defined pointwise.
-**
+The functors $P_-\colon\lens\to\poly$ and $D_-\colon\bun\to\dir$ are defined on each object $\pi\colon s\to t$ by the formula $\pi\mapsto P_\pi$ and $\pi\mapsto D_\pi\coloneqq\overline{P_\pi}$ as in \cref{prop.poly_function}. For each $1\leq i\leq t$, denote the fiber of $\pi$ over $i$ by $k_i\coloneqq\pi\inv(i)$.
+
+For any set $X$, consider the unique map $X!\colon X\to 1$. Applying $P_-$ and $D_-$ to it, we obtain the corresponding representable: $P_{X!}\cong\yon^X$ and $D_{X!}\cong X^\yon$. We next check that
+ \begin{gather*}
+  \poly(P_{X!},P_\pi)\cong 
+  P_\pi(X)=
+  \sum_{i=1}^{t}X^{k_i}\cong
+  \lens(X!, \pi),
+  \\
+  \dir(D_{X!}, D_\pi)\cong 
+  D_\pi(X)=
+  \sum_{i=1}^{t}(k_i)^X\cong
+  \bun(X!, \pi).
+\end{gather*}
+In both lines, the first isomorphism is the Yoneda lemma and the second is a computation. Thus we define $P_-$ on morphisms by sending $f\colon\pi\to\pi'$ in $\lens$ to the natural transformation with $X$-component $\lens(X!,f)\colon\lens(X!,\pi)\to\lens(X!,\pi')$, which is clearly natural in $X$. We define $D_-$ on morphisms similarly: for $f$ in $\bun$, use the natural transformation $\bun(-!,f)$.
+
+By definition, every object in $\poly$ and $\dir$ is a coproduct of representables, so to complete the proof one first checks that coproducts in $\lens$ and $\bun$ are taken pointwise:
+\[
+(\pi\colon s\to t)+(\pi'\colon s'\to t')\cong(\pi+\pi')\colon (s+s')\to (t+t').
+\]
+and then that $P_{\pi+\pi'}=P_\pi+P_{\pi'}$ and $D_{\pi+\pi'}=D_\pi+D_{\pi'}$; see \cref{eqn.Ppi}.
 \end{proof}
 
 Given a combinatorial species $A : \textbf{Fin}^{\cong} \to \smset$, its
