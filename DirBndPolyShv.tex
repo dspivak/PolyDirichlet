@@ -243,6 +243,8 @@ replacement=\&]{}\ar[r,tick]\&{}\end{tikzcd}}
 \newcommand{\qand}{\quad\text{and}\quad}
 \newcommand{\qqand}{\qquad\text{and}\qquad}
 
+\newcommand{\inote}[1]{{\color{blue}David I.\ says: #1}}
+\newcommand{\jnote}[1]{{\color{red}David J.\ says: #1}}
 
 
 \newcommand{\cp}{\mathbin{\fatsemi}}
@@ -270,7 +272,7 @@ One can think of power series or polynomials in one variable, such as $2\yon^3+\
 
 Just as the polynomial functors are the copresheaves that can be written as sums of representables, one can express Dirichlet series, e.g.\ $\sum_{n=0}^\infty n^\yon$, as a coproduct of representable presheaves. Note that it is common to omit the $n=0$ term $0^\yon$, as it is ``just 0'', but it seems to us that this should be considered a truncation. Indeed, the category $\dir_\smset$ of Dirichlet functors has very nice formal properties---for example it is extensive in the category-theoretic sense---and yet here the object $0^\yon$ is not $0$. It is the representable functor on the empty set.
 
-In this note we also prove some very basic theorems, e.g.\ that the category of \emph{finite} Dirichlet series is equivalent to the category $\finset^{\to}$ of functions $\pi\colon s\to t$ between finite sets. An analogous theorem holds for $\smset$.
+In this note we also show that there is a double category whose objects are combinatorial species, vertical morphisms are polynomial maps, and horizontal morphisms are Dirichlet maps.
 \end{abstract}
 
 Polynomials $P(\yon)$ and finite Dirchlet series $D(\yon)$ in one variable $\cat{y}$, with natural number coefficients $a_i\in\nn$, are respectively functions of the form
@@ -279,8 +281,9 @@ Polynomials $P(\yon)$ and finite Dirchlet series $D(\yon)$ in one variable $\cat
   \qqand
   D(\yon)=a_nn^\yon+\cdots+a_22^\yon+a_11^\yon+a_00^\yon.
 \]
-There are of course infinite versions of the above, but in this paper we work entirely in the topos $\finset$ of finite sets, to keep things simple. If one wants infinite Dirichlet series or power series, one get them and much more by replacing $\finset$ with $\smset$ everywhere.
+There are of course infinite versions of the above, but in this note we work entirely in the topos $\finset$ of finite sets, to keep things simple. If one wants infinite Dirichlet series or power series, one get them and much more by replacing $\finset$ with $\smset$ everywhere.
 
+\chapter{The categories $\poly$ and $\dir$}
 Recall that a \emph{co-representable functor} $\finset\to\finset$ is one of the form $\finset(n, -)$ for some finite set $n=\{`1', `2',\ldots,`n'\}$. We denote this functor by $\yon^n$ and say it is \emph{represented by} $n\in\finset$. Similarly, a \emph{(contra-) representable functor} $\finset\op\to\finset$ is contravariant functor of the form $\finset(-,n)$; we denote this functor by $n^\yon$.
 \begin{figure}
 \[
@@ -305,20 +308,18 @@ The coefficient $p_0$ of $1$ in a polynomial $P$ is called its constant term. We
 \begin{example}
 The reader can determine which finite Dirichlet series $D(\yon)$ has the following terms
 \[
-\begin{array}{ccccccccc}
+\begin{array}{c|ccccccc}
 \yon&
-7&
-6&
+\cdots&
 5&
 4&
 3&
 2&
 1&
 0
-\\
+\\\hline
 D(\yon)&
-384&
-192&
+\cdots&
 96&
 48&
 24&
@@ -330,7 +331,7 @@ D(\yon)&
 Hint: its surprise-0 term is $4$.
 \end{example}
 
-A \emph{polynomial functor} \cite{GambinoKock} is a functor $P\colon\finset\to\finset$ that can be expressed as a finite sum of co-representable functors. Similarly, we define a \emph{Dirichlet functor} to be a functor $D\colon\finset\op\to\finset$ that can be expressed as a finite sum of representable functors:
+A \emph{polynomial functor} \cite{GambinoKock} is a functor $P\colon\finset\to\finset$ that can be expressed as a finite sum of co-representable functors. Similarly, we define a \emph{Dirichlet functor} to be a functor $D\colon\finset\op\to\finset$ that can be expressed as a finite sum of contra-representable functors:
 \begin{equation}\label{eqn.finite_sum}
   P=\sum_{i=1}^{P(1)}\yon^{p_i}
   \qqand
@@ -341,17 +342,17 @@ That is $P(X)=\sum_{i=1}^{P(1)}\finset(p_i,X)$ and $D(X)=\sum_{i=1}^{D(0)}\finse
 For any small category $C$, let $\finset^C$ denote the category whose objects are the functors $C\to\finset$ and whose morphisms are the natural transformations between them.
 
 \begin{definition}\label{def.poly_dir}
-The \emph{category of polynomial functors}, denoted $\poly$, is the full subcategory of $\finset^\finset$ spanned by finite sums $P$ of corepresentables. The \emph{category of Dirichlet functors}, denoted $\dir$, is the full subcategory of $\finset^{(\finset\op)}$ spanned by the finite sums $D$ of representables.
+The \emph{category of polynomial functors}, denoted $\poly$, is the full subcategory of $\finset^\finset$ spanned by finite sums $P$ of co-representables. The \emph{category of Dirichlet functors}, denoted $\dir$, is the full subcategory of $\finset^{(\finset\op)}$ spanned by the finite sums $D$ of contra-representables.
 \end{definition}
 
 \begin{remark}\label{rem.products_coproducts}
 Sums and products of polynomials in the usual algebraic sense agrees exactly with sums and products in the categorical sense: if $P$ and $Q$ are polynomials, i.e.\ objects in $\poly$, then their coproduct is $P+Q$ and their product is $PQ$. The same is true for $\dir$: sums and products of finite Dirichlet series in the usual sense agrees exactly with sums and products in the categorical sense.
 
-The categories $\poly$ and $\dir$ each has pullbacks and an idempotent monad, $\eta_P\colon P\mapsto P(1)$ and $\eta^D\colon D\mapsto D(0)$, and we can recover \cref{eqn.finite_sum} using pullbacks (also known as fiber products):
+The categories $\poly$ and $\dir$ each has pullbacks and an idempotent monad, $\eta_P\colon P\mapsto P(1)$ and $\eta^D\colon D\mapsto D(0)$, and we can recover \cref{eqn.finite_sum} using pullbacks, also known as fiber products:
 \[
-  P=\sum_{i=1}^{P(1)}P\times_{P(1)}i
+  P=\sum_{i=1}^{P(1)}P\times_{P(1)}`i'
   \qqand
-	D=\sum_{i=1}^{D(0)}D\times_{D(0)}i.
+	D=\sum_{i=1}^{D(0)}D\times_{D(0)}`i'.
 \]
 \end{remark}
 
@@ -485,6 +486,10 @@ By definition, every object in $\poly$ and $\dir$ is a coproduct of representabl
 \]
 and then that $P_{\pi+\pi'}=P_\pi+P_{\pi'}$ and $D_{\pi+\pi'}=D_\pi+D_{\pi'}$; see \cref{eqn.Ppi}.
 \end{proof}
+
+\chapter{The $\poly-\dir$ double category}
+
+\inote{David, would you mind introducing this section, explaining the change to groupoids, and defining the double category? Perhaps also define the functor to $\mathbb{P}rof$.}
 
 Given a combinatorial species $A : \textbf{Fin}^{\cong} \to \smset$, its
 \emph{Cauchy generating functor} $X \mapsto \sum_{n : \textbf{Fin}} A_n \times X^n/n!$
