@@ -332,7 +332,7 @@ D(\yon)&
 Hint: its surprise-0 term is $4$.
 \end{example}
 
-A \emph{polynomial functor} \cite{GambinoKock} is a functor $P\colon\finset\to\finset$ that can be expressed as a finite sum of co-representable functors. Similarly, we define a \emph{Dirichlet functor} to be a functor $D\colon\finset\op\to\finset$ that can be expressed as a finite sum of contra-representable functors:
+A \emph{polynomial functor} \cite{GambinoKock} is a functor $P\colon\finset\to\finset$ that can be expressed as a finite sum of co-representable functors. Similarly, we define a \emph{Dirichlet functor} to be a functor $D\colon\finset\op\to\finset$ that can be expressed as a finite sum of representable presheavess:
 \begin{equation}\label{eqn.finite_sum}
   P=\sum_{i=1}^{P(1)}\yon^{p_i}
   \qqand
@@ -343,39 +343,56 @@ That is $P(X)=\sum_{i=1}^{P(1)}\finset(p_i,X)$ and $D(X)=\sum_{i=1}^{D(0)}\finse
 For any small category $C$, let $\finset^C$ denote the category whose objects are the functors $C\to\finset$ and whose morphisms are the natural transformations between them.
 
 \begin{definition}\label{def.poly_dir}
-The \emph{category of polynomial functors}, denoted $\poly$, is the full subcategory of $\finset^\finset$ spanned by finite sums $P$ of co-representables. The \emph{category of Dirichlet functors}, denoted $\dir$, is the full subcategory of $\finset^{(\finset\op)}$ spanned by the finite sums $D$ of contra-representables.
+The \emph{category of polynomial functors}, denoted $\poly$, is the full subcategory of $\finset^\finset$ spanned by finite sums $P$ of representable functors. The \emph{category of Dirichlet functors}, denoted $\dir$, is the full subcategory of $\finset^{(\finset\op)}$ spanned by the finite sums $D$ of representables presheaves.
 \end{definition}
 
 \begin{remark}\label{rem.products_coproducts}
 Sums and products of polynomials in the usual algebraic sense agrees exactly with sums and products in the categorical sense: if $P$ and $Q$ are polynomials, i.e.\ objects in $\poly$, then their coproduct is $P+Q$ and their product is $PQ$. The same is true for $\dir$: sums and products of finite Dirichlet series in the usual sense agrees exactly with sums and products in the categorical sense.
 
-The categories $\poly$ and $\dir$ each has pullbacks and an idempotent monad, $\eta_P\colon P\mapsto P(1)$ and $\eta^D\colon D\mapsto D(0)$, and we can recover \cref{eqn.finite_sum} using pullbacks, also known as fiber products:
+There are adjoint quadruples where all of the functors out of $\smset$ are fully faithful:
+\[
+\begin{tikzcd}[column sep=60pt]
+  \smset
+  	\ar[r, shift left=6.5pt, "n\mapsto n\yon^0" description]
+		\ar[r, shift right=19.5pt, "n\mapsto n\yon^1"']&
+  \poly
+  	\ar[l, shift right=19.5pt, "P\mapsto P(0)"']
+  	\ar[l, shift left=6.5pt, "P\mapsto P(1)" description]
+	\ar[l, phantom, "\Leftarrow"]
+	\ar[l, phantom, shift left=13.5pt, "\Rightarrow"]
+	\ar[l, phantom, shift right=13.5pt, "\Rightarrow"]
+\end{tikzcd}
+\hspace{1in}
+\begin{tikzcd}[column sep=60pt]
+  \smset
+  	\ar[r, shift left=6.5pt, "n\mapsto n\cdot 0^\yon" description]
+		\ar[r, shift right=19.5pt, "n\mapsto n\cdot1^\yon"']&
+  \dir
+  	\ar[l, shift right=19.5pt, "D\mapsto d_0"']
+  	\ar[l, shift left=6.5pt, "D\mapsto D(0)" description]
+	\ar[l, phantom, "\Rightarrow"]
+	\ar[l, phantom, shift left=13.5pt, "\Leftarrow"]
+	\ar[l, phantom, shift right=13.5pt, "\Leftarrow"]
+\end{tikzcd}
+\]
+The middle adjunction in each case give rise to a monad on $\poly$ and on $\dir$ respectively, with unit $P\to P(1)$ and $D\to D(0)$.
+
+Finally, each of the categories $\poly$ and $\dir$ has pullbacks, and we can recover \cref{eqn.finite_sum} using pullbacks, also known as fiber products:
 \[
   P=\sum_{i=1}^{P(1)}P\times_{P(1)}`i'
   \qqand
 	D=\sum_{i=1}^{D(0)}D\times_{D(0)}`i'.
 \]
-Finally, there are adjoint triples where the four functors out of $\smset$ are fully faithful:
-\[
-\begin{tikzcd}[column sep=50pt]
-  \smset\ar[r, shift left=12pt, "n\mapsto n\yon^0"]\ar[r, shift right=12pt, "n\mapsto n\yon^1"']&
-  \poly\ar[l, "\;-(1)\;" description]\ar[l, phantom, shift left=6pt, "\Rightarrow"]\ar[l, phantom, shift right=6pt, "\Leftarrow"]
-\end{tikzcd}
-\hspace{1in}
-\begin{tikzcd}[column sep=50pt]
-  \smset\ar[r, shift left=12pt, "n\mapsto n\cdot 0^\yon"]\ar[r, shift right=12pt, "n\mapsto n\cdot1^\yon"']&
-  \dir\ar[l, "\;-(0)\;" description]\ar[l, phantom, shift left=6pt, "\Rightarrow"]\ar[l, phantom, shift right=6pt, "\Leftarrow"]
-\end{tikzcd}
-\]
 \end{remark}
 
+\paragraph{Dirichlet transform.}
 There is a bijection between the respective object-sets of these two categories
 \begin{align}
 \nonumber
 	\ob(\poly)&\To{\cong}\ob(\dir)\\\label{eqn.poly_dir}
 	\sum_{i=1}^n\yon^{k_i}&\mapsto\sum_{i=1}^n (k_i)^\yon.
 \end{align}
-We call this the \emph{Dirichlet transform} and denote it using an over-line $P\mapsto \overline{P}$.
+We call this mapping the \emph{Dirichlet transform} and denote it using an over-line $P\mapsto \overline{P}$.
 
 \begin{proposition}\label{prop.poly_function}
 There is a one-to-one correspondence between the set of polynomials in one variable, the set of finite Dirichlet series, and the set of (isomorphism classes of) functions $\pi\colon s\to t$ between finite sets.
@@ -383,12 +400,13 @@ There is a one-to-one correspondence between the set of polynomials in one varia
 \begin{proof}
 We already established a bijection $P\mapsto\overline{P}$ between polynomials and finite Dirichlet series in \cref{eqn.poly_dir}.
 
-Given a polynomial $P=a_n\yon^n+\cdots+a_0$, we first define a pair of sets and a function $\pi\colon s\to t$ between them. Let $t\coloneqq P(1)=a_n+\cdots+a_0$, let $s\coloneqq\sum_{i=1}^na_i*i$. An element in $s$ can be written in the form $(i,j)$ where $1\leq i\leq n$ and $1\leq j\leq a_i*i$. Thus we may define $\pi(i,j)\coloneqq i$.
+Given a polynomial $P=a_n\yon^n+\cdots+a_0$, we need to define a pair of sets and a function $\pi\colon s\to t$ between them. Let $t\coloneqq P(1)=a_n+\cdots+a_0$, let $s\coloneqq\sum_{i=1}^na_i*i$. An element in $s$ can be written in the form $(i,j)$ where $1\leq i\leq n$ and $1\leq j\leq a_i*i$. Thus we may define $\pi(i,j)\coloneqq i$.
 
-Given a function $\pi\colon s\to t$, let $k_i\coloneqq\pi\inv(i)$ for each $1\leq i\leq t$. We obtain a polynomial
+Given a function $\pi\colon s\to t$, we need to define a polynomial. Let $k_i\coloneqq\pi\inv(i)$ for each $1\leq i\leq t$. We obtain the required polynomial
 \begin{equation}\label{eqn.Ppi}
 	P_\pi\coloneqq\sum_{i=1}^{t}\yon^{k_i}.
 \end{equation}
+
 It is easy to see that the roundtrip for polynomials is identity, and that the round-trip for functions is a natural isomorphism.
 \end{proof}
 
@@ -424,7 +442,7 @@ The polynomial $2\yon^3+\yon^2+3$ corresponds to the function
 \end{equation}
 \end{example}
 
-We can think of a function $\pi\colon s\to t$, e.g.\ that shown in \eqref{eqn.bundle}, as a \emph{bundle} of fibers $\pi\inv(i)$, one for each element $`i'\in t$. In \cref{def.sheaves_bundles} we define two different notions of morphism between them. 
+We can think of a function $\pi\colon s\to t$, e.g.\ that shown in \eqref{eqn.bundle}, as a \emph{bundle} of fibers $\pi\inv(i)$, one for each element $`i'\in t$. In \cref{def.sheaves_bundles} we define two different notions of morphism between them, which correspond to maps in $\poly$ and $\dir$.
 
 For any function $f\colon t\to t'$ and function $\pi'\colon s'\to t'$, denote by $f^*(\pi')$ the pullback function as shown
 \[
