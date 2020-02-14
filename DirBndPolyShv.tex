@@ -266,11 +266,11 @@ replacement=\&]{}\ar[r,tick]\&{}\end{tikzcd}}
 
 \maketitle
 \begin{abstract}
-One can think of power series or polynomials such as $2\yon^3+\yon+5$ in one variable as functors from the category $\finset$ of finite sets to itself; call the category of polynomial functors and the natural transformations between them $\poly$. The constants $0,1$ and operations $+,\times$ are the initial and terminal objects and the coproduct and product in $\poly$. 
+One can think of power series or polynomials in one variable, such as $2\yon^3+\yon+5$, as functors from the category $\smset$ of sets to itself; these are known as polynomial functors. Denote by $\poly_\smset$ the category of polynomial functors on $\smset$ and natural transformations between them. The constants $0,1$ and operations $+,\times$ are the initial and terminal objects and the coproduct and product in $\poly_\smset$. 
 
-Just as the polynomial functors are the copresheaves that can be written as sums of representables, one can express Dirichlet series, e.g.\ $\sum_{n=0}^\infty n^\yon$, as a coproduct of representable presheaves. Note that it is common to omit the $n=0$ term $0^\yon$, as it is ``just 0'', but it seems to us that this should be considered a truncation. Indeed, the category $\dir$ of Dirichlet functors has very nice formal properties---for example it is extensive in the category-theoretic sense---and yet here the object $0^\yon$ is not $0$. It is the representable functor on the empty set.
+Just as the polynomial functors are the copresheaves that can be written as sums of representables, one can express Dirichlet series, e.g.\ $\sum_{n=0}^\infty n^\yon$, as a coproduct of representable presheaves. Note that it is common to omit the $n=0$ term $0^\yon$, as it is ``just 0'', but it seems to us that this should be considered a truncation. Indeed, the category $\dir_\smset$ of Dirichlet functors has very nice formal properties---for example it is extensive in the category-theoretic sense---and yet here the object $0^\yon$ is not $0$. It is the representable functor on the empty set.
 
-In this note we also prove some very basic theorems, e.g.\ that the category of finite Dirichlet series is equivalent to the category $\finset^{\to}$ of functions $\pi\colon s\to t$ between finite sets. Younger readers can be asked to determine which object of $\finset^\to$ corresponds to $0^\yon$ under this equivalence.
+In this note we also prove some very basic theorems, e.g.\ that the category of \emph{finite} Dirichlet series is equivalent to the category $\finset^{\to}$ of functions $\pi\colon s\to t$ between finite sets. An analogous theorem holds for $\smset$.
 \end{abstract}
 
 Polynomials $P(\yon)$ and finite Dirchlet series $D(\yon)$ in one variable $\cat{y}$, with natural number coefficients $a_i\in\nn$, are respectively functions of the form
