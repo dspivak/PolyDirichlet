@@ -106,17 +106,17 @@ citecolor=orange!50!black, urlcolor=orange!50!black, pdfencoding=unicode]{hyperr
 % Adjunctions
 \newcommand{\adj}[5][30pt]{%[size] Cat L, Left, Right, Cat R.
 \begin{tikzcd}[ampersand replacement=\&, column sep=#1]
-  #2\ar[r, bend left=15, shift left=2pt, "#3"]
-  \ar[r, Rightarrow, shorten <=8pt, shorten >=8pt]\&
-  #5\ar[l, bend left=15, shift left=2pt, "#4"]
+  #2\ar[r, shift left=6pt, "#3"]
+    \ar[l, phantom, "\Rightarrow"]\&
+  #5\ar[l, shift left=6pt, "#4"]
 \end{tikzcd}
 }
 
 \newcommand{\adjr}[5][30pt]{%[size] Cat R, Right, Left, Cat L.
 \begin{tikzcd}[ampersand replacement=\&, column sep=#1]
-  #2\ar[r, bend left=15, shift left=2pt, "#3"]\&
-  #5\ar[l, bend left=15, shift left=2pt, "#4"]
-  \ar[l, Rightarrow, shorten <=8pt, shorten >=8pt]
+  #2\ar[r, shift left=6pt, "#3"]\&
+  #5\ar[l, shift left=6pt, "#4"]
+  \ar[l, phantom, "\Leftarrow"]
 \end{tikzcd}
 }
 
@@ -232,7 +232,7 @@ replacement=\&]{}\ar[r,tick]\&{}\end{tikzcd}}
 \newcommand{\smset}{\Cat{Set}}
 \newcommand{\smcat}{\Cat{Cat}}
 \newcommand{\finset}{\Cat{FinSet}}
-\newcommand{\lens}{\Cat{Lens}}
+\newcommand{\cont}{\Cat{Cont}}
 \newcommand{\core}{\Fun{Core}}
 \newcommand{\bun}{\Cat{Bun}}
 
@@ -240,6 +240,7 @@ replacement=\&]{}\ar[r,tick]\&{}\end{tikzcd}}
 \newcommand{\yon}{\mathcal{y}}
 \newcommand{\poly}{\Cat{Poly}}
 \newcommand{\dir}{\Cat{Dir}}
+\newcommand{\ff}{\mathbb{F}}
 
 \newcommand{\qand}{\quad\text{and}\quad}
 \newcommand{\qqand}{\qquad\text{and}\qquad}
@@ -273,7 +274,7 @@ One can think of power series or polynomials in one variable, such as $2\yon^3+\
 
 Just as the polynomial functors are the copresheaves that can be written as sums of representables, one can express Dirichlet series, e.g.\ $\sum_{n=0}^\infty n^\yon$, as a coproduct of representable presheaves. Note that it is common to omit the $n=0$ term $0^\yon$, as it is ``just 0'', but it seems to us that this should be considered a truncation. Indeed, the category $\dir_\smset$ of Dirichlet functors has very nice formal properties---for example it is extensive in the category-theoretic sense---and yet here the object $0^\yon$ is not $0$. It is the representable functor on the empty set.
 
-In this note we also show that there is a double category whose vertical category is isomorphic to $\poly$ and whose horizontal category is isomorphic to $\dir$. We refer to its 2-cells as \emph{beveled squares}.
+We also show that there is a double category, useful in applications, whose vertical category is isomorphic to $\poly$ and whose horizontal category is isomorphic to $\dir$.
 \end{abstract}
 
 Polynomials $P(\yon)$ and finite Dirchlet series $D(\yon)$ in one variable $\cat{y}$, with natural number coefficients $a_i\in\nn$, are respectively functions of the form
@@ -347,30 +348,34 @@ For any small category $C$, let $\finset^C$ denote the category whose objects ar
 The \emph{category of polynomial functors}, denoted $\poly$, is the full subcategory of $\finset^\finset$ spanned by finite sums $P$ of representable functors. The \emph{category of Dirichlet functors}, denoted $\dir$, is the full subcategory of $\finset^{(\finset\op)}$ spanned by the finite sums $D$ of representables presheaves.
 \end{definition}
 
+\begin{example}
+Let $P=2\yon^2$, $Q=\yon+1$, and let $D=2\cdot2^\yon$ and $E=1+0^\yon$. Then there are nine ($9$) polynomial morphisms $P\to Q$, zero ($0$) polynomial morphisms $Q\to P$, one ($1$) Dirichlet morphism $D\to E$, and four ($4$) Dirichlet morphiisms $E\to D$.
+\end{example}
+
 \begin{remark}\label{rem.products_coproducts}
 Sums and products of polynomials in the usual algebraic sense agrees exactly with sums and products in the categorical sense: if $P$ and $Q$ are polynomials, i.e.\ objects in $\poly$, then their coproduct is $P+Q$ and their product is $PQ$. The same is true for $\dir$: sums and products of finite Dirichlet series in the usual sense agrees exactly with sums and products in the categorical sense.
 
-There are adjoint quadruples where all of the functors out of $\smset$ are fully faithful:
+There are adjoint quadruples as follows, where all of the functors out of $\finset$ are fully faithful:
 \[
 \begin{tikzcd}[column sep=60pt]
-  \smset
+  \finset
   	\ar[r, shift left=6.5pt, "n\mapsto n\yon^0" description]
 		\ar[r, shift right=19.5pt, "n\mapsto n\yon^1"']&
   \poly
   	\ar[l, shift right=19.5pt, "P\mapsto P(0)"']
-  	\ar[l, shift left=6.5pt, "P\mapsto P(1)" description]
+  	\ar[l, shift left=6.5pt, "P(1)\mapsfrom P" description]
 	\ar[l, phantom, "\Leftarrow"]
 	\ar[l, phantom, shift left=13.5pt, "\Rightarrow"]
 	\ar[l, phantom, shift right=13.5pt, "\Rightarrow"]
 \end{tikzcd}
 \hspace{1in}
 \begin{tikzcd}[column sep=60pt]
-  \smset
+  \finset
   	\ar[r, shift left=6.5pt, "n\mapsto n\cdot 0^\yon" description]
 		\ar[r, shift right=19.5pt, "n\mapsto n\cdot1^\yon"']&
   \dir
   	\ar[l, shift right=19.5pt, "D\mapsto d_0"']
-  	\ar[l, shift left=6.5pt, "D\mapsto D(0)" description]
+  	\ar[l, shift left=6.5pt, "D(0)\mapsfrom D" description]
 	\ar[l, phantom, "\Rightarrow"]
 	\ar[l, phantom, shift left=13.5pt, "\Leftarrow"]
 	\ar[l, phantom, shift right=13.5pt, "\Leftarrow"]
@@ -378,12 +383,20 @@ There are adjoint quadruples where all of the functors out of $\smset$ are fully
 \]
 The middle adjunction in each case give rise to a monad on $\poly$ and on $\dir$ respectively, with unit $P\to P(1)$ and $D\to D(0)$.
 
-Finally, each of the categories $\poly$ and $\dir$ has pullbacks, and we can recover \cref{eqn.finite_sum} using pullbacks, also known as fiber products:
+Each of the categories $\poly$ and $\dir$ has pullbacks, and we can recover \cref{eqn.finite_sum} using pullbacks, also known as fiber products:
 \[
   P=\sum_{i=1}^{P(1)}P\times_{P(1)}`i'
   \qqand
 	D=\sum_{i=1}^{D(0)}D\times_{D(0)}`i'.
 \]
+
+Finally the Yoneda embeddings have left adjoints:
+\[
+\adjr[50pt]{\finset\op}{n\mapsto\yon^n}{\prod_ip_i\mapsfrom P}{\poly}
+\qqand
+\adjr[50pt]{\finset}{n\mapsto n^\yon}{\sum_id_i\mapsfrom D}{\dir}
+\]
+
 \end{remark}
 
 \paragraph{Dirichlet transform.}
@@ -459,9 +472,9 @@ For any function $f\colon t\to t'$ and function $\pi'\colon s'\to t'$, denote by
 Let $\pi\colon s\to t$ and $\pi'\colon s'\to t'$ be functions between finite sets.
 \begin{itemize}
 	\item a \emph{bundle morphism} consists of a pair $(f,f_\sharp)$ where $f\colon t\to t'$ is a function and $f_\sharp\colon \pi\to f^*(\pi')$ is a morphism in the slice category over $t$;
-	\item a \emph{lens morphism} consists of a pair $(f,f^\sharp)$ where $f\colon t\to t'$ is a function and $f^\sharp\colon f^*(\pi')\to \pi$ is a morphism in the slice category over $t$.
+	\item a \emph{container morphism} consists of a pair $(f,f^\sharp)$ where $f\colon t\to t'$ is a function and $f^\sharp\colon f^*(\pi')\to \pi$ is a morphism in the slice category over $t$.
 \end{itemize}
-\[
+\begin{equation}\label{eqn.bund_cont_maps}
 \begin{tikzcd}
 s\ar[dr, bend right=40pt, "\pi"']&[-5pt]
 t\times_{t'}s'\ar[r]\ar[d, "f^*\pi'"']\ar[from=l, "f_\sharp"]&
@@ -477,68 +490,101 @@ s'\ar[d, "\pi'"]\\&
 t\ar[r, "f"']&
 t'\ar[ul, phantom, very near end, "\lrcorner"]
 \end{tikzcd}
-\]
-Define $\bun$ (resp.\ $\lens$) to be the category for which an object is a function between finite sets and a morphism is a bundle morphism (resp.\ lens morphism).
+\end{equation}
+Define $\bun$ (resp.\ $\cont$) to be the category for which an object is a function between finite sets and a morphism is a bundle morphism (resp.\ container morphism).
 \end{definition}
 
 \begin{remark}
 It is easy to check that $\bun\cong\finset^2$ is the category of morphisms and commuting squares in the category of finite sets. Next we show that it is also isomorphic to the category of Dirichlet functors from \cref{def.poly_dir}.
 
-The reader familiar with basic algebraic geometry will see an analogy between morphisms in $\lens$ and homomorphisms of ringed spaces. The name lens, which may be better called \emph{container}, comes from \cite{Spivak}.
+The reader familiar with basic algebraic geometry will see an analogy between morphisms in $\cont$ and homomorphisms of ringed spaces. The name \emph{container} comes from computer science; see \cite{**}.
 \end{remark}
 
 \begin{theorem}
 We have equivalences of categories
 \[
-\poly\cong\lens
+\poly\cong\cont
 \qqand
 \dir\cong\bun.
 \]
 \end{theorem}
 \begin{proof}
-The functors $P_-\colon\lens\to\poly$ and $D_-\colon\bun\to\dir$ are defined on each object $\pi\colon s\to t$ by the formula $\pi\mapsto P_\pi$ and $\pi\mapsto D_\pi\coloneqq\overline{P_\pi}$ as in \cref{prop.poly_function}. For each $1\leq i\leq t$, denote the fiber of $\pi$ over $i$ by $k_i\coloneqq\pi\inv(i)$.
+The functors $P_-\colon\cont\to\poly$ and $D_-\colon\bun\to\dir$ are defined on each object $\pi\colon s\to t$ by the formula $\pi\mapsto P_\pi$ and $\pi\mapsto D_\pi\coloneqq\overline{P_\pi}$ as in \cref{prop.poly_function}. For each $1\leq i\leq t$, denote the fiber of $\pi$ over $i$ by $k_i\coloneqq\pi\inv(i)$.
 
 For any set $X$, consider the unique map $X!\colon X\to 1$. Applying $P_-$ and $D_-$ to it, we obtain the corresponding representable: $P_{X!}\cong\yon^X$ and $D_{X!}\cong X^\yon$. We next check that
  \begin{gather*}
   \poly(P_{X!},P_\pi)\cong 
   P_\pi(X)=
   \sum_{i=1}^{t}X^{k_i}\cong
-  \lens(X!, \pi),
+  \cont(X!, \pi),
   \\
   \dir(D_{X!}, D_\pi)\cong 
   D_\pi(X)=
   \sum_{i=1}^{t}(k_i)^X\cong
   \bun(X!, \pi).
 \end{gather*}
-In both lines, the first isomorphism is the Yoneda lemma and the second is a computation. Thus we define $P_-$ on morphisms by sending $f\colon\pi\to\pi'$ in $\lens$ to the natural transformation with $X$-component $\lens(X!,f)\colon\lens(X!,\pi)\to\lens(X!,\pi')$, which is clearly natural in $X$. We define $D_-$ on morphisms similarly: for $f$ in $\bun$, use the natural transformation $\bun(-!,f)$.
+In both lines, the first isomorphism is the Yoneda lemma and the second is a computation. Thus we define $P_-$ on morphisms by sending $f\colon\pi\to\pi'$ in $\cont$ to the natural transformation with $X$-component $\cont(X!,f)\colon\cont(X!,\pi)\to\cont(X!,\pi')$, which is clearly natural in $X$. We define $D_-$ on morphisms similarly: for $f$ in $\bun$, use the natural transformation $\bun(-!,f)$.
 
-By definition, every object in $\poly$ and $\dir$ is a coproduct of representables, so to complete the proof one first checks that coproducts in $\lens$ and $\bun$ are taken pointwise:
+By definition, every object in $\poly$ and $\dir$ is a coproduct of representables, so to complete the proof one first checks that coproducts in $\cont$ and $\bun$ are taken pointwise:
 \[
 (\pi\colon s\to t)+(\pi'\colon s'\to t')\cong(\pi+\pi')\colon (s+s')\to (t+t').
 \]
 and then that $P_{\pi+\pi'}=P_\pi+P_{\pi'}$ and $D_{\pi+\pi'}=D_\pi+D_{\pi'}$; see \cref{eqn.Ppi}.
 \end{proof}
 
-\chapter{The $\poly-\dir$ double category}
+\chapter{The $\poly-\dir$ double category $\ff$}
 
-There is a double category whose objects are functions between finite sets, whose vertical category is $\poly$, whose horizontal category is isomorphic to $\bun$, and whose 2-cells look like this:
+There is a double category $\ff$ whose objects are functions between finite sets, whose vertical category is $\poly$, whose horizontal category is isomorphic to $\bun$. This double category shows up in the theory of mode-dependent dynamical systems, though we save this for future work.
+
+The double category $\ff$ will be thin, meaning that for every square there is at most one 2-cell filler. Squares (with or without filler) can be drawn as \emph{bevelled squares}:
 \[
 \begin{tikzcd}[sep=large]
 &[-35pt]
-\overline{p}\ar[r, "f"]&
-\overline{q}\\[-25pt]
-p\ar[d, "g"']\arrow[ur, no head]&&&[-35pt]\ar[ul, no head]\ar[d, "h"]
-q\\
-p'\ar[dr, no head]&&&
-q'\ar[dl, no head]\\[-25pt]&
-\overline{p}'\ar[r, "f'"']&
-\overline{q}'
+\overline{P}\ar[r, "f"]&
+\overline{Q}\\[-25pt]
+P\ar[d, "g"']\arrow[ur, no head]&&&[-35pt]\ar[ul, no head]\ar[d, "h"]
+Q\\
+P'\ar[dr, no head]&&&
+Q'\ar[dl, no head]\\[-25pt]&
+\overline{P}'\ar[r, "f'"']&
+\overline{Q}'
 \end{tikzcd}
 \]
-where $g,h$ are in $\poly$ and $f,f'$ are in $\dir$.
+where $g,h$ are in $\poly$ and $f,f'$ are in $\dir$, and where the unlabeled line segments are just tracking Dirchlet transforms. Thus to define $\ff$, it remains to give the conditions for when a filler exists for $(f,f',g,h)$; there will be two.
 
-\inote{Jaz, would you mind doing this section?}
+Suppose first that $P=\yon^m$ is a pure power, i.e.\ $P(1)=1$; this is the case iff its Dirichlet transform $\overline{P}=m^\yon$ is a pure exponential $D(0)=1$. In that case $g$ picks out an element $g(1)\in P'(1)=\ol{P}'(0)$ and $f$ picks out an element $f(1)\in \ol{Q}(0)=Q(1)$. Let $m'$ be the finite set corresponding to the exponent on $g(1)$ and let $n$ be the finite set corresponding to the base on $f(1)$
+\[
+  \yon^{m'}\coloneqq P'\times_{P(1)}g(1)
+  \qqand
+  n^\yon\coloneqq\ol{Q}\times_{\ol{Q}(0)}f(1)
+\]
+Then $f'$ picks out an element $f'(g(1))\in\ol{Q}'(0)=Q'(1)$ and $h$ picks out an element $h(f(1))\in Q'(1)=\ol{Q}'(0)$. The first condition is that $h(f(1))=f'(g(1))$. We may then define $n'$ to be the corresponding finite set, so that
+\[
+  \yon^{n'}= Q'\times_{Q'(1)}f'(g(1))
+  \qqand
+  (n')^\yon=\ol{Q}'\times_{\ol{Q}'(0)}h(f(1))
+\]
+By \cref{eqn.bund_cont_maps} we then obtain four maps
+\begin{align*}
+	g^\sharp&\colon\yon^m\to\yon^{m'}&
+	f_\sharp&\colon m^\yon\to n^\yon\\
+	f'_\sharp&\colon(m')^\yon\to(n')^\yon&
+	h^\sharp&\colon\yon^{n}\to\yon^{n'}
+\end{align*}
+and by the Yoneda lemma, these induce composable functions
+\[
+  m'\To{g^\sharp} m\To{f_\sharp} n
+  \qqand
+  m'\To{f'_\sharp} n'\To{h^\sharp} n
+\]
+The second condition is that these are the same function $m'\to n$. 
 
+In general, $P$ may not be a pure power, but it is a coproduct over $i\in P(1)$ of pure powers $\yon^{p_i}$. We say that a beveled square has a filler iff the above two conditions hold for each summand.
+
+It is easy to check that we indeed have a double category.
+\begin{theorem}
+There is a thin double category whose objects are functions $\pi\colon s\to t$, whose vertical category is $\poly\cong\cont$, whose horizontal category is $\dir\cong\bun$, and for which 2-cells are defined as above.
+\end{theorem}
 
 %Given a combinatorial species $A : \textbf{Fin}^{\cong} \to \smset$, its
 %\emph{Cauchy generating functor} $X \mapsto \sum_{n : \textbf{Fin}} A_n \times X^n/n!$
