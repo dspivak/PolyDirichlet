@@ -260,17 +260,17 @@ replacement=\&]{}\ar[r,tick]\&{}\end{tikzcd}}
 
 \begin{document}
 
-\title{Dropping terms of the form $0^\yon$ in Dirichlet series\\is a truncation}
+\title{Terms of the form $0^\yon$ in Dirichlet series\\contain significant content}
 
 \author{David and David}
 
 \maketitle
 \begin{abstract}
-One can think of polynomials such as $2\yon^3+\yon+5$ in one variable as functors from the category $\finset$ of finite sets to itself; call the category of polynomial functors and the natural transformations between them $\poly$. The constants $0,1$ and operations $+,\times$ are the initial and terminal objects and the coproduct and product in $\poly$. 
+One can think of power series or polynomials such as $2\yon^3+\yon+5$ in one variable as functors from the category $\finset$ of finite sets to itself; call the category of polynomial functors and the natural transformations between them $\poly$. The constants $0,1$ and operations $+,\times$ are the initial and terminal objects and the coproduct and product in $\poly$. 
 
-Just as the polynomial functors are the copresheaves that can be written as sums of representables, one can express Dirichlet series such as $2\cdot3^\yon + 1+ 5\cdot0^\yon$ and coproducts of representable presheaves. Note that one would usually omit $5\cdot 0^\yon$ as it is ``just 0'', but it seems to us this should be considered a truncation. Indeed, the category $\dir$ of Dirichlet functors has very nice formal properties---has all limits and its $0,1,+,\times$ agree with usual notation---and yet here the object $0^\yon$ is not $0$. It is the representable functor on the empty set, and we argue it is reasonable to \emph{not} drop them.
+Just as the polynomial functors are the copresheaves that can be written as sums of representables, one can express Dirichlet series, e.g.\ $\sum_{n=0}^\infty n^\yon$, as a coproduct of representable presheaves. Note that it is common to omit the $n=0$ term $0^\yon$, as it is ``just 0'', but it seems to us that this should be considered a truncation. Indeed, the category $\dir$ of Dirichlet functors has very nice formal properties---for example it is extensive in the category-theoretic sense---and yet here the object $0^\yon$ is not $0$. It is the representable functor on the empty set.
 
-While our main purpose is to say that terms of the form $0^\yon$ should not be dropped unless there is computational power or some other reason to do so, we also prove some very basic theorems, e.g.\ that the category of Dirichlet series is equivalent to the category $\smset^{\to}$ of functions $\pi\colon s\to t$. Younger readers can be asked to determine which object of $\smset^\to$ corresponds to $0^\yon$ under this equivalence.
+In this note we also prove some very basic theorems, e.g.\ that the category of finite Dirichlet series is equivalent to the category $\finset^{\to}$ of functions $\pi\colon s\to t$ between finite sets. Younger readers can be asked to determine which object of $\finset^\to$ corresponds to $0^\yon$ under this equivalence.
 \end{abstract}
 
 Polynomials $P(\yon)$ and finite Dirchlet series $D(\yon)$ in one variable $\cat{y}$, with natural number coefficients $a_i\in\nn$, are respectively functions of the form
@@ -347,14 +347,19 @@ The \emph{category of polynomial functors}, denoted $\poly$, is the full subcate
 \begin{remark}\label{rem.products_coproducts}
 Sums and products of polynomials in the usual algebraic sense agrees exactly with sums and products in the categorical sense: if $P$ and $Q$ are polynomials, i.e.\ objects in $\poly$, then their coproduct is $P+Q$ and their product is $PQ$. The same is true for $\dir$: sums and products of finite Dirichlet series in the usual sense agrees exactly with sums and products in the categorical sense.
 
-The categories $\poly$ and $\dir$ each has pullbacks and an idempotent monad, $\eta_P\colon P\mapsto P(1)$ and $\eta^D\colon D\mapsto D(0)$, and we can recover \cref{eqn.finite_sum} using pullbacks 
+The categories $\poly$ and $\dir$ each has pullbacks and an idempotent monad, $\eta_P\colon P\mapsto P(1)$ and $\eta^D\colon D\mapsto D(0)$, and we can recover \cref{eqn.finite_sum} using pullbacks (also known as fiber products):
+\[
+  P=\sum_{i=1}^{P(1)}P\times_{P(1)}i
+  \qqand
+	D=\sum_{i=1}^{D(0)}D\times_{D(0)}i.
+\]
 \end{remark}
 
 There is a bijection between the respective object-sets of these two categories
 \begin{align}
 \nonumber
 	\ob(\poly)&\To{\cong}\ob(\dir)\\\label{eqn.poly_dir}
-	\sum_{i=1}^n\yon^{k_i}&\mapsto\sum_{i=1}^n (k_i)^\yon
+	\sum_{i=1}^n\yon^{k_i}&\mapsto\sum_{i=1}^n (k_i)^\yon.
 \end{align}
 We call this the \emph{Dirichlet transform} and denote it using an over-line $P\mapsto \overline{P}$.
 
@@ -405,7 +410,7 @@ The polynomial $2\yon^3+\yon^2+3$ corresponds to the function
 \end{equation}
 \end{example}
 
-We can think of a function $\pi\colon s\to t$, e.g.\ that shown in \eqref{eqn.bundle}, as a bundle. In \cref{def.sheaves_bundles} we define two different notions of morphism between them. 
+We can think of a function $\pi\colon s\to t$, e.g.\ that shown in \eqref{eqn.bundle}, as a \emph{bundle} of fibers $\pi\inv(i)$, one for each element $`i'\in t$. In \cref{def.sheaves_bundles} we define two different notions of morphism between them. 
 
 For any function $f\colon t\to t'$ and function $\pi'\colon s'\to t'$, denote by $f^*(\pi')$ the pullback function as shown
 \[
@@ -443,7 +448,11 @@ t'\ar[ul, phantom, very near end, "\lrcorner"]
 Define $\bun$ (resp.\ $\lens$) to be the category for which an object is a function between finite sets and a morphism is a bundle morphism (resp.\ lens morphism).
 \end{definition}
 
+\begin{remark}
 It is easy to check that $\bun\cong\finset^2$ is the category of morphisms and commuting squares in the category of finite sets. Next we show that it is also isomorphic to the category of Dirichlet functors from \cref{def.poly_dir}.
+
+The reader familiar with basic algebraic geometry will see an analogy between morphisms in $\lens$ and homomorphisms of ringed spaces. The name lens, which may be better called \emph{container}, comes from \cite{Spivak}.
+\end{remark}
 
 \begin{theorem}
 We have equivalences of categories
