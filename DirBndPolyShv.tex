@@ -57,6 +57,7 @@ citecolor=orange!50!black, urlcolor=orange!50!black, pdfencoding=unicode]{hyperr
   	cd,
   	math,
   	decorations.markings,
+  	decorations.pathmorphing,
 		decorations.pathreplacing,
   	positioning,
   	arrows.meta,
@@ -272,7 +273,7 @@ One can think of power series or polynomials in one variable, such as $2\yon^3+\
 
 Just as the polynomial functors are the copresheaves that can be written as sums of representables, one can express Dirichlet series, e.g.\ $\sum_{n=0}^\infty n^\yon$, as a coproduct of representable presheaves. Note that it is common to omit the $n=0$ term $0^\yon$, as it is ``just 0'', but it seems to us that this should be considered a truncation. Indeed, the category $\dir_\smset$ of Dirichlet functors has very nice formal properties---for example it is extensive in the category-theoretic sense---and yet here the object $0^\yon$ is not $0$. It is the representable functor on the empty set.
 
-In this note we also show that there is a double category whose vertical morphisms are polynomial maps and whose horizontal morphisms are Dirichlet maps.
+In this note we also show that there is a double category whose vertical category is isomorphic to $\poly$ and whose horizontal category is isomorphic to $\dir$. We refer to its 2-cells as \emph{beveled squares}.
 \end{abstract}
 
 Polynomials $P(\yon)$ and finite Dirchlet series $D(\yon)$ in one variable $\cat{y}$, with natural number coefficients $a_i\in\nn$, are respectively functions of the form
@@ -353,6 +354,18 @@ The categories $\poly$ and $\dir$ each has pullbacks and an idempotent monad, $\
   P=\sum_{i=1}^{P(1)}P\times_{P(1)}`i'
   \qqand
 	D=\sum_{i=1}^{D(0)}D\times_{D(0)}`i'.
+\]
+Finally, there are adjoint triples where the four functors out of $\smset$ are fully faithful:
+\[
+\begin{tikzcd}[column sep=50pt]
+  \smset\ar[r, shift left=12pt, "n\mapsto n\yon^0"]\ar[r, shift right=12pt, "n\mapsto n\yon^1"']&
+  \poly\ar[l, "\;-(1)\;" description]\ar[l, phantom, shift left=6pt, "\Rightarrow"]\ar[l, phantom, shift right=6pt, "\Leftarrow"]
+\end{tikzcd}
+\hspace{1in}
+\begin{tikzcd}[column sep=50pt]
+  \smset\ar[r, shift left=12pt, "n\mapsto n\cdot 0^\yon"]\ar[r, shift right=12pt, "n\mapsto n\cdot1^\yon"']&
+  \dir\ar[l, "\;-(0)\;" description]\ar[l, phantom, shift left=6pt, "\Rightarrow"]\ar[l, phantom, shift right=6pt, "\Leftarrow"]
+\end{tikzcd}
 \]
 \end{remark}
 
@@ -488,6 +501,22 @@ and then that $P_{\pi+\pi'}=P_\pi+P_{\pi'}$ and $D_{\pi+\pi'}=D_\pi+D_{\pi'}$; s
 \end{proof}
 
 \chapter{The $\poly-\dir$ double category}
+
+There is a double category whose objects are functions between finite sets, whose vertical category is $\poly$, whose horizontal category is isomorphic to $\bun$, and whose 2-cells look like this:
+\[
+\begin{tikzcd}[sep=large]
+&[-35pt]
+\overline{p}\ar[r, "f"]&
+\overline{q}\\[-25pt]
+p\ar[d, "g"']\arrow[ur, no head]&&&[-35pt]\ar[ul, no head]\ar[d, "h"]
+q\\
+p'\ar[dr, no head]&&&
+q'\ar[dl, no head]\\[-25pt]&
+\overline{p}'\ar[r, "f'"']&
+\overline{q}'
+\end{tikzcd}
+\]
+where $g,h$ are in $\poly$ and $f,f'$ are in $\dir$.
 
 \inote{Jaz, would you mind doing this section?}
 
