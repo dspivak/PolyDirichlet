@@ -292,7 +292,7 @@ Recall that a \emph{co-representable functor} $\finset\to\finset$ is one of the 
 \end{figure}
 The functors $\yon_-$ and $\yon^-$ are the covariant and contravariant Yoneda embeddings.
 
-Note that the functor $0^\yon$ is not the constant $0$ functor; it is given by
+Note that the functor $0^\yon\not\cong 0$ is not the initial object; it is given by
 \[
 0^\yon(s)=
 \begin{cases}
@@ -300,13 +300,42 @@ Note that the functor $0^\yon$ is not the constant $0$ functor; it is given by
 0&\tn{ if } s\geq1.
 \end{cases}
 \]
+The coefficient $p_0$ of $1$ in a polynomial $P$ is called its constant term. We refer to the coefficient $d_0$ of $0^\yon$ in a Dirichlet series $D$ as its \emph{surprise-0 term}.
+
+\begin{example}
+The reader can determine which finite Dirichlet series $D(\yon)$ has the following terms
+\[
+\begin{array}{ccccccccc}
+\yon&
+7&
+6&
+5&
+4&
+3&
+2&
+1&
+0
+\\
+D(\yon)&
+384&
+192&
+96&
+48&
+24&
+12&
+6&
+7
+\end{array}
+\]
+Hint: its surprise-0 term is $4$.
+\end{example}
 
 A \emph{polynomial functor} \cite{GambinoKock} is a functor $P\colon\finset\to\finset$ that can be expressed as a finite sum of co-representable functors. Similarly, we define a \emph{Dirichlet functor} to be a functor $D\colon\finset\op\to\finset$ that can be expressed as a finite sum of representable functors:
-\[
+\begin{equation}\label{eqn.finite_sum}
   P=\sum_{i=1}^{P(1)}\yon^{p_i}
   \qqand
   D=\sum_{i=1}^{D(0)}(d_i)^\yon.
-\]
+\end{equation}
 That is $P(X)=\sum_{i=1}^{P(1)}\finset(p_i,X)$ and $D(X)=\sum_{i=1}^{D(0)}\finset(X,d_i)$.
 
 For any small category $C$, let $\finset^C$ denote the category whose objects are the functors $C\to\finset$ and whose morphisms are the natural transformations between them.
@@ -316,9 +345,9 @@ The \emph{category of polynomial functors}, denoted $\poly$, is the full subcate
 \end{definition}
 
 \begin{remark}\label{rem.products_coproducts}
-Sums and products of polynomials in the usual algebraic sense agrees exactly with sums and products in the categorical sense: if $P$ and $Q$ are polynomials, i.e.\ objects in $\poly$, then their coproduct is $P+Q$ and their product is $PQ$.
+Sums and products of polynomials in the usual algebraic sense agrees exactly with sums and products in the categorical sense: if $P$ and $Q$ are polynomials, i.e.\ objects in $\poly$, then their coproduct is $P+Q$ and their product is $PQ$. The same is true for $\dir$: sums and products of finite Dirichlet series in the usual sense agrees exactly with sums and products in the categorical sense.
 
-The same is true for $\dir$: sums and products of finite Dirichlet series in the usual sense agrees exactly with sums and products in the categorical sense.
+The categories $\poly$ and $\dir$ each has pullbacks and an idempotent monad, $\eta_P\colon P\mapsto P(1)$ and $\eta^D\colon D\mapsto D(0)$, and we can recover \cref{eqn.finite_sum} using pullbacks 
 \end{remark}
 
 There is a bijection between the respective object-sets of these two categories
