@@ -272,7 +272,7 @@ One can think of power series or polynomials in one variable, such as $2\yon^3+\
 
 Just as the polynomial functors are the copresheaves that can be written as sums of representables, one can express Dirichlet series, e.g.\ $\sum_{n=0}^\infty n^\yon$, as a coproduct of representable presheaves. Note that it is common to omit the $n=0$ term $0^\yon$, as it is ``just 0'', but it seems to us that this should be considered a truncation. Indeed, the category $\dir_\smset$ of Dirichlet functors has very nice formal properties---for example it is extensive in the category-theoretic sense---and yet here the object $0^\yon$ is not $0$. It is the representable functor on the empty set.
 
-In this note we also show that there is a double category whose objects are combinatorial species, vertical morphisms are polynomial maps, and horizontal morphisms are Dirichlet maps.
+In this note we also show that there is a double category whose vertical morphisms are polynomial maps and whose horizontal morphisms are Dirichlet maps.
 \end{abstract}
 
 Polynomials $P(\yon)$ and finite Dirchlet series $D(\yon)$ in one variable $\cat{y}$, with natural number coefficients $a_i\in\nn$, are respectively functions of the form
@@ -489,32 +489,33 @@ and then that $P_{\pi+\pi'}=P_\pi+P_{\pi'}$ and $D_{\pi+\pi'}=D_\pi+D_{\pi'}$; s
 
 \chapter{The $\poly-\dir$ double category}
 
-\inote{David, would you mind introducing this section, explaining the change to groupoids, and defining the double category? Perhaps also define the functor to $\mathbb{P}rof$.}
+\inote{Jaz, would you mind doing this section?}
 
-Given a combinatorial species $A : \textbf{Fin}^{\cong} \to \smset$, its
-\emph{Cauchy generating functor} $X \mapsto \sum_{n : \textbf{Fin}} A_n \times X^n/n!$
-is the left Kan extension of $A$ along the inclusion $\textbf{Fin}^{\cong}
-\hookrightarrow \smset$, and the \emph{Dirichlet generating functor} $S \mapsto
-\sum_{n : \textbf{Fin}} A_n n^S/n!$ is the left Kan extension of $A$ along the
-inclusion $\textbf{Fin}^{\cong} \hookrightarrow \smset^{\text{op}}$. These give
-functors
-\[
-  \begin{tikzcd}
-    & \textbf{CombSpecies} \arrow[dr, "|\cdot|_{\dir}"] \arrow[dl, "|\cdot|_{\poly}"']& \\
-    \poly & & \dir
-  \end{tikzcd}
-\]
 
-The Cauchy product $\otimes_{\poly}$ of combinatorial species is given by Day
-convolution from $+ : \textbf{Fin}^{\cong} \times \textbf{Fin}^{\cong}$, and
-$|\cdot|_{\poly}$ sends $\otimes_{\poly}$ to the cartesian product. On the
-other hand, the Dirichlet product $\otimes_{\dir}$ of combinatorial species is
-given by Day convolution from $\times : \textbf{Fin}^{\cong} \times
-\textbf{Fin}^{\cong}$, and this is sent by $|\cdot|_{\dir}$ to the cartesian
-product. This gives us an interpretation of the generating \emph{functors}
-associated to a species in which sum is coproduct and product is cartesian
-product -- the difference between the Cauchy generating functor and the
-Dirichlet generating functor is that the latter is contravariant.
+%Given a combinatorial species $A : \textbf{Fin}^{\cong} \to \smset$, its
+%\emph{Cauchy generating functor} $X \mapsto \sum_{n : \textbf{Fin}} A_n \times X^n/n!$
+%is the left Kan extension of $A$ along the inclusion $\textbf{Fin}^{\cong}
+%\hookrightarrow \smset$, and the \emph{Dirichlet generating functor} $S \mapsto
+%\sum_{n : \textbf{Fin}} A_n n^S/n!$ is the left Kan extension of $A$ along the
+%inclusion $\textbf{Fin}^{\cong} \hookrightarrow \smset^{\text{op}}$. These give
+%functors
+%\[
+%  \begin{tikzcd}
+%    & \textbf{CombSpecies} \arrow[dr, "|\cdot|_{\dir}"] \arrow[dl, "|\cdot|_{\poly}"']& \\
+%    \poly & & \dir
+%  \end{tikzcd}
+%\]
+%
+%The Cauchy product $\otimes_{\poly}$ of combinatorial species is given by Day
+%convolution from $+ : \textbf{Fin}^{\cong} \times \textbf{Fin}^{\cong}$, and
+%$|\cdot|_{\poly}$ sends $\otimes_{\poly}$ to the cartesian product. On the
+%other hand, the Dirichlet product $\otimes_{\dir}$ of combinatorial species is
+%given by Day convolution from $\times : \textbf{Fin}^{\cong} \times
+%\textbf{Fin}^{\cong}$, and this is sent by $|\cdot|_{\dir}$ to the cartesian
+%product. This gives us an interpretation of the generating \emph{functors}
+%associated to a species in which sum is coproduct and product is cartesian
+%product -- the difference between the Cauchy generating functor and the
+%Dirichlet generating functor is that the latter is contravariant.
 
 
 
