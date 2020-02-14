@@ -260,26 +260,38 @@ replacement=\&]{}\ar[r,tick]\&{}\end{tikzcd}}
 
 \begin{document}
 
-\title{Polynomials and lenses, Dirichlet series and bundles}
+\title{Dropping terms of the form $0^\yon$ in Dirichlet series\\is a truncation}
 
-\author{David(s?)}
+\author{David and David}
 
 \maketitle
+\begin{abstract}
+One can think of polynomials such as $2\yon^3+\yon+5$ in one variable as functors from the category $\finset$ of finite sets to itself; call the category of polynomial functors and the natural transformations between them $\poly$. The constants $0,1$ and operations $+,\times$ are the initial and terminal objects and the coproduct and product in $\poly$. 
 
-Polynomials $P(\yon)$ and finite Dirchlet series $D(\yon)$ in one variable $\cat{y}$, with natural number coefficients $a_i\in\nn$, are resectively functions of the form
+Just as the polynomial functors are the copresheaves that can be written as sums of representables, one can express Dirichlet series such as $2\cdot3^\yon + 1+ 5\cdot0^\yon$ and coproducts of representable presheaves. Note that one would usually omit $5\cdot 0^\yon$ as it is ``just 0'', but it seems to us this should be considered a truncation. Indeed, the category $\dir$ of Dirichlet functors has very nice formal properties---has all limits and its $0,1,+,\times$ agree with usual notation---and yet here the object $0^\yon$ is not $0$. It is the representable functor on the empty set, and we argue it is reasonable to \emph{not} drop them.
+
+While our main purpose is to say that terms of the form $0^\yon$ should not be dropped unless there is computational power or some other reason to do so, we also prove some very basic theorems, e.g.\ that the category of Dirichlet series is equivalent to the category $\smset^{\to}$ of functions $\pi\colon s\to t$. Younger readers can be asked to determine which object of $\smset^\to$ corresponds to $0^\yon$ under this equivalence.
+\end{abstract}
+
+Polynomials $P(\yon)$ and finite Dirchlet series $D(\yon)$ in one variable $\cat{y}$, with natural number coefficients $a_i\in\nn$, are respectively functions of the form
 \[
   P(\yon)=a_n\yon^n+\cdots+a_2\yon^2+a_1\yon^1+a_0\yon^0
   \qqand
   D(\yon)=a_nn^\yon+\cdots+a_22^\yon+a_11^\yon+a_00^\yon.
 \]
-There are of course infinite versions of the above, but in this paper we work entirely in the topos $\finset$ of finite sets, to keep things simple.
+There are of course infinite versions of the above, but in this paper we work entirely in the topos $\finset$ of finite sets, to keep things simple. If one wants infinite Dirichlet series or power series, one get them and much more by replacing $\finset$ with $\smset$ everywhere.
 
-Recall that a \emph{co-representable functor} $\finset\to\finset$ is one of the form $\finset(s, -)$ for some finite set $s$; we denote this functor by $\yon^s$ and say it is co-represented by $s\in\finset$. Similarly, a \emph{co-representable functor} $\finset\op\to\finset$ is one of the form $\finset(-,s)$; we denote this functor by $s^\yon$ and say it is represented by $s$.
+Recall that a \emph{co-representable functor} $\finset\to\finset$ is one of the form $\finset(n, -)$ for some finite set $n=\{`1', `2',\ldots,`n'\}$. We denote this functor by $\yon^n$ and say it is \emph{represented by} $n\in\finset$. Similarly, a \emph{(contra-) representable functor} $\finset\op\to\finset$ is contravariant functor of the form $\finset(-,n)$; we denote this functor by $n^\yon$.
+\begin{figure}
 \[
-  \yon^s \coloneqq \finset(s,-)
+  \yon^n \coloneqq \finset(n,-)
   \qqand
-  s^\yon\coloneqq\finset(-,s).
+  n^\yon\coloneqq\finset(-,n).
 \]
+  \caption{The pure power polynomial $\yon^n$ and the pure exponential Dirichlet series $n^\yon$ are the representable functors in $\poly$ and $\dir$.}
+\end{figure}
+The functors $\yon_-$ and $\yon^-$ are the covariant and contravariant Yoneda embeddings.
+
 Note that the functor $0^\yon$ is not the constant $0$ functor; it is given by
 \[
 0^\yon(s)=
