@@ -231,7 +231,7 @@ replacement=\&]{}\ar[r,tick]\&{}\end{tikzcd}}
 
 \newcommand{\smset}{\Cat{Set}}
 \newcommand{\smcat}{\Cat{Cat}}
-\newcommand{\finset}{\Cat{FinSet}}
+\newcommand{\finset}{\Cat{Fin}}
 \newcommand{\cont}{\Cat{Cont}}
 \newcommand{\core}{\Fun{Core}}
 \newcommand{\bun}{\Cat{Bun}}
@@ -353,7 +353,7 @@ The number of polynomial maps $P\to Q$ and Dirichlet maps $D\to E$ are
 \[
   [P, Q]\coloneqq\prod_{i\in P(1)}Q(p_i)
   \qqand
-  [D, E]\coloneqq\prod_{i\in D(0)}E(d_i).
+  [D, E]\coloneqq\prod_{i\in D(0)}E(d_i),
 \]
 \end{lemma}
 
@@ -363,7 +363,9 @@ Let $P=2\yon^2$, $Q=\yon+1$, and let $D=2\cdot2^\yon$ and $E=1+0^\yon$. Then the
 
 \begin{remark}\label{rem.products_coproducts}
 Sums and products of polynomials in the usual algebraic sense agrees exactly with sums and products in the categorical sense: if $P$ and $Q$ are polynomials, i.e.\ objects in $\poly$, then their coproduct is $P+Q$ and their product is $PQ$. The same is true for $\dir$: sums and products of finite Dirichlet series in the usual sense agrees exactly with sums and products in the categorical sense.
+\end{remark}
 
+\paragraph{Formal structures.}
 There are adjoint quadruples as follows, where all of the functors out of $\finset$ are fully faithful:
 \[
 \begin{tikzcd}[column sep=60pt]
@@ -371,7 +373,7 @@ There are adjoint quadruples as follows, where all of the functors out of $\fins
   	\ar[r, shift left=6.5pt, "n\mapsto n\yon^0" description]
 		\ar[r, shift right=19.5pt, "n\mapsto n\yon^1"']&
   \poly
-  	\ar[l, shift right=19.5pt, "P\mapsto P(0)"']
+  	\ar[l, shift right=19.5pt, "P(0)\mapsfrom P"']
   	\ar[l, shift left=6.5pt, "P(1)\mapsfrom P" description]
 	\ar[l, phantom, "\Leftarrow"]
 	\ar[l, phantom, shift left=13.5pt, "\Rightarrow"]
@@ -383,30 +385,41 @@ There are adjoint quadruples as follows, where all of the functors out of $\fins
   	\ar[r, shift left=6.5pt, "n\mapsto n\cdot 0^\yon" description]
 		\ar[r, shift right=19.5pt, "n\mapsto n\cdot1^\yon"']&
   \dir
-  	\ar[l, shift right=19.5pt, "D\mapsto d_0"']
+  	\ar[l, shift right=19.5pt, "d_0\mapsfrom D"']
   	\ar[l, shift left=6.5pt, "D(0)\mapsfrom D" description]
 	\ar[l, phantom, "\Rightarrow"]
 	\ar[l, phantom, shift left=13.5pt, "\Leftarrow"]
 	\ar[l, phantom, shift right=13.5pt, "\Leftarrow"]
 \end{tikzcd}
 \]
-The middle adjunction in each case give rise to a monad on $\poly$ and on $\dir$ respectively, with unit $P\to P(1)$ and $D\to D(0)$.
+The middle adjunction in each case give rise to very useful monads on $\poly$ and on $\dir$ respectively, with unit $P\to P(1)$ and $D\to D(0)$. 
 
-Each of the categories $\poly$ and $\dir$ has pullbacks, and we can recover \cref{eqn.finite_sum} using pullbacks, also known as fiber products:
+There are also two-variable adjunctions $\finset\times\poly\to\poly$ and $\finset\times\dir\to\dir$. Indeed, for $n\in\finset$ and $P,Q\in\poly$ (respectively $D,E\in\dir$), we have
+\begin{gather*}
+\poly(nP,Q)\cong\poly(P,Q^n)\cong\finset(n,[P,Q]),\\
+\dir(nD,E)\cong\dir(D,E^n)\cong\finset(n,[D,E]).
+\end{gather*}
+
+Each of the categories $\poly$ and $\dir$ has pullbacks, which we denote using ``fiber product notation'' $A\times_CB$. We can now recover \cref{eqn.finite_sum} using pullbacks:
 \[
   P=\sum_{i=1}^{P(1)}P\times_{P(1)}`i'
   \qqand
 	D=\sum_{i=1}^{D(0)}D\times_{D(0)}`i'.
 \]
 
-Finally the Yoneda embeddings have left adjoints:
+Finally, the Yoneda embeddings have left adjoints:
 \[
 \adjr[50pt]{\finset\op}{n\mapsto\yon^n}{\prod_ip_i\mapsfrom P}{\poly}
 \qqand
 \adjr[50pt]{\finset}{n\mapsto n^\yon}{\sum_id_i\mapsfrom D}{\dir}
 \]
-
-\end{remark}
+and the natural transformation $i\colon n{\cdot}1^\yon\to n^\yon$ representing the identity has as mate a natural transformation that we will use soon:
+\[
+\begin{tikzcd}[column sep=50pt]
+	\dir\ar[r, bend left, "D\mapsto\sum_i d_i"]\ar[r, bend right, "D\mapsto D(0)"']&
+	\finset\ar[l, phantom, "\Downarrow\scriptstyle\pi"]
+\end{tikzcd}
+\]
 
 \paragraph{Dirichlet transform.}
 There is a bijection between the respective object-sets of these two categories
