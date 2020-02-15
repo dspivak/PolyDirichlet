@@ -334,7 +334,7 @@ Hint: its surprise-0 term is $4$.
 \end{example}
 
 \paragraph{Polynomial and Dirichlet functors.}
-A \emph{polynomial functor} \cite{GambinoKock} is a functor $P\colon\finset\to\finset$ that can be expressed as a finite sum of co-representable functors. Similarly, we define a \emph{Dirichlet functor} to be a functor $D\colon\finset\op\to\finset$ that can be expressed as a finite sum of representable presheavess:
+A \emph{polynomial functor} \cite{GambinoKock} is a functor $P\colon\finset\to\finset$ that can be expressed as a finite sum of co-representable functors. Similarly, we define a \emph{Dirichlet functor} to be a functor $D\colon\finset\op\to\finset$ that can be expressed as a finite sum of representable presheaves (contravariant functors):
 \begin{equation}\label{eqn.finite_sum}
   P=\sum_{i=1}^{P(1)}\yon^{p_i}
   \qqand
@@ -345,7 +345,7 @@ That is $P(X)=\sum_{i=1}^{P(1)}\finset(p_i,X)$ and $D(X)=\sum_{i=1}^{D(0)}\finse
 For any small category $C$, let $\finset^C$ denote the category whose objects are the functors $C\to\finset$ and whose morphisms are the natural transformations between them.
 
 \begin{definition}\label{def.poly_dir}
-The \emph{category of polynomial functors}, denoted $\poly$, is the full subcategory of $\finset^\finset$ spanned by finite sums $P$ of representable functors. The \emph{category of Dirichlet functors}, denoted $\dir$, is the full subcategory of $\finset^{(\finset\op)}$ spanned by the finite sums $D$ of representables presheaves.
+The \emph{category of polynomial functors}, denoted $\poly$, is the full subcategory of $\finset^\finset$ spanned by finite sums $P$ of representable functors. The \emph{category of Dirichlet functors}, denoted $\dir$, is the full subcategory of $\finset^{(\finset\op)}$ spanned by the finite sums $D$ of representable presheaves.
 \end{definition}
 
 \begin{example}
@@ -425,7 +425,7 @@ It is easy to see that the roundtrip for polynomials is identity, and that the r
 \end{proof}
 
 \begin{example}
-The polynomial $2\yon^3+\yon^2+3$ corresponds to the function
+The polynomial $2\yon^3+\yon^2+3$ and the Dirichlet series $2{\cdot}3^\yon+2^\yon+3{\cdot} 0^\yon$ correspond to the function
 \begin{equation}\label{eqn.bundle}
 \begin{tikzpicture}[x=.5cm, y=.35cm, every label/.style={font=\scriptsize}, baseline=(f)]
 	\node[label={[above=-5pt]:$1$}] (Ya) {$\bullet$};
