@@ -291,7 +291,7 @@ Polynomials $P(\yon)$ and finite Dirchlet series $D(\yon)$ in one variable $\cat
 \end{equation}
 There are of course infinite versions of the above, but in this note we work entirely in the category $\finset$ of finite sets, to keep things as simple as possible. Similar considerations hold with little extra work for infinite Dirichlet series or power series, and even more generally, by replacing $\finset$ with $\smset$.
 
-While we will not belabor the point, our main goal is to make it clear that one should not generally drop the $a_0\cdot0^\yon$ term from a Dirichlet series as in \cref{eqn.poly_dir_simple}. To do so, we take the well-known fact that polynomials form the objects of a category $\poly$ and analogously define a category $\dir$. These categories have excellent formal properties; e.g.\ the $0$, $1$, $+$, and $\times$ symbols from basic algebra really represent categorical initial and terminal object and the coproduct and product operations in both $\poly$ and $\dir$. In fact we conclude the note by showing that $\dir$ is an elementary topos. In some sense the ``high status'' of the category $\dir$ is supposed to serve as evidence that identifying $0^\yon$ with $0$ could lead to perverse outcomes and thus may be fruitfully reconsidered.
+While we will not belabor the point, our main goal is to make it clear that one should not generally drop the $a_0\cdot0^\yon$ term from a Dirichlet series as in \cref{eqn.poly_dir_simple}. To make the case, we take the well-known fact that polynomials form the objects of a category $\poly$ and analogously define a category $\dir$ whose objects are finite Dirichlet series. These categories have excellent formal properties; e.g.\ the $0$, $1$, $+$, and $\times$ symbols from basic algebra really represent categorical initial and terminal object and the coproduct and product operations in both $\poly$ and $\dir$. In fact we conclude the note by showing that $\dir$ is an elementary topos. In some sense the ``high status'' of the category $\dir$ is supposed to serve as evidence that identifying $0^\yon$ with $0$ could lead to perverse outcomes and thus may be fruitfully reconsidered.
 
 \chapter{The categories $\poly$ and $\dir$}
 Recall that a \emph{co-representable functor} $\finset\to\finset$ is one of the form $\finset(k, -)$ for a finite set
@@ -350,7 +350,7 @@ The set $P(1)$ (resp.\ the set $D(0)$) has particular importance; it is the set 
 of the zero-content terms into the set of all pure-exponential terms.
 
 \paragraph{Polynomial and Dirichlet functors.}
-A \emph{polynomial functor} \cite{GambinoKock} is a functor $P\colon\finset\to\finset$ that can be expressed as a finite sum of co-representable functors. Similarly, we define a \emph{Dirichlet functor} to be a functor $D\colon\finset\op\to\finset$ that can be expressed as a finite sum of representable presheaves (contravariant functors):
+A \emph{polynomial functor} \cite{GambinoKock} is a functor $P\colon\finset\to\finset$ that can be expressed as a sum of co-representable functors. Similarly, we define a \emph{Dirichlet functor} to be a functor $D\colon\finset\op\to\finset$ that can be expressed as a sum of representable presheaves (contravariant functors):
 \begin{equation}\label{eqn.finite_sum}
   P=\sum_{i=1}^{P(1)}\yon^{p_i}
   \qqand
@@ -361,8 +361,10 @@ That is, $P(X)=\sum_{i=1}^{P(1)}\finset(p_i,X)$ and $D(X)=\sum_{i=1}^{D(0)}\fins
 For any small category $C$, let $\finset^C$ denote the category whose objects are the functors $C\to\finset$ and whose morphisms are the natural transformations between them.
 
 \begin{definition}\label{def.poly_dir}
-The \emph{category of polynomial functors}, denoted $\poly$, is the full subcategory of $\finset^\finset$ spanned by finite sums $P$ of representable functors. The \emph{category of Dirichlet functors}, denoted $\dir$, is the full subcategory of $\finset^{(\finset\op)}$ spanned by the finite sums $D$ of representable presheaves.
+The \emph{category of polynomial functors}, denoted $\poly$, is the full subcategory of $\finset^\finset$ spanned by sums $P$ of representable functors. The \emph{category of Dirichlet functors}, denoted $\dir$, is the full subcategory of $\finset^{(\finset\op)}$ spanned by the sums $D$ of representable presheaves.
 \end{definition}
+
+While we will not pursue it here, one can take $\poly_\smset$ to be the full subcategory of functors $\smset\to\smset$ spanned by small coproducts of representables, and similarly for $\dir_\smset$.
 
 \begin{lemma}
 The number of polynomial maps $P\to Q$ and Dirichlet maps $D\to E$ are
@@ -382,7 +384,7 @@ Sums and products of polynomials in the usual algebraic sense agrees exactly wit
 \end{remark}
 
 \paragraph{Formal structures.}
-There are adjoint quadruples and sextuples as follows, labeled by where they send objects $n\in\finset$, $P\in\poly$, $D\in\dir$:
+There is an adjoint quadruple and adjoint sextuple as follows, labeled by where they send objects $n\in\finset$, $P\in\poly$, $D\in\dir$:
 \begin{equation}\label{eqn.adjoints_galore}
 \begin{tikzcd}[column sep=60pt]
   \finset
@@ -412,7 +414,9 @@ There are adjoint quadruples and sextuples as follows, labeled by where they sen
 	\ar[l, phantom, shift right=-42pt, "\Leftarrow"]
 \end{tikzcd}
 \end{equation}
-All six of the displayed functors out of $\finset$ are fully faithful. The inclusion $\zero{D}\to D(0)$ from \cref{eqn.zerocontent} is natural and induces three other natural transformations on $\finset$ and $\dir$, the most important of which we label $\pi_D$
+Here each double arrow indicates an adjunction $(L,R)$ by pointing in the direction of both its unit and its counit. This is the same as the direction of the left adjoint; e.g.\ $n\mdot0^\yon$ is right adjoint to $\zero{D}$ and left adjoint to $D(0)$. All six of the displayed functors out of $\finset$ are fully faithful.
+
+The inclusion $\zero{D}\to D(0)$ from \cref{eqn.zerocontent} is natural and induces three other natural transformations on $\finset$ and $\dir$; in \cref{prop.poly_function} we will have occasion to use the one labeled $\pi_D$:
 \begin{equation}\label{eqn.obtain_pi}
 \zero{D}\to D(0),\qquad
 n\mdot0^\yon\to n,\qquad
@@ -462,7 +466,7 @@ It is easy to see that the roundtrip on Dirichlet series is identity, and that t
 \end{proof}
 
 \begin{example}
-Under the identification from \cref{prop.poly_function}, the polynomial $2\yon^3+\yon^2+3$ and the Dirichlet series $2\mdot3^\yon+2^\yon+3\mdot 0^\yon$ correspond to the function
+Under the identification from \cref{prop.poly_function}, the polynomial $2\yon^3+\yon^2+3$ and the Dirichlet series $2\mdot3^\yon+1\mdot2^\yon+3\mdot 0^\yon$ correspond to the function
 \begin{equation}\label{eqn.bundle}
 \begin{tikzpicture}[x=.5cm, y=.35cm, every label/.style={font=\scriptsize}, baseline=(f)]
 	\node[label={[above=-5pt]:$1$}] (Ya) {$\bullet$};
@@ -472,7 +476,7 @@ Under the identification from \cref{prop.poly_function}, the polynomial $2\yon^3
 	\node[right=1 of Ye,  label={[above=-5pt]:$5$}] (Yf) {$\bullet$};
 	\node[right=1 of Yf,  label={[above=-5pt]:$6$}] (Yg) {$\bullet$};
 	\node[draw, inner ysep=4pt, fit={($(Ya)+(-1em,3ex)$) (Yg)}] (Y) {};
-	\node[left=0 of Y] (Ylab) {$6\cong$};
+	\node[left=0 of Y] (Ylab) {$6=D(0)\cong$};
 %
   \node[above=4 of Ya, label={[above=-5pt]:$(1,1)$}] (X11) {$\bullet$};
   \node[above=1 of X11, label={[above=-5pt]:$(1,2)$}] (X12) {$\bullet$};
@@ -486,20 +490,20 @@ Under the identification from \cref{prop.poly_function}, the polynomial $2\yon^3
   \node[above=1 of X41, label={[above=-5pt]:$(3,2)$}] (X42) {$\bullet$};
   \node [above=4 of Yg] (xend) {};
 	\node[draw, inner ysep=3pt, fit={($(X13)+(-1em,3ex)$) ($(xend)+(.4,0)$)}] (X) {};
-	\node[left=0 of X] {$8\cong$};
+	\node[left=0 of X] {$8=D(1)\cong$};
 %
 	\draw[->, shorten <=3pt, shorten >=3pt] (X) to node[left] (f) {$\pi$} (Y);
 \end{tikzpicture}
 \end{equation}
 \end{example}
 
-We can think of a function $\pi\colon s\to t$, e.g.\ that shown in \eqref{eqn.bundle}, as a \emph{bundle} of fibers $\pi\inv(i)$, one for each element $`i'\in t$. In \cref{def.sheaves_bundles} we define two different notions of morphism between them, which correspond to maps in $\poly$ and $\dir$.
+We can think of a function $\pi\colon s\to t$, e.g.\ that shown in \eqref{eqn.bundle}, as a \emph{bundle} of fibers $\pi\inv(i)$, one for each element $`i'\in t$. In \cref{def.sheaves_bundles} we define two different notions of morphism between them. We will see in \cref{thm.equivs} that they correspond to morphisms in the categories $\poly$ and $\dir$.
 
 For any function $f\colon t\to t'$ and function $\pi'\colon s'\to t'$, denote by $f^*(\pi')$ the pullback function as shown
 \[
 \begin{tikzcd}
 	s\times_{t'}s'\ar[r]\ar[d, "f^*(\pi')"']&
-	s'\ar[d, "\pi"]\\
+	s'\ar[d, "\pi'"]\\
 	t\ar[r, "f"']&
 	t'\ar[ul, phantom, very near end, "\lrcorner"]
 \end{tikzcd}
@@ -511,7 +515,30 @@ Let $\pi\colon s\to t$ and $\pi'\colon s'\to t'$ be functions between finite set
 	\item a \emph{bundle morphism} consists of a pair $(f,f_\sharp)$ where $f\colon t\to t'$ is a function and $f_\sharp\colon \pi\to f^*(\pi')$ is a morphism in the slice category over $t$;
 	\item a \emph{container morphism} consists of a pair $(f,f^\sharp)$ where $f\colon t\to t'$ is a function and $f^\sharp\colon f^*(\pi')\to \pi$ is a morphism in the slice category over $t$.
 \end{itemize}
-\begin{equation}\label{eqn.bund_cont_maps}
+%\begin{equation}\label{fig.bund_cont_maps}
+%\begin{tabular}{ccc}
+%$(f,f_\sharp)\in\bun(\pi,\pi')$&~\qquad~&
+%$(f,f^\sharp)\in\cont(\pi,\pi')$\\
+%\begin{tikzcd}[ampersand replacement=\&]
+%s\ar[dr, bend right=40pt, "\pi"']\&[-5pt]
+%t\times_{t'}s'\ar[r]\ar[d, "f^*\pi'"']\ar[from=l, "f_\sharp"]\&
+%s'\ar[d, "\pi'"]\\\&
+%t\ar[r, "f"']\&
+%t'\ar[ul, phantom, very near end, "\lrcorner"]
+%\end{tikzcd}
+%&&
+%\begin{tikzcd}[ampersand replacement=\&]
+%s\ar[dr, bend right=40pt, "\pi"']\&[-5pt]
+%t\times_{t'}s'\ar[r]\ar[d, "f^*\pi'"']\ar[l, "f^\sharp"']\&
+%s'\ar[d, "\pi'"]\\\&
+%t\ar[r, "f"']\&
+%t'\ar[ul, phantom, very near end, "\lrcorner"]
+%\end{tikzcd}
+%\end{tabular}
+%\end{equation}
+
+\begin{figure}
+\[
 \begin{tikzcd}
 s\ar[dr, bend right=40pt, "\pi"']&[-5pt]
 t\times_{t'}s'\ar[r]\ar[d, "f^*\pi'"']\ar[from=l, "f_\sharp"]&
@@ -527,7 +554,11 @@ s'\ar[d, "\pi'"]\\&
 t\ar[r, "f"']&
 t'\ar[ul, phantom, very near end, "\lrcorner"]
 \end{tikzcd}
-\end{equation}
+\]
+\caption{The categories $\bun$ and $\cont$ have the same objects, functions $\pi\colon s\to t$. Here a morphism $(f,f_\sharp)\colon \pi\to \pi'$ in $\bun$ and a morphism $(f,f^\sharp)\colon \pi\to\pi'$ in $\cont$ are shown.
+}
+\label{fig.bund_cont_maps}
+\end{figure}
 Define $\bun$ (resp.\ $\cont$) to be the category for which an object is a function between finite sets and a morphism is a bundle morphism (resp.\ container morphism).
 \end{definition}
 
@@ -546,7 +577,7 @@ We have equivalences of categories
 \]
 \end{theorem}
 \begin{proof}
-The functors $P_-\colon\cont\to\poly$ and $D_-\colon\bun\to\dir$ are defined on each object, i.e.\ function $\pi\colon s\to t$ by the formula $\pi\mapsto P_\pi$ and $\pi\mapsto D_\pi\coloneqq\overline{P_\pi}$ as in \cref{prop.poly_function}. For each $1\leq i\leq t$, denote the fiber of $\pi$ over $i$ by $k_i\coloneqq\pi\inv(i)$.
+The functors $P_-\colon\cont\to\poly$ and $D_-\colon\bun\to\dir$ are defined on each object, i.e.\ function $\pi\colon s\to t$, by the formula $\pi\mapsto P_\pi$ and $\pi\mapsto D_\pi\coloneqq\overline{P_\pi}$ as in \cref{prop.poly_function}. For each $1\leq i\leq t$, denote the fiber of $\pi$ over $i$ by $k_i\coloneqq\pi\inv(i)$.
 
 For any finite set $X$, consider the unique map $X!\colon X\to 1$. Applying $P_-$ and $D_-$ to it, we obtain the corresponding representable: $P_{X!}\cong\yon^X$ and $D_{X!}\cong X^\yon$. We next check that
  \begin{gather*}
@@ -560,7 +591,7 @@ For any finite set $X$, consider the unique map $X!\colon X\to 1$. Applying $P_-
   \sum_{i=1}^{t}(k_i)^X\cong
   \bun(X!, \pi).
 \end{gather*}
-In both lines, the first isomorphism is the Yoneda lemma and the second is a computation using \cref{eqn.bund_cont_maps}. Thus we define $P_-$ on morphisms by sending $f\colon\pi\to\pi'$ in $\cont$ to the natural transformation with $X$-component $\cont(X!,f)\colon\cont(X!,\pi)\to\cont(X!,\pi')$, which is clearly natural in $X$. We define $D_-$ on morphisms similarly: for $f$ in $\bun$, use the natural transformation $\bun(-!,f)$.
+In both lines, the first isomorphism is the Yoneda lemma and the second is a computation using \cref{def.sheaves_bundles} (see \cref{fig.bund_cont_maps}). Thus we define $P_-$ on morphisms by sending $f\colon\pi\to\pi'$ in $\cont$ to the natural transformation with $X$-component $\cont(X!,f)\colon\cont(X!,\pi)\to\cont(X!,\pi')$, which is clearly natural in $X$. We define $D_-$ on morphisms similarly: for $f$ in $\bun$, use the natural transformation $\bun(-!,f)$.
 
 By definition, every object in $\poly$ and $\dir$ is a coproduct of representables, so to complete the proof one first checks that coproducts in $\cont$ and $\bun$ are taken pointwise:
 \[
@@ -608,7 +639,7 @@ For any finite category $C$, the functor category $\finset^C$ is an elementary t
 %  \qqand
 %  (n')^\yon=\ol{Q}'\times_{\ol{Q}'(0)}h(f(1))
 %\]
-%By \cref{eqn.bund_cont_maps} we then obtain four maps
+%By \cref{fig.bund_cont_maps} we then obtain four maps
 %\begin{align*}
 %	g^\sharp&\colon\yon^m\to\yon^{m'}&
 %	f_\sharp&\colon m^\yon\to n^\yon\\
