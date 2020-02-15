@@ -283,15 +283,15 @@ Just as the polynomial functors are the copresheaves that can be written as sums
 \end{abstract}
 
 Polynomials $P(\yon)$ and finite Dirchlet series $D(\yon)$ in one variable $\cat{y}$, with natural number coefficients $a_i\in\nn$, are respectively functions of the form
-\begin{equation}\label{eqn.poly_dir}
+\begin{equation}\label{eqn.poly_dir_simple}
 \begin{aligned}
   P(\yon)&=a_n\yon^n+\cdots+a_2\yon^2+a_1\yon^1+a_0\yon^0,\\
   D(\yon)&=a_n n^\yon+\cdots+a_22^\yon+a_11^\yon+a_00^\yon.
 \end{aligned}
 \end{equation}
-There are of course infinite versions of the above, but in this note we work entirely in the category $\finset$ of finite sets, to keep things simple. Similar considerations hold for infinite Dirichlet series or power series, and even more generally, by replacing $\finset$ with $\smset$.
+There are of course infinite versions of the above, but in this note we work entirely in the category $\finset$ of finite sets, to keep things as simple as possible. Similar considerations hold with little extra work for infinite Dirichlet series or power series, and even more generally, by replacing $\finset$ with $\smset$.
 
-While we will not belabor the point, our main goal is to make it clear that one should not generally drop the $a_0\cdot0^\yon$ term from a Dirichlet series as in \cref{eqn.poly_dir}. To do so, we first make clear an analogy between $\dir$ and $\poly$. We then analogize the the well-known fact that polynomials form the objects of a category $\poly$ and define a category $\dir$. These categories have excellent formal properties; e.g.\ the $+$ and $\times$ symbols from basic algebra really represent categorical coproduct and product in $\poly$ and $\dir$. In fact we conclude the note by showing that $\dir$ is an elementary topos. But in $\dir$ the object $0^\yon$ is decidedly different from $0$.
+While we will not belabor the point, our main goal is to make it clear that one should not generally drop the $a_0\cdot0^\yon$ term from a Dirichlet series as in \cref{eqn.poly_dir_simple}. To do so, we take the well-known fact that polynomials form the objects of a category $\poly$ and analogously define a category $\dir$. These categories have excellent formal properties; e.g.\ the $0$, $1$, $+$, and $\times$ symbols from basic algebra really represent categorical initial and terminal object and the coproduct and product operations in both $\poly$ and $\dir$. In fact we conclude the note by showing that $\dir$ is an elementary topos. In some sense the ``high status'' of the category $\dir$ is supposed to serve as evidence that identifying $0^\yon$ with $0$ could lead to perverse outcomes and thus may be fruitfully reconsidered.
 
 \chapter{The categories $\poly$ and $\dir$}
 Recall that a \emph{co-representable functor} $\finset\to\finset$ is one of the form $\finset(k, -)$ for a finite set
