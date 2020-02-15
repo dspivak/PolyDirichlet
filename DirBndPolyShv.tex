@@ -236,11 +236,13 @@ replacement=\&]{}\ar[r,tick]\&{}\end{tikzcd}}
 \newcommand{\core}{\Fun{Core}}
 \newcommand{\bun}{\Cat{Bun}}
 
+\newcommand{\zero}[1]{#1_\text{zc}}
 
 \newcommand{\yon}{\mathcal{y}}
 \newcommand{\poly}{\Cat{Poly}}
 \newcommand{\dir}{\Cat{Dir}}
 \newcommand{\ff}{\mathbb{F}}
+\newcommand{\mdot}{{\cdot}}
 
 \newcommand{\qand}{\quad\text{and}\quad}
 \newcommand{\qqand}{\qquad\text{and}\qquad}
@@ -264,40 +266,48 @@ replacement=\&]{}\ar[r,tick]\&{}\end{tikzcd}}
 
 \begin{document}
 
-\title{Terms of the form $0^\yon$ in Dirichlet series\\contain significant content}
+\title{DRAFT\\~\\~\\Terms of the form $0^\yon$ in Dirichlet series\\contain significant content}
 
-\author{David and David}
+\author{David I.\ Spivak%
+\thanks{Spivak was supported by Honeywell Inc.\ as well as AFOSR grants FA9550-17-1-0058 and FA9550-19-1-0113.}
+\and David Jaz Myers%\thanks{Myers thanks}
+}
 
 \maketitle
 \begin{abstract}
 One can think of power series or polynomials in one variable, such as $2\yon^3+\yon+5$, as functors from the category $\smset$ of sets to itself; these are known as polynomial functors. Denote by $\poly_\smset$ the category of polynomial functors on $\smset$ and natural transformations between them. The constants $0,1$ and operations $+,\times$ are the initial and terminal objects and the coproduct and product in $\poly_\smset$. 
 
-Just as the polynomial functors are the copresheaves that can be written as sums of representables, one can express Dirichlet series, e.g.\ $\sum_{n=0}^\infty n^\yon$, as a coproduct of representable presheaves. Note that it is common to omit the $n=0$ term $0^\yon$, as it is ``just 0'', but it seems to us that this omission drops important category-theoretic content. Indeed, the category $\dir_\smset$ of Dirichlet functors has very nice formal properties---in fact it is an elementary topos---so we may take seriously the fact that the object $0^\yon$---the representable functor on the empty set---is decidedly not $0$.
+Just as the polynomial functors are the copresheaves that can be written as sums of representables, one can express any Dirichlet series, e.g.\ $\sum_{n=0}^\infty n^\yon$, as a coproduct of representable presheaves. Note that it is common to omit the $n=0$ term $0^\yon$, as it is ``just 0'', but it seems to us that this omission drops important category-theoretic content. Indeed, the category $\dir_\smset$ of Dirichlet functors has very nice formal properties---e.g.\ it is an elementary topos---so we may take seriously the fact that the object $0^\yon$ is the representable functor on the empty set and decidedly not $0$.
 
-We also show that there is a double category, useful in applications, whose vertical category is isomorphic to $\poly$ and whose horizontal category is isomorphic to $\dir$.
+%We also show that there is a double category, useful in applications, whose vertical category is isomorphic to $\poly$ and whose horizontal category is isomorphic to $\dir$.
 \end{abstract}
 
 Polynomials $P(\yon)$ and finite Dirchlet series $D(\yon)$ in one variable $\cat{y}$, with natural number coefficients $a_i\in\nn$, are respectively functions of the form
-\[
-  P(\yon)=a_n\yon^n+\cdots+a_2\yon^2+a_1\yon^1+a_0\yon^0
-  \qqand
-  D(\yon)=a_nn^\yon+\cdots+a_22^\yon+a_11^\yon+a_00^\yon.
-\]
-There are of course infinite versions of the above, but in this note we work entirely in the topos $\finset$ of finite sets, to keep things simple. Similar considerations hold for infinite Dirichlet series or power series, with an appocone get them and much more by replacing $\finset$ with $\smset$ everywhere.
+\begin{equation}\label{eqn.poly_dir}
+\begin{aligned}
+  P(\yon)&=a_n\yon^n+\cdots+a_2\yon^2+a_1\yon^1+a_0\yon^0,\\
+  D(\yon)&=a_n n^\yon+\cdots+a_22^\yon+a_11^\yon+a_00^\yon.
+\end{aligned}
+\end{equation}
+There are of course infinite versions of the above, but in this note we work entirely in the category $\finset$ of finite sets, to keep things simple. Similar considerations hold for infinite Dirichlet series or power series, and even more generally, by replacing $\finset$ with $\smset$.
+
+While we will not belabor the point, our main goal is to make it clear that one should not generally drop the $a_0\cdot0^\yon$ term from a Dirichlet series as in \cref{eqn.poly_dir}. To do so, we first make clear an analogy between $\dir$ and $\poly$. We then analogize the the well-known fact that polynomials form the objects of a category $\poly$ and define a category $\dir$. These categories have excellent formal properties; e.g.\ the $+$ and $\times$ symbols from basic algebra really represent categorical coproduct and product in $\poly$ and $\dir$. In fact we conclude the note by showing that $\dir$ is an elementary topos. But in $\dir$ the object $0^\yon$ is decidedly different from $0$.
 
 \chapter{The categories $\poly$ and $\dir$}
-Recall that a \emph{co-representable functor} $\finset\to\finset$ is one of the form $\finset(n, -)$ for some finite set $n=\{`1', `2',\ldots,`n'\}$. We denote this functor by $\yon^n$ and say it is \emph{represented by} $n\in\finset$. Similarly, a \emph{(contra-) representable functor} $\finset\op\to\finset$ is contravariant functor of the form $\finset(-,n)$; we denote this functor by $n^\yon$.
+Recall that a \emph{co-representable functor} $\finset\to\finset$ is one of the form $\finset(k, -)$ for a finite set
+\[k=\{`1', `2',\ldots,`k'\}.\]
+We denote this functor by $\yon^k$ and say it is \emph{represented by} $k\in\finset$. Similarly, a \emph{(contra-) representable functor} $\finset\op\to\finset$ is contravariant functor of the form $\finset(-,k)$; we denote this functor by $k^\yon$.
 \begin{figure}
 \[
-  \yon^n \coloneqq \finset(n,-)
+  \yon^k \coloneqq \finset(k,-)
   \qqand
-  n^\yon\coloneqq\finset(-,n).
+  k^\yon\coloneqq\finset(-,k).
 \]
-  \caption{The pure power polynomial $\yon^n$ and the pure exponential Dirichlet series $n^\yon$ are the representable functors in $\poly$ and $\dir$.}
+  \caption{The pure-power polynomial $\yon^k$ and the pure-exponential Dirichlet series $k^\yon$ are representable functors in $\poly$ and $\dir$ for any finite set $k\in\finset$.}
 \end{figure}
-The functors $\yon_-$ and $\yon^-$ are the covariant and contravariant Yoneda embeddings.
+The functors $\yon^-$ and $-^\yon$ are the contravariant and covariant Yoneda embeddings. For example $\yon^3(2)\cong8$ and $3^\yon(2)\cong9$.
 
-Note that the functor $0^\yon\not\cong 0$ is not the initial object; it is given by
+Note that the functor $0^\yon\not\cong 0$ is not the initial object in $\dir$; it is given by
 \[
 0^\yon(s)=
 \begin{cases}
@@ -305,10 +315,10 @@ Note that the functor $0^\yon\not\cong 0$ is not the initial object; it is given
 0&\tn{ if } s\geq1.
 \end{cases}
 \]
-The coefficient $p_0$ of $1$ in a polynomial $P$ is called its constant term. We refer to the coefficient $d_0$ of $0^\yon$ in a Dirichlet series $D$ as its \emph{exceptional term}.
+The coefficient $a_0$ of $1=\yon^0$ in a polynomial $P$ is called its \emph{constant} term. We refer to the coefficient $\zero{D}\coloneqq a_0$ of $0^\yon$ in a Dirichlet series $D$ as its \emph{zero-content} term. Rather than having no content, the content of the functor $\zero{D}\mdot0^\yon$ becomes significant exactly when it is applied to zero.
 
 \begin{example}
-The reader can determine which finite Dirichlet series $D(\yon)$ has the following terms
+The reader can determine which finite Dirichlet series $D(\yon)$ as in \cref{eqn.poly_dir} has the following terms
 \[
 \begin{array}{c|ccccccc}
 \yon&
@@ -330,8 +340,14 @@ D(\yon)&
 7
 \end{array}
 \]
-Hint: its exceptional term is $4$.
+Hint: its zero-content term is $4$.
 \end{example}
+
+The set $P(1)$ (resp.\ the set $D(0)$) has particular importance; it is the set of pure-power terms $\yon^k$ in $P$ (resp.\ the pure-exponential terms $k^\yon$ in $D$). For example if $P=\yon^2+4\yon+4$ and $D=2^\yon+4+4\mdot0^\yon$ then $P(1)=D(0)=9$. We will later have reason to consider the inclusion
+\begin{equation}\label{eqn.zerocontent}
+\zero{D}\to D(0)
+\end{equation}
+of the zero-content terms into the set of all pure-exponential terms.
 
 \paragraph{Polynomial and Dirichlet functors.}
 A \emph{polynomial functor} \cite{GambinoKock} is a functor $P\colon\finset\to\finset$ that can be expressed as a finite sum of co-representable functors. Similarly, we define a \emph{Dirichlet functor} to be a functor $D\colon\finset\op\to\finset$ that can be expressed as a finite sum of representable presheaves (contravariant functors):
@@ -340,7 +356,7 @@ A \emph{polynomial functor} \cite{GambinoKock} is a functor $P\colon\finset\to\f
   \qqand
   D=\sum_{i=1}^{D(0)}(d_i)^\yon.
 \end{equation}
-That is $P(X)=\sum_{i=1}^{P(1)}\finset(p_i,X)$ and $D(X)=\sum_{i=1}^{D(0)}\finset(X,d_i)$.
+That is, $P(X)=\sum_{i=1}^{P(1)}\finset(p_i,X)$ and $D(X)=\sum_{i=1}^{D(0)}\finset(X,d_i)$ as functors applied to $X\in\finset$.
 
 For any small category $C$, let $\finset^C$ denote the category whose objects are the functors $C\to\finset$ and whose morphisms are the natural transformations between them.
 
@@ -353,7 +369,7 @@ The number of polynomial maps $P\to Q$ and Dirichlet maps $D\to E$ are
 \[
   [P, Q]\coloneqq\prod_{i\in P(1)}Q(p_i)
   \qqand
-  [D, E]\coloneqq\prod_{i\in D(0)}E(d_i),
+  [D, E]\coloneqq\prod_{i\in D(0)}E(d_i).
 \]
 \end{lemma}
 
@@ -386,7 +402,7 @@ There are adjoint quadruples and sextuples as follows, labeled by where they sen
 		\ar[r, shift left=-21pt, "n" description]
 		\ar[r, shift left=-49pt, "n^\yon"']&
   \dir
-  	\ar[l, shift right=21pt, "d_0"']
+  	\ar[l, shift right=21pt, "\zero{D}"']
   	\ar[l, shift right=-7pt, "D(0)" description]
 		\ar[l, shift right=-35pt, "D(1)" description]
 	\ar[l, phantom, shift right=14pt, "\Leftarrow"]
@@ -396,10 +412,10 @@ There are adjoint quadruples and sextuples as follows, labeled by where they sen
 	\ar[l, phantom, shift right=-42pt, "\Leftarrow"]
 \end{tikzcd}
 \end{equation}
-All six of the functors out of $\finset$ are fully faithful. The inclusion $d_0\to D(0)$ of the exceptional terms is natural and induces three other natural transformations on $\finset$ and $\dir$, the most important of which we label $\pi_D$
+All six of the displayed functors out of $\finset$ are fully faithful. The inclusion $\zero{D}\to D(0)$ from \cref{eqn.zerocontent} is natural and induces three other natural transformations on $\finset$ and $\dir$, the most important of which we label $\pi_D$
 \begin{equation}\label{eqn.obtain_pi}
-d_0\to D(0),\qquad
-n{\cdot}0^\yon\to n,\qquad
+\zero{D}\to D(0),\qquad
+n\mdot0^\yon\to n,\qquad
 D(1)\To{\pi_D} D(0),\qquad
 n\to n^\yon.
 \end{equation}
@@ -407,10 +423,11 @@ n\to n^\yon.
 There are also two-variable adjunctions $\finset\times\poly\to\poly$ and $\finset\times\dir\to\dir$. Indeed, for $n\in\finset$ and $P,Q\in\poly$ (respectively $D,E\in\dir$), we have
 \begin{gather*}
 \poly(nP,Q)\cong\poly(P,Q^n)\cong\finset(n,[P,Q]),\\
-\dir(nD,E)\cong\dir(D,E^n)\cong\finset(n,[D,E]).
+\dir(nD,E)\cong\dir(D,E^n)\cong\finset(n,[D,E]),
 \end{gather*}
+where $P^n$ and $D^n$ denote the $n$-fold product.
 
-Each of the categories $\poly$ and $\dir$ has pullbacks, which we denote using ``fiber product notation'' $A\times_CB$. We can use pullbacks in combination with monads $\eta_P\colon P\to P(1)$ and $\eta_D\colon D\to D(0)$ arising from \cref{eqn.adjoints_galore} to recover \cref{eqn.finite_sum}:
+Each of the categories $\poly$ and $\dir$ has pullbacks, which we denote using ``fiber product notation'' $A\times_CB$. We can use pullbacks in combination with monad units $\eta_P\colon P\to P(1)$ and $\eta_D\colon D\to D(0)$ arising from \cref{eqn.adjoints_galore} to recover \cref{eqn.finite_sum}:
 \[
   P=\sum_{i=1}^{P(1)}P\times_{P(1)}`i'
   \qqand
@@ -445,7 +462,7 @@ It is easy to see that the roundtrip on Dirichlet series is identity, and that t
 \end{proof}
 
 \begin{example}
-The polynomial $2\yon^3+\yon^2+3$ and the Dirichlet series $2{\cdot}3^\yon+2^\yon+3{\cdot} 0^\yon$ correspond to the function
+Under the identification from \cref{prop.poly_function}, the polynomial $2\yon^3+\yon^2+3$ and the Dirichlet series $2\mdot3^\yon+2^\yon+3\mdot 0^\yon$ correspond to the function
 \begin{equation}\label{eqn.bundle}
 \begin{tikzpicture}[x=.5cm, y=.35cm, every label/.style={font=\scriptsize}, baseline=(f)]
 	\node[label={[above=-5pt]:$1$}] (Ya) {$\bullet$};
@@ -515,7 +532,7 @@ Define $\bun$ (resp.\ $\cont$) to be the category for which an object is a funct
 \end{definition}
 
 \begin{remark}\label{rem.dir_fin2}
-It is easy to check that $\bun\cong\finset^2$ is the category of morphisms and commuting squares in the category of finite sets. Next we show that it is also isomorphic to the category of Dirichlet functors from \cref{def.poly_dir}.
+It is easy to check that $\bun\cong\finset^2$ is the category of morphisms and commuting squares in $\finset$. Next we show that $\bun\cong\dir$ is also equivalent to the category of Dirichlet functors from \cref{def.poly_dir}.
 
 The reader familiar with basic algebraic geometry will see an analogy between morphisms in $\cont$ and homomorphisms of ringed spaces. The name \emph{container} comes from computer science; see \cite{**}.
 \end{remark}
@@ -529,9 +546,9 @@ We have equivalences of categories
 \]
 \end{theorem}
 \begin{proof}
-The functors $P_-\colon\cont\to\poly$ and $D_-\colon\bun\to\dir$ are defined on each object $\pi\colon s\to t$ by the formula $\pi\mapsto P_\pi$ and $\pi\mapsto D_\pi\coloneqq\overline{P_\pi}$ as in \cref{prop.poly_function}. For each $1\leq i\leq t$, denote the fiber of $\pi$ over $i$ by $k_i\coloneqq\pi\inv(i)$.
+The functors $P_-\colon\cont\to\poly$ and $D_-\colon\bun\to\dir$ are defined on each object, i.e.\ function $\pi\colon s\to t$ by the formula $\pi\mapsto P_\pi$ and $\pi\mapsto D_\pi\coloneqq\overline{P_\pi}$ as in \cref{prop.poly_function}. For each $1\leq i\leq t$, denote the fiber of $\pi$ over $i$ by $k_i\coloneqq\pi\inv(i)$.
 
-For any set $X$, consider the unique map $X!\colon X\to 1$. Applying $P_-$ and $D_-$ to it, we obtain the corresponding representable: $P_{X!}\cong\yon^X$ and $D_{X!}\cong X^\yon$. We next check that
+For any finite set $X$, consider the unique map $X!\colon X\to 1$. Applying $P_-$ and $D_-$ to it, we obtain the corresponding representable: $P_{X!}\cong\yon^X$ and $D_{X!}\cong X^\yon$. We next check that
  \begin{gather*}
   \poly(P_{X!},P_\pi)\cong 
   P_\pi(X)=
@@ -543,13 +560,13 @@ For any set $X$, consider the unique map $X!\colon X\to 1$. Applying $P_-$ and $
   \sum_{i=1}^{t}(k_i)^X\cong
   \bun(X!, \pi).
 \end{gather*}
-In both lines, the first isomorphism is the Yoneda lemma and the second is a computation. Thus we define $P_-$ on morphisms by sending $f\colon\pi\to\pi'$ in $\cont$ to the natural transformation with $X$-component $\cont(X!,f)\colon\cont(X!,\pi)\to\cont(X!,\pi')$, which is clearly natural in $X$. We define $D_-$ on morphisms similarly: for $f$ in $\bun$, use the natural transformation $\bun(-!,f)$.
+In both lines, the first isomorphism is the Yoneda lemma and the second is a computation using \cref{eqn.bund_cont_maps}. Thus we define $P_-$ on morphisms by sending $f\colon\pi\to\pi'$ in $\cont$ to the natural transformation with $X$-component $\cont(X!,f)\colon\cont(X!,\pi)\to\cont(X!,\pi')$, which is clearly natural in $X$. We define $D_-$ on morphisms similarly: for $f$ in $\bun$, use the natural transformation $\bun(-!,f)$.
 
 By definition, every object in $\poly$ and $\dir$ is a coproduct of representables, so to complete the proof one first checks that coproducts in $\cont$ and $\bun$ are taken pointwise:
 \[
-(\pi\colon s\to t)+(\pi'\colon s'\to t')\cong(\pi+\pi')\colon (s+s')\to (t+t').
+(\pi\colon s\to t)+(\pi'\colon s'\to t')\cong(\pi+\pi')\colon (s+s')\to (t+t'),
 \]
-and then that $P_{\pi+\pi'}=P_\pi+P_{\pi'}$ and $D_{\pi+\pi'}=D_\pi+D_{\pi'}$; see \cref{eqn.Ppi}.
+and then that $P_{\pi+\pi'}=P_\pi+P_{\pi'}$ and $D_{\pi+\pi'}=D_\pi+D_{\pi'}$; see \cref{rem.products_coproducts}.
 \end{proof}
 
 \begin{corollary}
@@ -559,59 +576,59 @@ $\dir$ is an elementary topos.
 For any finite category $C$, the functor category $\finset^C$ is an elementary topos. The result now follows from \cref{rem.dir_fin2,thm.equivs}.
 \end{proof}
 
-\chapter{The $\poly-\dir$ double category $\ff$}
-
-There is a double category $\ff$ whose objects are functions between finite sets, whose vertical category is $\poly$, whose horizontal category is isomorphic to $\bun$. This double category shows up in the theory of mode-dependent dynamical systems, though we save this for future work.
-
-The double category $\ff$ will be thin, meaning that for every square there is at most one 2-cell filler. Squares (with or without filler) can be drawn as \emph{bevelled squares}:
-\[
-\begin{tikzcd}[sep=large]
-&[-35pt]
-\overline{P}\ar[r, "f"]&
-\overline{Q}\\[-25pt]
-P\ar[d, "g"']\arrow[ur, no head]&&&[-35pt]\ar[ul, no head]\ar[d, "h"]
-Q\\
-P'\ar[dr, no head]&&&
-Q'\ar[dl, no head]\\[-25pt]&
-\overline{P}'\ar[r, "f'"']&
-\overline{Q}'
-\end{tikzcd}
-\]
-where $g,h$ are in $\poly$ and $f,f'$ are in $\dir$, and where the unlabeled line segments are just tracking Dirchlet transforms. Thus to define $\ff$, it remains to give the conditions for when a filler exists for $(f,f',g,h)$; there will be two.
-
-Suppose first that $P=\yon^m$ is a pure power, i.e.\ $P(1)=1$; this is the case iff its Dirichlet transform $\overline{P}=m^\yon$ is a pure exponential $D(0)=1$. In that case $g$ picks out an element $g(1)\in P'(1)=\ol{P}'(0)$ and $f$ picks out an element $f(1)\in \ol{Q}(0)=Q(1)$. Let $m'$ be the finite set corresponding to the exponent on $g(1)$ and let $n$ be the finite set corresponding to the base on $f(1)$
-\[
-  \yon^{m'}\coloneqq P'\times_{P(1)}g(1)
-  \qqand
-  n^\yon\coloneqq\ol{Q}\times_{\ol{Q}(0)}f(1)
-\]
-Then $f'$ picks out an element $f'(g(1))\in\ol{Q}'(0)=Q'(1)$ and $h$ picks out an element $h(f(1))\in Q'(1)=\ol{Q}'(0)$. The first condition is that $h(f(1))=f'(g(1))$. We may then define $n'$ to be the corresponding finite set, so that
-\[
-  \yon^{n'}= Q'\times_{Q'(1)}f'(g(1))
-  \qqand
-  (n')^\yon=\ol{Q}'\times_{\ol{Q}'(0)}h(f(1))
-\]
-By \cref{eqn.bund_cont_maps} we then obtain four maps
-\begin{align*}
-	g^\sharp&\colon\yon^m\to\yon^{m'}&
-	f_\sharp&\colon m^\yon\to n^\yon\\
-	f'_\sharp&\colon(m')^\yon\to(n')^\yon&
-	h^\sharp&\colon\yon^{n}\to\yon^{n'}
-\end{align*}
-and by the Yoneda lemma, these induce composable functions
-\[
-  m'\To{g^\sharp} m\To{f_\sharp} n
-  \qqand
-  m'\To{f'_\sharp} n'\To{h^\sharp} n
-\]
-The second condition is that these are the same function $m'\to n$. 
-
-In general, $P$ may not be a pure power, but it is a coproduct over $i\in P(1)$ of pure powers $\yon^{p_i}$. We say that a beveled square has a filler iff the above two conditions hold for each summand.
-
-It is easy to check that we indeed have a double category.
-\begin{theorem}
-There is a thin double category whose objects are functions $\pi\colon s\to t$, whose vertical category is $\poly\cong\cont$, whose horizontal category is $\dir\cong\bun$, and for which 2-cells are defined as above.
-\end{theorem}
+%\chapter{The $\poly-\dir$ double category $\ff$}
+%
+%There is a double category $\ff$ whose objects are functions between finite sets, whose vertical category is $\poly$, whose horizontal category is isomorphic to $\bun$. This double category shows up in the theory of mode-dependent dynamical systems, though we save this for future work.
+%
+%The double category $\ff$ will be thin, meaning that for every square there is at most one 2-cell filler. Squares (with or without filler) can be drawn as \emph{bevelled squares}:
+%\[
+%\begin{tikzcd}[sep=large]
+%&[-35pt]
+%\overline{P}\ar[r, "f"]&
+%\overline{Q}\\[-25pt]
+%P\ar[d, "g"']\arrow[ur, no head]&&&[-35pt]\ar[ul, no head]\ar[d, "h"]
+%Q\\
+%P'\ar[dr, no head]&&&
+%Q'\ar[dl, no head]\\[-25pt]&
+%\overline{P}'\ar[r, "f'"']&
+%\overline{Q}'
+%\end{tikzcd}
+%\]
+%where $g,h$ are in $\poly$ and $f,f'$ are in $\dir$, and where the unlabeled line segments are just tracking Dirchlet transforms. Thus to define $\ff$, it remains to give the conditions for when a filler exists for $(f,f',g,h)$; there will be two.
+%
+%Suppose first that $P=\yon^m$ is a pure power, i.e.\ $P(1)=1$; this is the case iff its Dirichlet transform $\overline{P}=m^\yon$ is a pure exponential $D(0)=1$. In that case $g$ picks out an element $g(1)\in P'(1)=\ol{P}'(0)$ and $f$ picks out an element $f(1)\in \ol{Q}(0)=Q(1)$. Let $m'$ be the finite set corresponding to the exponent on $g(1)$ and let $n$ be the finite set corresponding to the base on $f(1)$
+%\[
+%  \yon^{m'}\coloneqq P'\times_{P(1)}g(1)
+%  \qqand
+%  n^\yon\coloneqq\ol{Q}\times_{\ol{Q}(0)}f(1)
+%\]
+%Then $f'$ picks out an element $f'(g(1))\in\ol{Q}'(0)=Q'(1)$ and $h$ picks out an element $h(f(1))\in Q'(1)=\ol{Q}'(0)$. The first condition is that $h(f(1))=f'(g(1))$. We may then define $n'$ to be the corresponding finite set, so that
+%\[
+%  \yon^{n'}= Q'\times_{Q'(1)}f'(g(1))
+%  \qqand
+%  (n')^\yon=\ol{Q}'\times_{\ol{Q}'(0)}h(f(1))
+%\]
+%By \cref{eqn.bund_cont_maps} we then obtain four maps
+%\begin{align*}
+%	g^\sharp&\colon\yon^m\to\yon^{m'}&
+%	f_\sharp&\colon m^\yon\to n^\yon\\
+%	f'_\sharp&\colon(m')^\yon\to(n')^\yon&
+%	h^\sharp&\colon\yon^{n}\to\yon^{n'}
+%\end{align*}
+%and by the Yoneda lemma, these induce composable functions
+%\[
+%  m'\To{g^\sharp} m\To{f_\sharp} n
+%  \qqand
+%  m'\To{f'_\sharp} n'\To{h^\sharp} n
+%\]
+%The second condition is that these are the same function $m'\to n$. 
+%
+%In general, $P$ may not be a pure power, but it is a coproduct over $i\in P(1)$ of pure powers $\yon^{p_i}$. We say that a beveled square has a filler iff the above two conditions hold for each summand.
+%
+%It is easy to check that we indeed have a double category.
+%\begin{theorem}
+%There is a thin double category whose objects are functions $\pi\colon s\to t$, whose vertical category is $\poly\cong\cont$, whose horizontal category is $\dir\cong\bun$, and for which 2-cells are defined as above.
+%\end{theorem}
 
 
 
@@ -639,7 +656,6 @@ There is a thin double category whose objects are functions $\pi\colon s\to t$, 
 %associated to a species in which sum is coproduct and product is cartesian
 %product -- the difference between the Cauchy generating functor and the
 %Dirichlet generating functor is that the latter is contravariant.
-
 
 
 \end{document}
