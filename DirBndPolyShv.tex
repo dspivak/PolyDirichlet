@@ -348,8 +348,17 @@ For any small category $C$, let $\finset^C$ denote the category whose objects ar
 The \emph{category of polynomial functors}, denoted $\poly$, is the full subcategory of $\finset^\finset$ spanned by finite sums $P$ of representable functors. The \emph{category of Dirichlet functors}, denoted $\dir$, is the full subcategory of $\finset^{(\finset\op)}$ spanned by the finite sums $D$ of representable presheaves.
 \end{definition}
 
+\begin{lemma}
+The number of polynomial maps $P\to Q$ and Dirichlet maps $D\to E$ are
+\[
+  [P, Q]\coloneqq\prod_{i\in P(1)}Q(p_i)
+  \qqand
+  [D, E]\coloneqq\prod_{i\in D(0)}E(d_i).
+\]
+\end{lemma}
+
 \begin{example}
-Let $P=2\yon^2$, $Q=\yon+1$, and let $D=2\cdot2^\yon$ and $E=1+0^\yon$. Then there are nine ($9$) polynomial morphisms $P\to Q$, zero ($0$) polynomial morphisms $Q\to P$, one ($1$) Dirichlet morphism $D\to E$, and four ($4$) Dirichlet morphiisms $E\to D$.
+Let $P=2\yon^2$, $Q=\yon+1$, and let $D=2\cdot2^\yon$ and $E=1+0^\yon$. Then there are nine ($9$) polynomial morphisms $P\to Q$, zero ($0$) polynomial morphisms $Q\to P$, one ($1$) Dirichlet morphism $D\to E$, and eight ($8$) Dirichlet morphiisms $E\to D$.
 \end{example}
 
 \begin{remark}\label{rem.products_coproducts}
@@ -585,6 +594,10 @@ It is easy to check that we indeed have a double category.
 \begin{theorem}
 There is a thin double category whose objects are functions $\pi\colon s\to t$, whose vertical category is $\poly\cong\cont$, whose horizontal category is $\dir\cong\bun$, and for which 2-cells are defined as above.
 \end{theorem}
+
+\chapter{Questions}
+
+
 
 %Given a combinatorial species $A : \textbf{Fin}^{\cong} \to \smset$, its
 %\emph{Cauchy generating functor} $X \mapsto \sum_{n : \textbf{Fin}} A_n \times X^n/n!$
