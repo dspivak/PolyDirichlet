@@ -378,7 +378,7 @@ The number of polynomial maps $P\to Q$ and Dirichlet maps $D\to E$ are
 \end{lemma}
 
 \begin{example}
-Let $P=2\yon^2$, $Q=\yon+1$, and let $D=2\cdot2^\yon$ and $E=1+0^\yon$. Then there are nine ($9$) polynomial morphisms $P\to Q$, zero ($0$) polynomial morphisms $Q\to P$, one ($1$) Dirichlet morphism $D\to E$, and eight ($8$) Dirichlet morphiisms $E\to D$.
+Let $P=2\yon^2$, $Q=\yon+1$, and let $D=2\cdot2^\yon$ and $E=1+0^\yon$. Then there are nine ($9$) polynomial morphisms $P\to Q$, zero ($0$) polynomial morphisms $Q\to P$, one ($1$) Dirichlet morphism $D\to E$, and eight ($8$) Dirichlet morphisms $E\to D$.
 \end{example}
 
 \begin{remark}\label{rem.products_coproducts}
@@ -440,7 +440,7 @@ Each of the categories $\poly$ and $\dir$ has pullbacks, which we denote using `
 	D=\sum_{i=1}^{D(0)}D\times_{D(0)}`i'.
 \]
 \begin{remark}
- By a result of Rosebrugh and Wood \cite{RW:Adjoint.Characterization.Set}, the category of finite sets is characterized amongst locally finite categories by the existence of the five left adjoints to its Yoneda embedding $k \mapsto y^k\colon \finset \to \finset^{\finset\op}$. The adjoint sextuple displayed in \eqref{eqn.adjoints_galore} is just the observation that these six functors land in the subcategory $\dir$.
+ By a result of Rosebrugh and Wood \cite{RW:Adjoint.Characterization.Set}, the category of finite sets is characterized amongst locally finite categories by the existence of the five left adjoints to its Yoneda embedding $k \mapsto y^k\colon \finset \to \finset^{\finset\op}$. The adjoint sextuple displayed in \eqref{eqn.adjoints_galore} is just the observation that these six functors restrict to the subcategory $\dir$.
 \end{remark}
 
 \begin{remark}
@@ -565,11 +565,11 @@ t'\ar[ul, phantom, very near end, "\lrcorner"]
 }
 \label{fig.bund_cont_maps}
 \end{figure}
-Define $\bun$ (resp.\ $\cont$) to be the category for which an object is a function between finite sets and a morphism is a bundle morphism (resp.\ container morphism).
+Define $\bun$ (resp.\ $\cont$) to be the category for which an object is a function between finite sets and a morphism is a bundle morphism (resp.\ container morphism). Note that $\bun$ is the Grothendieck construction of the self-indexing $\finset_{/(-)} : \finset\op \to \smcat$, while $\cont$ is the Grothendieck construction of its point-wise opposite $(\finset_{(-)}\op : \finset\op \to \smcat$.
 \end{definition}
 
 \begin{remark}\label{rem.dir_fin2}
-It is easy to check that $\bun\cong\finset^2$ is the category of morphisms and commuting squares in $\finset$. Next we show that $\bun\cong\dir$ is also equivalent to the category of Dirichlet functors from \cref{def.poly_dir}.
+It is easy to check that $\bun\cong\finset^{\to}$ is the category of morphisms and commuting squares in $\finset$. Next we show that $\bun\cong\dir$ is also equivalent to the category of Dirichlet functors from \cref{def.poly_dir}.
 
 The reader familiar with basic algebraic geometry will see an analogy between morphisms in $\cont$ and homomorphisms of ringed spaces. The name \emph{container} comes from the work of Abbot, Altenkirch, and Ghani \cites{AAG:Containers.In.Proceedings}{AAG:Containers}{A:Containers.Thesis} (see Remark 2.18 in \cite{GK:Polynomial.Functors} for a discussion of the precise relationship between the notion of container and the notion of polynomial and polynomial functor).
 \end{remark}
@@ -610,11 +610,11 @@ and then that $P_{\pi+\pi'}=P_\pi+P_{\pi'}$ and $D_{\pi+\pi'}=D_\pi+D_{\pi'}$; s
 $\dir$ is an elementary topos.
 \end{corollary}
 \begin{proof}
-For any finite category $C$, the functor category $\finset^C$ is an elementary topos. The result now follows from \cref{rem.dir_fin2,thm.equivs}.
+For any finite category $C$, the functor category $\finset^C$ is an elementary topos. The result now follows from \cref{rem.dir_fin2,thm.equivs}, noting that $\dir \cong \finset^{\to}$.
 \end{proof}
 
 \chapter{Future work}
-The categories $\dir$ and $\poly$ interact via the Dirichlet transform. For example, the product structure of each defines a distributive monoidal structure on the other. In future work we explore this interaction, as well as applications to the theory of open discrete dynamical systems.
+The categories $\dir$ and $\poly$ interact via the Dirichlet transform. For example, the product structure of each defines a distributive monoidal structure on the other. In future work we explore this interaction, as well as applications to the theory of open discrete dynamical systems, also known as deterministic automata.
 
 %\chapter{The $\poly-\dir$ double category $\ff$}
 %
