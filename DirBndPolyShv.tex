@@ -40,7 +40,7 @@ citecolor=orange!50!black, urlcolor=orange!50!black, pdfencoding=unicode]{hyperr
   \newcommand{\creflastconjunction}{, and\nobreakspace} % serial comma
 
 % biblatex %
-  \addbibresource{Library20180913.bib} 
+  \addbibresource{refs.bib} 
 
 % makeidx %
   \makeindex 
@@ -282,7 +282,7 @@ Just as the polynomial functors are the copresheaves that can be written as sums
 %We also show that there is a double category, useful in applications, whose vertical category is isomorphic to $\poly$ and whose horizontal category is isomorphic to $\dir$.
 \end{abstract}
 
-Polynomials $P(\yon)$ and finite Dirchlet series $D(\yon)$ in one variable $\cat{y}$, with natural number coefficients $a_i\in\nn$, are respectively functions of the form
+Polynomials $P(\yon)$ and finite Dirichlet series $D(\yon)$ in one variable $\cat{y}$, with natural number coefficients $a_i\in\nn$, are respectively functions of the form
 \begin{equation}\label{eqn.poly_dir_simple}
 \begin{aligned}
   P(\yon)&=a_n\yon^n+\cdots+a_2\yon^2+a_1\yon^1+a_0\yon^0,\\
@@ -349,7 +349,7 @@ The set $P(1)$ (resp.\ the set $D(0)$) has particular importance; it is the set 
 of the zero-content terms into the set of all pure-exponential terms.
 
 \paragraph{Polynomial and Dirichlet functors.}
-A \emph{polynomial functor} \cite{GambinoKock} is a functor $P\colon\finset\to\finset$ that can be expressed as a sum of co-representable functors. Similarly, we define a \emph{Dirichlet functor} to be a functor $D\colon\finset\op\to\finset$ that can be expressed as a sum of representable presheaves (contravariant functors):
+A \emph{polynomial functor} \cite{GK:Polynomial.Functors} is a functor $P\colon\finset\to\finset$ that can be expressed as a sum of co-representable functors. Similarly, we define a \emph{Dirichlet functor} to be a functor $D\colon\finset\op\to\finset$ that can be expressed as a sum of representable presheaves (contravariant functors):
 \begin{equation}\label{eqn.finite_sum}
   P=\sum_{i=1}^{P(1)}\yon^{p_i}
   \qqand
@@ -436,6 +436,10 @@ Each of the categories $\poly$ and $\dir$ has pullbacks, which we denote using `
   \qqand
 	D=\sum_{i=1}^{D(0)}D\times_{D(0)}`i'.
 \]
+\begin{remark}
+ By a result of Rosebrugh and Wood \cite{RW:Adjoint.Characterization.Set}, the category of finite sets is characterized amongst locally finite categories by the existence of the five left adjoints to its Yoneda embedding $k \mapsto y^k : \finset \to \finset^{\finset\op}$. The adjoint sextuple between $\finset$ and $\dir$ displayed above is the restriction of these six functors to $\dir$.
+\end{remark}
+
 \begin{remark}
 The Yoneda embedding for $\poly$ also has a left adjoint given by \emph{global sections}
 \[
@@ -564,7 +568,7 @@ Define $\bun$ (resp.\ $\cont$) to be the category for which an object is a funct
 \begin{remark}\label{rem.dir_fin2}
 It is easy to check that $\bun\cong\finset^2$ is the category of morphisms and commuting squares in $\finset$. Next we show that $\bun\cong\dir$ is also equivalent to the category of Dirichlet functors from \cref{def.poly_dir}.
 
-The reader familiar with basic algebraic geometry will see an analogy between morphisms in $\cont$ and homomorphisms of ringed spaces. The name \emph{container} comes from computer science; see \cite{**}.
+The reader familiar with basic algebraic geometry will see an analogy between morphisms in $\cont$ and homomorphisms of ringed spaces. The name \emph{container} comes from the work of Abbot, Altenkirch, and Ghani \cites{AAG:Containers.In.Proceedings}{AAG:Containers}{A:Containers.Thesis} (see Remark 2.18 in \cite{GK:Polynomial.Functors} for a discussion of the precise relationship between the notion of container and the notion of polynomial and polynomial functor).
 \end{remark}
 
 \begin{theorem}\label{thm.equivs}
@@ -687,5 +691,6 @@ For any finite category $C$, the functor category $\finset^C$ is an elementary t
 %product -- the difference between the Cauchy generating functor and the
 %Dirichlet generating functor is that the latter is contravariant.
 
+\printbibliography
 
 \end{document}
