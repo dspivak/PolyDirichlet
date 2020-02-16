@@ -440,7 +440,7 @@ Each of the categories $\poly$ and $\dir$ has pullbacks, which we denote using `
 	D=\sum_{i=1}^{D(0)}D\times_{D(0)}`i'.
 \]
 \begin{remark}
- By a result of Rosebrugh and Wood \cite{RW:Adjoint.Characterization.Set}, the category of finite sets is characterized amongst locally finite categories by the existence of the five left adjoints to its Yoneda embedding $k \mapsto y^k : \finset \to \finset^{\finset\op}$. The adjoint sextuple between $\finset$ and $\dir$ displayed above is the restriction of these six functors to $\dir$.
+ By a result of Rosebrugh and Wood \cite{RW:Adjoint.Characterization.Set}, the category of finite sets is characterized amongst locally finite categories by the existence of the five left adjoints to its Yoneda embedding $k \mapsto y^k\colon \finset \to \finset^{\finset\op}$. The adjoint sextuple displayed in \eqref{eqn.adjoints_galore} is just the observation that these six functors land in the subcategory $\dir$.
 \end{remark}
 
 \begin{remark}
@@ -597,7 +597,7 @@ For any finite set $X$, consider the unique map $X!\colon X\to 1$. Applying $P_-
   \sum_{i=1}^{t}(k_i)^X\cong
   \bun(X!, \pi).
 \end{gather*}
-In both lines, the first isomorphism is the Yoneda lemma and the second is a computation using \cref{def.sheaves_bundles} (see \cref{fig.bund_cont_maps}). Thus we define $P_-$ on morphisms by sending $f\colon\pi\to\pi'$ in $\cont$ to the natural transformation with $X$-component $\cont(X!,f)\colon\cont(X!,\pi)\to\cont(X!,\pi')$, which is clearly natural in $X$. We define $D_-$ on morphisms similarly: for $f$ in $\bun$, use the natural transformation $\bun(-!,f)$.
+In both lines, the first isomorphism is the Yoneda lemma and the second is a computation using \cref{def.sheaves_bundles} (see \cref{fig.bund_cont_maps}). Thus we define $P_-$ on morphisms by sending $f\colon\pi\to\pi'$ in $\cont$ to the ``compose-with-$f$'' natural transformation, i.e.\ having $X$-component $\cont(X!,f)\colon\cont(X!,\pi)\to\cont(X!,\pi')$, which is clearly natural in $X$. We define $D_-$ on morphisms similarly: for $f$ in $\bun$, use the natural transformation $\bun(-!,f)$.
 
 By definition, every object in $\poly$ and $\dir$ is a coproduct of representables, so to complete the proof one first checks that coproducts in $\cont$ and $\bun$ are taken pointwise:
 \[
@@ -614,8 +614,7 @@ For any finite category $C$, the functor category $\finset^C$ is an elementary t
 \end{proof}
 
 \chapter{Future work}
-
-$\dir$ and $\poly$ working together in applications to mode-dependent networks of discrete dynamical systems?
+The categories $\dir$ and $\poly$ interact via the Dirichlet transform. For example, the product structure of each defines a distributive monoidal structure on the other. In future work we explore this interaction, as well as applications to the theory of open discrete dynamical systems.
 
 %\chapter{The $\poly-\dir$ double category $\ff$}
 %
