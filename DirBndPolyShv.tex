@@ -298,16 +298,13 @@ While we will not belabor the point, our main goal is to make it clear that one 
 \chapter{The categories $\poly$ and $\dir$}
 Recall that a \emph{co-representable functor} $\finset\to\finset$ is one of the form $\finset(k, -)$ for a finite set
 \[k=\{`1', `2',\ldots,`k'\}.\]
-We denote this functor by $\yon^k$ and say it is \emph{represented by} $k\in\finset$. Similarly, a \emph{(contra-) representable functor} $\finset\op\to\finset$ is contravariant functor of the form $\finset(-,k)$; we denote this functor by $k^\yon$.
-\begin{figure}
+We denote this functor by $\yon^k$ and say it is \emph{represented by} $k\in\finset$. Similarly, a \emph{(contra-) representable functor} $\finset\op\to\finset$ is contravariant functor of the form $\finset(-,k)$; we denote this functor by $k^\yon$. The functors $\yon^-$ and $-^\yon$ are the contravariant and covariant Yoneda embeddings,
 \[
   \yon^k \coloneqq \finset(k,-)
   \qqand
   k^\yon\coloneqq\finset(-,k).
 \]
-  \caption{The pure-power polynomial $\yon^k$ and the pure-exponential Dirichlet series $k^\yon$ are representable functors in $\poly$ and $\dir$ for any finite set $k\in\finset$.}
-\end{figure}
-The functors $\yon^-$ and $-^\yon$ are the contravariant and covariant Yoneda embeddings. For example $\yon^3(2)\cong8$ and $3^\yon(2)\cong9$.
+For example $\yon^3(2)\cong8$ and $3^\yon(2)\cong9$.
 
 Note that the functor $0^\yon\not\cong 0$ is not the initial object in $\dir$; it is given by
 \[
