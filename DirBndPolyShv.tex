@@ -86,28 +86,28 @@ citecolor=orange!50!black, urlcolor=orange!50!black, pdfencoding=unicode]{hyperr
 
 % amsthm %
   \theoremstyle{theorem}
-  \newtheorem{theorem}[equation]{Theorem}
-  \newtheorem{proposition}[equation]{Proposition}
-  \newtheorem{corollary}[equation]{Corollary}
-  \newtheorem{lemma}[equation]{Lemma}
+  \newtheorem{theorem}[section]{Theorem}
+  \newtheorem{proposition}[section]{Proposition}
+  \newtheorem{corollary}[section]{Corollary}
+  \newtheorem{lemma}[section]{Lemma}
   
   \theoremstyle{definition}
-  \newtheorem{definition}[equation]{Definition}
-  \newtheorem{notation}[equation]{Notation}
+  \newtheorem{definition}[section]{Definition}
+  \newtheorem{notation}[section]{Notation}
   \newtheorem{axiom}{Axiom}
   \newtheorem*{axiom*}{Axiom}
   
   \theoremstyle{remark}
-  \newtheorem{example}[equation]{Example}
-  \newtheorem{remark}[equation]{Remark}
-  \newtheorem{warning}[equation]{Warning}
+  \newtheorem{example}[section]{Example}
+  \newtheorem{remark}[section]{Remark}
+  \newtheorem{warning}[section]{Warning}
 %  \newtheorem{exercise}[equation]{Exercise}
 
 % Adjunctions
 \newcommand{\adj}[5][30pt]{%[size] Cat L, Left, Right, Cat R.
 \begin{tikzcd}[ampersand replacement=\&, column sep=#1]
   #2\ar[r, shift left=6pt, "#3"]
-    \ar[l, phantom, "\Rightarrow"]\&
+    \ar[l, phantom, "\scriptstyle\bot"]\&
   #5\ar[l, shift left=6pt, "#4"]
 \end{tikzcd}
 }
@@ -116,7 +116,7 @@ citecolor=orange!50!black, urlcolor=orange!50!black, pdfencoding=unicode]{hyperr
 \begin{tikzcd}[ampersand replacement=\&, column sep=#1]
   #2\ar[r, shift left=6pt, "#3"]\&
   #5\ar[l, shift left=6pt, "#4"]
-  \ar[l, phantom, "\Leftarrow"]
+  \ar[l, phantom, "\scriptstyle\top"]
 \end{tikzcd}
 }
 
@@ -275,7 +275,7 @@ replacement=\&]{}\ar[r,tick]\&{}\end{tikzcd}}
 
 \maketitle
 \begin{abstract}
-One can think of power series or polynomials in one variable, such as $2\yon^3+\yon+5$, as functors from the category $\smset$ of sets to itself; these are known as polynomial functors. Denote by $\poly_\smset$ the category of polynomial functors on $\smset$ and natural transformations between them. The constants $0,1$ and operations $+,\times$ are the initial and terminal objects and the coproduct and product in $\poly_\smset$. 
+One can think of power series or polynomials in one variable, such as $P(\yon)=2\yon^3+\yon+5$, as functors from the category $\smset$ of sets to itself; these are known as polynomial functors. Denote by $\poly_\smset$ the category of polynomial functors on $\smset$ and natural transformations between them. The constants $0,1$ and operations $+,\times$ one sees in $P(\yon)$ are actually the initial and terminal objects and the coproduct and product in $\poly_\smset$. 
 
 Just as the polynomial functors are the copresheaves that can be written as sums of representables, one can express any Dirichlet series, e.g.\ $\sum_{n=0}^\infty n^\yon$, as a coproduct of representable presheaves. Note that it is common to omit the $n=0$ term $0^\yon$, as it is ``just 0'', but it seems to us that this omission drops important category-theoretic content. Indeed, the category $\dir_\smset$ of Dirichlet functors has very nice formal properties---e.g.\ it is an elementary topos---so we may take seriously the fact that the object $0^\yon$ is the representable functor on the empty set and decidedly not $0$.
 
@@ -295,7 +295,8 @@ The first thing we should emphasize is that algebraic expressions such as those 
 
 While we will not belabor the point, our main goal is to make it clear that one should not generally drop the $a_0\cdot0^\yon$ term from a Dirichlet series as in \cref{eqn.poly_dir_simple}. To make the case, we will begin by defining the categories $\poly$ and $\dir$. These categories have excellent formal properties; for example we will show in \cref{cor.dir_topos} that $\dir$ is an elementary topos. In some sense the ``high status'' of the category $\dir$ is supposed to serve as evidence that identifying $0^\yon$ with the initial object $0$ could lead to perverse outcomes and thus may be fruitfully reconsidered.
 
-\chapter{The categories $\poly$ and $\dir$}
+\chapter{Polynomial and Dirichlet functors}
+
 Recall that a \emph{co-representable functor} $\finset\to\finset$ is one of the form $\finset(k, -)$ for a finite set
 \[k=\{`1', `2',\ldots,`k'\}.\]
 We denote this functor by $\yon^k$ and say it is \emph{represented by} $k\in\finset$. Similarly, a \emph{(contra-) representable functor} $\finset\op\to\finset$ is contravariant functor of the form $\finset(-,k)$; we denote this functor by $k^\yon$. The functors $\yon^-$ and $-^\yon$ are the contravariant and covariant Yoneda embeddings,
@@ -348,7 +349,7 @@ The set $P(1)$ (resp.\ the set $D(0)$) has particular importance; it is the set 
 \end{equation}
 of the zero-content terms into the set of all pure-exponential terms.
 
-\paragraph{Polynomial and Dirichlet functors.}
+\begin{definition}
 A \emph{polynomial functor} \cite{GK:Polynomial.Functors} is a functor $P\colon\finset\to\finset$ that can be expressed as a sum of co-representable functors. Similarly, we define a \emph{Dirichlet functor} to be a functor $D\colon\finset\op\to\finset$ that can be expressed as a sum of representable presheaves (contravariant functors):
 \begin{equation}\label{eqn.finite_sum}
   P=\sum_{i=1}^{P(1)}\yon^{p_i}
@@ -356,9 +357,11 @@ A \emph{polynomial functor} \cite{GK:Polynomial.Functors} is a functor $P\colon\
   D=\sum_{i=1}^{D(0)}(d_i)^\yon.
 \end{equation}
 That is, $P(X)=\sum_{i=1}^{P(1)}\finset(p_i,X)$ and $D(X)=\sum_{i=1}^{D(0)}\finset(X,d_i)$ as functors applied to $X\in\finset$.
+\end{definition}
+
+\chapter{The categories $\poly$ and $\dir$}
 
 For any small category $C$, let $\finset^C$ denote the category whose objects are the functors $C\to\finset$ and whose morphisms are the natural transformations between them.
-
 \begin{definition}\label{def.poly_dir}
 The \emph{category of polynomial functors}, denoted $\poly$, is the full subcategory of $\finset^\finset$ spanned by sums $P$ of representable functors. The \emph{category of Dirichlet functors}, denoted $\dir$, is the full subcategory of $\finset^{(\finset\op)}$ spanned by the sums $D$ of representable presheaves.
 \end{definition}
@@ -392,9 +395,9 @@ There is an adjoint quadruple and adjoint sextuple as follows, labeled by where 
   \poly
   	\ar[l, shift right=21pt, "P(0)"']
   	\ar[l, shift right=-7pt, "P(1)" description]
-	\ar[l, phantom, "\Leftarrow"]
-	\ar[l, phantom, shift left=14pt, "\Rightarrow"]
-	\ar[l, phantom, shift right=14pt, "\Rightarrow"]
+	\ar[l, phantom, "\scriptstyle\top"]
+	\ar[l, phantom, shift left=14pt, "\scriptstyle\top"]
+	\ar[l, phantom, shift right=14pt, "\scriptstyle\top"]
 \end{tikzcd}
 \hspace{1in}
 \begin{tikzcd}[column sep=60pt]
@@ -406,14 +409,14 @@ There is an adjoint quadruple and adjoint sextuple as follows, labeled by where 
   	\ar[l, shift right=21pt, "\zero{D}"']
   	\ar[l, shift right=-7pt, "D(0)" description]
 		\ar[l, shift right=-35pt, "D(1)" description]
-	\ar[l, phantom, shift right=14pt, "\Leftarrow"]
-	\ar[l, phantom, shift right=0pt, "\Rightarrow"]
-	\ar[l, phantom, shift right=-14pt, "\Leftarrow"]
-	\ar[l, phantom, shift right=-28pt, "\Rightarrow"]
-	\ar[l, phantom, shift right=-42pt, "\Leftarrow"]
+	\ar[l, phantom, shift right=14pt, "\scriptstyle\top"]
+	\ar[l, phantom, shift right=0pt, "\scriptstyle\top"]
+	\ar[l, phantom, shift right=-14pt, "\scriptstyle\top"]
+	\ar[l, phantom, shift right=-28pt, "\scriptstyle\top"]
+	\ar[l, phantom, shift right=-42pt, "\scriptstyle\top"]
 \end{tikzcd}
 \end{equation}
-Here each double arrow indicates an adjunction $(L,R)$ by pointing in the direction of both its unit and its counit. This is the same as the direction of the left adjoint; e.g.\ $n\mdot0^\yon$ is right adjoint to $\zero{D}$ and left adjoint to $D(0)$. All six of the displayed functors out of $\finset$ are fully faithful.
+All six of the displayed functors out of $\finset$ are fully faithful.
 
 The inclusion $\zero{D}\to D(0)$ from \cref{eqn.zerocontent} is natural and induces three other natural transformations on $\finset$ and $\dir$; in \cref{prop.poly_function} we will have occasion to use the one labeled $\pi_D$:
 \begin{equation}\label{eqn.obtain_pi}
@@ -448,7 +451,7 @@ The Yoneda embedding for $\poly$ also has a left adjoint given by \emph{global s
 though it appears to be less important than the analogue $D\mapsto D(1)$ for $\dir$.
 \end{remark}
 
-\paragraph{Dirichlet transform.}
+\chapter{$\poly$ and $\dir$ in terms of bundles}
 There is a bijection between the respective object-sets of these two categories
 \begin{align}
 \nonumber
@@ -609,6 +612,8 @@ $\dir$ is an elementary topos.
 \begin{proof}
 For any finite category $C$, the functor category $\finset^C$ is an elementary topos. The result now follows from \cref{rem.dir_fin2,thm.equivs}.
 \end{proof}
+
+\chapter{Future work}
 
 %\chapter{The $\poly-\dir$ double category $\ff$}
 %
