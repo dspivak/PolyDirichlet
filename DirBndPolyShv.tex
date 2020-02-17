@@ -266,7 +266,7 @@ replacement=\&]{}\ar[r,tick]\&{}\end{tikzcd}}
 
 \begin{document}
 
-\title{DRAFT\\~\\~\\Terms of the form $0^\yon$ in Dirichlet series\\are not zero}
+\title{DRAFT\\~\\~\\Dirichlet Polynomials form a Topos}
 
 \author{David I.\ Spivak%
 \thanks{Spivak was supported by Honeywell Inc.\ as well as AFOSR grants FA9550-17-1-0058 and FA9550-19-1-0113.}
@@ -277,7 +277,7 @@ replacement=\&]{}\ar[r,tick]\&{}\end{tikzcd}}
 \begin{abstract}
 One can think of power series or polynomials in one variable, such as $P(\yon)=2\yon^3+\yon+5$, as functors from the category $\smset$ of sets to itself; these are known as polynomial functors. Denote by $\poly_\smset$ the category of polynomial functors on $\smset$ and natural transformations between them. The constants $0,1$ and operations $+,\times$ one sees in $P(\yon)$ are actually the initial and terminal objects and the coproduct and product in $\poly_\smset$. 
 
-Just as the polynomial functors are the copresheaves that can be written as sums of representables, one can express any Dirichlet series, e.g.\ $\sum_{n=0}^\infty n^\yon$, as a coproduct of representable presheaves. Note that it is common to omit the $n=0$ term $0^\yon$, as it is ``just 0'', but it seems to us that this omission drops important category-theoretic content. Indeed, the category $\dir_\smset$ of Dirichlet functors has very nice formal properties---e.g.\ it is an elementary topos---so we may take seriously the fact that the object $0^\yon$ is the representable functor on the empty set and decidedly not $0$.
+Just as the polynomial functors are the copresheaves that can be written as sums of representables, one can express any Dirichlet series, e.g.\ $\sum_{n=0}^\infty n^\yon$, as a coproduct of representable presheaves. A Dirichlet polynomial is a finite Dirichlet series, that is, a finite sum of representables $n^{\yon}$. Note that it is common to omit the $n=0$ term $0^\yon$, as it is ``just 0'', but it seems to us that this omission drops important category-theoretic content. Indeed, the category $\dir_\smset$ of Dirichlet polynomials has very nice formal properties: it is an elementary topos.
 
 %We also show that there is a double category, useful in applications, whose vertical category is isomorphic to $\poly$ and whose horizontal category is isomorphic to $\dir$.
 \end{abstract}
@@ -293,7 +293,7 @@ There are of course infinite versions of the above, but in this note we work ent
 
 The first thing we should emphasize is that algebraic expressions such as those in \cref{eqn.poly_dir_simple} are in fact \emph{objects in a category}. We will explain the morphisms later, but for now we note that $\yon^2=\yon\times\yon$ is a product and $2\yon=\yon+\yon$ is a coproduct in that category. The operators---in both the polynomial and the Dirichlet case---are not just algebraic, they are category-theoretic.
 
-While we will not belabor the point, our main goal is to make it clear that one should not generally drop the $a_0\cdot0^\yon$ term from a Dirichlet series as in \cref{eqn.poly_dir_simple}. To make the case, we will begin by defining the categories $\poly$ and $\dir$. These categories have excellent formal properties; for example we will show in \cref{cor.dir_topos} that $\dir$ is an elementary topos. In some sense the ``high status'' of the category $\dir$ is supposed to serve as evidence that identifying $0^\yon$ with the initial object $0$ could lead to perverse outcomes and thus may be fruitfully reconsidered.
+% While we will not belabor the point, our main goal is to make it clear that one should not generally drop the $a_0\cdot0^\yon$ term from a Dirichlet series as in \cref{eqn.poly_dir_simple}. To make the case, we will begin by defining the categories $\poly$ and $\dir$. These categories have excellent formal properties; for example we will show in \cref{cor.dir_topos} that $\dir$ is an elementary topos. In some sense the ``high status'' of the category $\dir$ is supposed to serve as evidence that identifying $0^\yon$ with the initial object $0$ could lead to perverse outcomes and thus may be fruitfully reconsidered.
 
 \chapter{Polynomial and Dirichlet functors}
 
