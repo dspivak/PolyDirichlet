@@ -670,32 +670,43 @@ The categories $\dir$ and $\poly$ interact via the Dirichlet transform. For exam
 %There is a thin double category whose objects are functions $\pi\colon s\to t$, whose vertical category is $\poly\cong\cont$, whose horizontal category is $\dir\cong\bun$, and for which 2-cells are defined as above.
 %\end{theorem}
 
+\iffalse
+\section{Analytic Functors and Dirichlet Series}
 
+Given a combinatorial species $A : \finset^{\cong} \to \smset$, its
+\emph{Cauchy generating functor} $X \mapsto \sum_{n : \finset} A_n \times X^n/n!$
+is the left Kan extension of $A$ along the inclusion $\finset^{\cong}
+\hookrightarrow \smset$, and the \emph{Dirichlet generating functor} $S \mapsto
+\sum_{n : \finset} A_n n^S/n!$ is the left Kan extension of $A$ along the
+inclusion $\finset^{\cong} \hookrightarrow \smset^{\text{op}}$. These give
+functors
+\[
+  \begin{tikzcd}
+    & \textbf{CombSpecies} \arrow[dr, "|\cdot|_{\dir}"] \arrow[dl, "|\cdot|_{\poly}"']& \\
+    \poly & & \dir
+  \end{tikzcd}
+\]
 
-%Given a combinatorial species $A : \textbf{Fin}^{\cong} \to \smset$, its
-%\emph{Cauchy generating functor} $X \mapsto \sum_{n : \textbf{Fin}} A_n \times X^n/n!$
-%is the left Kan extension of $A$ along the inclusion $\textbf{Fin}^{\cong}
-%\hookrightarrow \smset$, and the \emph{Dirichlet generating functor} $S \mapsto
-%\sum_{n : \textbf{Fin}} A_n n^S/n!$ is the left Kan extension of $A$ along the
-%inclusion $\textbf{Fin}^{\cong} \hookrightarrow \smset^{\text{op}}$. These give
-%functors
-%\[
-%  \begin{tikzcd}
-%    & \textbf{CombSpecies} \arrow[dr, "|\cdot|_{\dir}"] \arrow[dl, "|\cdot|_{\poly}"']& \\
-%    \poly & & \dir
-%  \end{tikzcd}
-%\]
-%
-%The Cauchy product $\otimes_{\poly}$ of combinatorial species is given by Day
-%convolution from $+ : \textbf{Fin}^{\cong} \times \textbf{Fin}^{\cong}$, and
-%$|\cdot|_{\poly}$ sends $\otimes_{\poly}$ to the cartesian product. On the
-%other hand, the Dirichlet product $\otimes_{\dir}$ of combinatorial species is
-%given by Day convolution from $\times : \textbf{Fin}^{\cong} \times
-%\textbf{Fin}^{\cong}$, and this is sent by $|\cdot|_{\dir}$ to the cartesian
-%product. This gives us an interpretation of the generating \emph{functors}
-%associated to a species in which sum is coproduct and product is cartesian
-%product -- the difference between the Cauchy generating functor and the
-%Dirichlet generating functor is that the latter is contravariant.
+The Cauchy product $\otimes_{\poly}$ of combinatorial species is given by Day
+convolution from $+ : \finset^{\cong} \times \finset^{\cong}$, and
+$|\cdot|_{\poly}$ sends $\otimes_{\poly}$ to the cartesian product in $\poly$. On the
+other hand, the Dirichlet product $\otimes_{\dir}$ of combinatorial species is
+given by Day convolution from $\times : \finset^{\cong} \times
+\finset^{\cong}$, and this is sent by $|\cdot|_{\dir}$ to the cartesian
+product in $\dir$. This gives us an interpretation of the generating \emph{functors}
+associated to a species in which sum is coproduct and product is cartesian
+product -- the difference between the Cauchy generating functor and the
+Dirichlet generating functor is that the latter is contravariant.
+
+Dirichlet series also form a topos.
+\begin{theorem}
+The category $\dir_{\infty}$ of \emph{Dirichlet series} -- functors $\finset\op \to \smset$ which are sums of representables -- \emph{almost} form an elementary topos.
+\end{theorem}
+\begin{proof}
+As for Diriclet polynomials, for any Dirichlet series $D$ we have a map $\pi_D : D(1) \to D(0)$; however, $D(1)$ and $D(0)$ are no longer finite sets. It is the case, however, that $\pi_D$ has finite fibers. This gives us a functor $\dir_{\infty} \to \bun_f$ from Dirichlet series to the full subcategory $\bun_f \hookrightarrow \smset^{\to}$ of the arrow category of $\smset$ consisting of those maps with finite fibers. We will show that this map is an equivalence, and that $\bun_f$ is an \emph{almost} elementary topos.
+\end{proof}
+\endif
+
 
 \printbibliography
 
