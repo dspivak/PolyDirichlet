@@ -1,7 +1,7 @@
 \documentclass[11pt, article, one side]{memoir}
 
 \settrims{0pt}{0pt} % page and stock same size
-\settypeblocksize{*}{34.5pc}{*} % {height}{width}{ratio}
+\settypeblocksize{*}{33.5pc}{*} % {height}{width}{ratio}
 \setlrmargins{*}{*}{1} % {spine}{edge}{ratio}
 \setulmarginsandblock{1in}{1in}{*} % height of typeblock computed
 \setheadfoot{\onelineskip}{2\onelineskip} % {headheight}{footskip}
@@ -291,7 +291,7 @@ Polynomials $P(\yon)$ and finite Dirichlet series $D(\yon)$ in one variable $\ca
 \end{equation}
 There are of course infinite versions of the above, but in this note we work entirely in the category $\finset$ of finite sets, to keep things as simple as possible. Similar considerations hold with little extra work for infinite Dirichlet series or power series, and even more generally, by replacing $\finset$ with $\smset$.
 
-The first thing we should emphasize is that algebraic expressions such as those in \cref{eqn.poly_dir_simple} are in fact \emph{objects in a category}. We will explain the morphisms later, but for now we note that $\yon^2=\yon\times\yon$ is a product and $2\yon=\yon+\yon$ is a coproduct in that category. The operators---in both the polynomial and the Dirichlet case---are not just algebraic, they are category-theoretic.
+The first thing we should emphasize is that algebraic expressions such as those in \cref{eqn.poly_dir_simple} are in fact \emph{objects in a category}, in fact two categories $\poly$ and $\dir$. We will explain the morphisms later, but for now we note that in $\poly$, $\yon^2=\yon\times\yon$ is a product and $2\yon=\yon+\yon$ is a coproduct, and similarly for $\dir$. The operators---in both the polynomial and the Dirichlet case---are not just algebraic, they are category-theoretic.
 
 % While we will not belabor the point, our main goal is to make it clear that one should not generally drop the $a_0\cdot0^\yon$ term from a Dirichlet series as in \cref{eqn.poly_dir_simple}. To make the case, we will begin by defining the categories $\poly$ and $\dir$. These categories have excellent formal properties; for example we will show in \cref{cor.dir_topos} that $\dir$ is an elementary topos. In some sense the ``high status'' of the category $\dir$ is supposed to serve as evidence that identifying $0^\yon$ with the initial object $0$ could lead to perverse outcomes and thus may be fruitfully reconsidered.
 
@@ -369,7 +369,7 @@ The \emph{category of polynomial functors}, denoted $\poly$, is the full subcate
 While we will not pursue it here, one can take $\poly_\smset$ to be the full subcategory of functors $\smset\to\smset$ spanned by small coproducts of representables, and similarly for $\dir_\smset$.
 
 \begin{lemma}
-The number of polynomial maps $P\to Q$ and Dirichlet maps $D\to E$ are
+The number of polynomial maps $P\to Q$ and Dirichlet maps $D\to E$ are given by the following formulas:
 \[
   [P, Q]\coloneqq\prod_{i\in P(1)}Q(p_i)
   \qqand
@@ -565,8 +565,10 @@ t'\ar[ul, phantom, very near end, "\lrcorner"]
 }
 \label{fig.bund_cont_maps}
 \end{figure}
-Define $\bun$ (resp.\ $\cont$) to be the category for which an object is a function between finite sets and a morphism is a bundle morphism (resp.\ container morphism). Note that $\bun$ is the Grothendieck construction of the self-indexing $\finset_{/(-)} : \finset\op \to \smcat$, while $\cont$ is the Grothendieck construction of its point-wise opposite $(\finset_{(-)}\op : \finset\op \to \smcat$.
+Define $\bun$ (resp.\ $\cont$) to be the category for which an object is a function between finite sets and a morphism is a bundle morphism (resp.\ container morphism); see \cref{fig.bund_cont_maps}.
 \end{definition}
+
+One may note that $\bun$ is the Grothendieck construction of the self-indexing $\finset_{/(-)} : \finset\op \to \smcat$, while $\cont$ is the Grothendieck construction of its point-wise opposite $(\finset_{/(-)})\op : \finset\op \to \smcat$.
 
 \begin{remark}\label{rem.dir_fin2}
 By the universal property of pullbacks, $\bun\cong\finset^{\to}$ is equivalent (in fact isomorphic) to the category of morphisms and commuting squares in $\finset$. Next we show that $\bun\cong\dir$ is also equivalent to the category of Dirichlet functors, from \cref{def.poly_dir}.
