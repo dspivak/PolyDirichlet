@@ -525,6 +525,8 @@ Let $\pi\colon s\to t$ and $\pi'\colon s'\to t'$ be functions between finite set
 	\item a \emph{bundle morphism} consists of a pair $(f,f_\sharp)$ where $f\colon t\to t'$ is a function and $f_\sharp\colon \pi\to f^*(\pi')$ is a morphism in the slice category over $t$;
 	\item a \emph{container morphism} consists of a pair $(f,f^\sharp)$ where $f\colon t\to t'$ is a function and $f^\sharp\colon f^*(\pi')\to \pi$ is a morphism in the slice category over $t$.
 \end{itemize}
+
+We say a bundle morphism $(f, f_\sharp)$ (resp. a container morphism $(f, f^{\sharp})$) is \emph{cartesian} if $f_{\sharp}$ (resp. $f^{\sharp})$ is an isomorphism.
 %\begin{equation}\label{fig.bund_cont_maps}
 %\begin{tabular}{ccc}
 %$(f,f_\sharp)\in\bun(\pi,\pi')$&~\qquad~&
@@ -569,13 +571,15 @@ t'\ar[ul, phantom, very near end, "\lrcorner"]
 }
 \label{fig.bund_cont_maps}
 \end{figure}
-Define $\bun$ (resp.\ $\cont$) to be the category for which an object is a function between finite sets and a morphism is a bundle morphism (resp.\ container morphism); see \cref{fig.bund_cont_maps}.
+Define $\bun$ (resp.\ $\cont$) to be the category for which an object is a function between finite sets and a morphism is a bundle morphism (resp.\ container morphism); see \cref{fig.bund_cont_maps}. Denote by $\bun_{\text{cart}}$ (res. $\cont_{\text{cart}}$) the subcategory of cartesian bundle morphisms.
 \end{definition}
 
 One may note that $\bun$ is the Grothendieck construction of the self-indexing $\finset_{/(-)} : \finset\op \to \smcat$, while $\cont$ is the Grothendieck construction of its point-wise opposite $(\finset_{/(-)})\op : \finset\op \to \smcat$.
 
 \begin{remark}\label{rem.dir_fin2}
-By the universal property of pullbacks, $\bun\cong\finset^{\to}$ is equivalent (in fact isomorphic) to the category of morphisms and commuting squares in $\finset$. Next we show that $\bun\cong\dir$ is also equivalent to the category of Dirichlet functors, from \cref{def.poly_dir}.
+By the universal property of pullbacks, $\bun\simeq\finset^{\to}$ is equivalent (in fact isomorphic) to the category of morphisms and commuting squares in $\finset$. Furthermore, $\bun_{\text{cart}}$ is equivalent to the category of morphisms and pullback squares in $\finset$, and $\bun_{\text{cart}} \simeq \cont_{\text{cart}}$ (as in both cases a cartesian morphism $(f, f_{\sharp}$ or $(f, f^{\sharp})$ is determined by $f$ alone).
+
+Next we show that $\bun\simeq\dir$ is also equivalent to the category of Dirichlet functors, from \cref{def.poly_dir}.
 
  The name \emph{container} comes from the work of Abbot, Altenkirch, and Ghani \cites{AAG:Containers.In.Proceedings}{AAG:Containers}{A:Containers.Thesis} (see Remark 2.18 in \cite{GK:Polynomial.Functors} for a discussion of the precise relationship between the notion of container and the notion of polynomial and polynomial functor).
 \end{remark}
@@ -583,10 +587,11 @@ By the universal property of pullbacks, $\bun\cong\finset^{\to}$ is equivalent (
 \begin{theorem}\label{thm.equivs}
 We have equivalences of categories
 \[
-\poly\cong\cont
+\poly\simeq\cont
 \qqand
-\dir\cong\bun.
+\dir\simeq\bun.
 \]
+This gives an equivalence $\poly_{\text{cart}} \simeq \dir_{\text{cart}}$ of the category of polynomial functors and \emph{cartesian} natural transformations (those whose naturality squares are pullbacks) and the category of Dirichlet functors and cartesian natural transformations.
 \end{theorem}
 \begin{proof}
 The functors $P_-\colon\cont\to\poly$ and $D_-\colon\bun\to\dir$ are defined on each object, i.e.\ function $\pi\colon s\to t$, by the formula $\pi\mapsto P_\pi$ and $\pi\mapsto D_\pi\coloneqq\overline{P_\pi}$ as in \cref{prop.poly_function}. For each $1\leq i\leq t$, denote the fiber of $\pi$ over $i$ by $k_i\coloneqq\pi\inv(i)$.
@@ -610,13 +615,52 @@ By definition, every object in $\poly$ and $\dir$ is a coproduct of representabl
 (\pi\colon s\to t)+(\pi'\colon s'\to t')\cong(\pi+\pi')\colon (s+s')\to (t+t'),
 \]
 and then that $P_{\pi+\pi'}=P_\pi+P_{\pi'}$ and $D_{\pi+\pi'}=D_\pi+D_{\pi'}$; see \cref{rem.products_coproducts}.
+
+It remains to check that the equivalences $\poly \simeq \cont$ and $\dir \simeq \bun$ identify cartesian natural transformations with cartesian morphisms. For polynomial functors, we may refer to Section 2 of \cite{GK:Polynomial.Functors}. We now turn to Dirichlet functors. We first note that a natural transformation $\phi : D \to D'$ between Dirichlet functors is cartesian if and only if the naturality square induced by $! : 0 \to X$
+
+\begin{equation}\label{diagram:nat.square}
+\begin{tikzcd}
+DX \arrow[r, "\phi_X"] \arrow[d, "D!"'] & D'X \arrow[d, "D'!"] \\
+D0 \arrow[r, "\phi_0"] & D'0
+\end{tikzcd}
+\end{equation}
+
+is a pullback for all $X$, by the pullback pasting lemma. Now, the associated bundle morphism $\phi_{!_1}$ associated to $\phi$ is the particular naturality square
+
+\begin{equation}\label{diagram:bundle.morphism}
+\begin{tikzcd}
+D1 \arrow[r, "\phi_1"] \arrow[d, "D!"'] & D'1 \arrow[d, "D'!"] \\
+D0 \arrow[r, "\phi_0"] & D'0
+\end{tikzcd}
+\end{equation}
+
+So, if $\phi$ is cartesian then the associated bundle morphism is. We now assume the associated bundle morphism \cref{diagram:bundle.morphism} is cartesian, and show that $\phi$ is by showing that \cref{diagram:nat.square} is a pullback for all $X$.
+
+Recall that $$DX \cong \bun\left(\begin{tikzcd}[sep=small] X \arrow[d] \\ 1 \end{tikzcd}, \begin{tikzcd}[sep=small] D(1) \arrow[d] \\ D(0) \end{tikzcd} \right) = \bun(X!, D!_1),$$ and the map $D! : DX \to D0$ is equivalent under this isomorphism to the map that projects off the bottom component of a bundle morphism. Therefore, we can equivalently write \cref{diagram:nat.square} as
+\begin{equation}
+    \begin{tikzcd}
+    \bun(X!, D!_1) \arrow[d] \arrow[r, "\phi_{D!_1} \circ -"] & \bun(X!, D'!_!) \arrow[d] \\
+    D0 \arrow[r] & D'0
+    \end{tikzcd}
+\end{equation}
+This will be a pullback if for all $z \in D0$, the induced map on the fibers of the vertical functions in this square over $z$ is bijection. This map is the map
+\[
+\zeta : \left\{ \begin{tikzcd}
+X \arrow[r, dashed] \arrow[d] & D1 \arrow[d] \\
+1 \arrow[r, "z"] & D0
+\end{tikzcd} \right\} \to \left\{\begin{tikzcd}
+X \arrow[r, dashed] \arrow[d] & D'1 \arrow[d] \\
+1 \arrow[r, "\phi_0 z"] & D'0
+\end{tikzcd} \right\}
+\]
+given by post-composition by $\phi_{!_1}$. We have assumed that $\phi_{!_1}$ is a pullback square. The universal property of this pullback then says that the map $\zeta$ is a bijection.
 \end{proof}
 
 \begin{corollary}\label{cor.dir_topos}
 $\dir$ is an elementary topos.
 \end{corollary}
 \begin{proof}
-For any finite category $C$, the functor category $\finset^C$ is an elementary topos. The result now follows from \cref{rem.dir_fin2,thm.equivs}, noting that $\dir \cong \finset^{\to}$.
+For any finite category $C$, the functor category $\finset^C$ is an elementary topos. The result now follows from \cref{rem.dir_fin2,thm.equivs}, noting that $\dir \simeq \finset^{\to}$.
 \end{proof}
 
 As we mentioned in the introduction, this all goes through smoothly when one drops all finiteness conditions. The general topos of Dirichlet functors is the category of (arbitrary) sums of representables $\smset\op \to \smset$, and this is equivalent to the arrow category $\smset^{\to}$ and so is itself a topos.
