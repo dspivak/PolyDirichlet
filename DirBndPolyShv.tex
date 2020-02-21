@@ -289,9 +289,13 @@ Polynomials $P(\yon)$ and finite Dirichlet series $D(\yon)$ in one variable $\ca
   D(\yon)&=a_n n^\yon+\cdots+a_22^\yon+a_11^\yon+a_00^\yon.
 \end{aligned}
 \end{equation}
-There are of course infinite versions of the above, but in this note we work entirely in the category $\finset$ of finite sets, to keep things as simple as possible. Similar considerations hold with little extra work for infinite Dirichlet series or power series, and even more generally, by replacing $\finset$ with $\smset$.
+There are of course infinite versions of the above, but in this note we work entirely in the category $\finset$ of finite sets, to keep things as simple as possible. Similar considerations hold with little extra work for infinite Dirichlet series or power series, and even more generally, by replacing $\finset$ with $\smset$. 
 
-The first thing we should emphasize is that algebraic expressions such as those in \cref{eqn.poly_dir_simple} are in fact \emph{objects in a category}, in fact two categories $\poly$ and $\dir$. We will explain the morphisms later, but for now we note that in $\poly$, $\yon^2=\yon\times\yon$ is a product and $2\yon=\yon+\yon$ is a coproduct, and similarly for $\dir$. The operators---in both the polynomial and the Dirichlet case---are not just algebraic, they are category-theoretic.
+If one allows \emph{countable} sums of functors represented by finite sets, one gets \emph{analytic} functors in the covariant case -- first defined by Joyal in his seminal paper on combinatorial species \cite{J:Combinatorial.Species} -- and \emph{Dirichlet} functors in the contravariant case -- first defined by Baez and Dolan and appearing in Baez's \emph{This Week's Finds} blog \cite{BD:This.Weeks.Finds.300}. 
+
+The first thing we should emphasize is that algebraic expressions such as those in \cref{eqn.poly_dir_simple} are in fact \emph{objects in a category}, in fact two categories $\poly$ and $\dir$. We will explain the morphisms later, but for now we note that in $\poly$, $\yon^2=\yon\times\yon$ is a product and $2\yon=\yon+\yon$ is a coproduct, and similarly for $\dir$. The operators---in both the polynomial and the Dirichlet case---are not just algebraic, they are category-theoretic. Moreover, these categories have a rich structure. The category $\poly$ is well studied (see \cite{GK:Polynomial.Functors}). We will show that $\dir$ is equivalent to the arrow category of finite sets, 
+$$\dir \simeq \finset^{\to},$$
+and in particular that $\dir$ is an elementary topos.
 
 % While we will not belabor the point, our main goal is to make it clear that one should not generally drop the $a_0\cdot0^\yon$ term from a Dirichlet series as in \cref{eqn.poly_dir_simple}. To make the case, we will begin by defining the categories $\poly$ and $\dir$. These categories have excellent formal properties; for example we will show in \cref{cor.dir_topos} that $\dir$ is an elementary topos. In some sense the ``high status'' of the category $\dir$ is supposed to serve as evidence that identifying $0^\yon$ with the initial object $0$ could lead to perverse outcomes and thus may be fruitfully reconsidered.
 
@@ -573,7 +577,7 @@ One may note that $\bun$ is the Grothendieck construction of the self-indexing $
 \begin{remark}\label{rem.dir_fin2}
 By the universal property of pullbacks, $\bun\cong\finset^{\to}$ is equivalent (in fact isomorphic) to the category of morphisms and commuting squares in $\finset$. Next we show that $\bun\cong\dir$ is also equivalent to the category of Dirichlet functors, from \cref{def.poly_dir}.
 
-The reader familiar with basic algebraic geometry will see an analogy between morphisms in $\cont$ and homomorphisms of ringed spaces. The name \emph{container} comes from the work of Abbot, Altenkirch, and Ghani \cites{AAG:Containers.In.Proceedings}{AAG:Containers}{A:Containers.Thesis} (see Remark 2.18 in \cite{GK:Polynomial.Functors} for a discussion of the precise relationship between the notion of container and the notion of polynomial and polynomial functor).
+ The name \emph{container} comes from the work of Abbot, Altenkirch, and Ghani \cites{AAG:Containers.In.Proceedings}{AAG:Containers}{A:Containers.Thesis} (see Remark 2.18 in \cite{GK:Polynomial.Functors} for a discussion of the precise relationship between the notion of container and the notion of polynomial and polynomial functor).
 \end{remark}
 
 \begin{theorem}\label{thm.equivs}
@@ -615,6 +619,7 @@ $\dir$ is an elementary topos.
 For any finite category $C$, the functor category $\finset^C$ is an elementary topos. The result now follows from \cref{rem.dir_fin2,thm.equivs}, noting that $\dir \cong \finset^{\to}$.
 \end{proof}
 
+As we mentioned in the introduction, this all goes through smoothly when one drops all finiteness conditions. The general topos of Dirichlet functors is the category of (arbitrary) sums of representables $\smset\op \to \smset$, and this is equivalent to the arrow category $\smset^{\to}$ and so is itself a topos.
 
 %\chapter{The $\poly-\dir$ double category $\ff$}
 %
