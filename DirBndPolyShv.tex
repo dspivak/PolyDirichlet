@@ -578,7 +578,7 @@ Define $\bun$ (resp.\ $\cont$) to be the category for which an object is a funct
 One may note that $\bun$ is the Grothendieck construction of the self-indexing $\finset_{/(-)} : \finset\op \to \smcat$, while $\cont$ is the Grothendieck construction of its point-wise opposite $(\finset_{/(-)})\op : \finset\op \to \smcat$.
 
 \begin{remark}\label{rem.dir_fin2}
-By the universal property of pullbacks, $\bun\simeq\finset^{\to}$ is equivalent (in fact isomorphic) to the category of morphisms and commuting squares in $\finset$. Furthermore, $\bun_{\text{cart}}$ is equivalent to the category of morphisms and pullback squares in $\finset$, and $\bun_{\text{cart}} \simeq \cont_{\text{cart}}$ (as in both cases a cartesian morphism $(f, f_{\sharp}$ or $(f, f^{\sharp})$ is determined by $f$ alone). Next we show that $\bun\simeq\dir$ is also equivalent to the category of Dirichlet functors, from \cref{def.poly_dir}.
+By the universal property of pullbacks, $\bun\simeq\finset^{\to}$ is equivalent (in fact isomorphic) to the category of morphisms and commuting squares in $\finset$. Furthermore, $\bun_{\text{cart}}$ is equivalent to the category of morphisms and pullback squares in $\finset$, and $\bun_{\text{cart}} \simeq \cont_{\text{cart}}$ (as in both cases a cartesian morphism $(f, f_{\sharp})$ or $(f, f^{\sharp})$ is determined by $f$ alone). Next we show that $\bun\simeq\dir$ is also equivalent to the category of Dirichlet functors, from \cref{def.poly_dir}.
 
  The name \emph{container} comes from the work of Abbot, Altenkirch, and Ghani \cites{AAG:Containers.In.Proceedings}{AAG:Containers}{A:Containers.Thesis} (see Remark 2.18 in \cite{GK:Polynomial.Functors} for a discussion of the precise relationship between the notion of container and the notion of polynomial and polynomial functor).
 \end{remark}
@@ -650,7 +650,7 @@ To complete the proof, suppose that \cref{eqn.cart1} is a pullback, take an arbi
   D'(0)
 \end{tikzcd}
 \]
-We need to show that if the front face is a pullback, then there exists diagonal dotted arrows as shown, making the diagram commute; this is straightforward.
+We can interpret the statement that \cref{eqn.cart2} is a pullback as saying that there are unique dotted arrows making the diagram commute, since $DX \cong \bun(X!,  D0!)$ and similarly for the other corners of the square in \cref{eqn.cart2}. So, we need to show that if the front face is a pullback, then there are unique diagonal dotted arrows as shown, making the diagram commute. This follows quickly from the universal property of the pullback.
 %
 %
 %
