@@ -617,12 +617,12 @@ By definition, every object in $\poly$ and $\dir$ is a coproduct of representabl
 \]
 and then that $P_{\pi+\pi'}=P_\pi+P_{\pi'}$ and $D_{\pi+\pi'}=D_\pi+D_{\pi'}$; see \cref{rem.products_coproducts}.
 
-Now that we have established the equivalences $\poly \simeq \cont$ and $\dir \simeq \bun$, it remains to check that they identify cartesian natural transformations with cartesian morphisms (in the sense of \cref{def.sheaves_bundles}). For polynomial functors, we may refer to \cite[Section 2]{GK:Polynomial.Functors}. We now turn to Dirichlet functors; we want to show that the square
+Now that we have established the equivalences $\poly \simeq \cont$ and $\dir \simeq \bun$, it remains to check that they identify cartesian natural transformations with cartesian morphisms (in the sense of \cref{def.sheaves_bundles}). For polynomial functors, we may refer to \cite[Section 2]{GK:Polynomial.Functors}. We now turn to Dirichlet functors; we want to show that for any $f\colon D\to D'$ the square
 \begin{equation}\label{eqn.cart1}
 \begin{tikzcd}
-	D(1)\ar[r, "f(1)"]\ar[d, "\pi"']&
+	D(1)\ar[r, "f_1"]\ar[d, "\pi"']&
 	D'(1)\ar[d, "\pi'"]\\
-	D(0)\ar[r, "f(0)"']&
+	D(0)\ar[r, "f_0"']&
 	D'(0)
 \end{tikzcd}
 \end{equation}
@@ -635,7 +635,9 @@ is a pullback in $\smset$ iff for all functions $g\colon X\to X'$, the naturalit
   D'(X)
 \end{tikzcd}
 \end{equation}
-is a pullback in $\smset$; we will freely use \cref{eqn.dir_bund}, i.e.\ the natural isomorphism $D_\pi(X)\cong\bun(X!,\pi)$. One first checks that the square in \cref{eqn.cart1} is a special case of that in \cref{eqn.cart2}, namely for $g\coloneqq 0!$ the unique function $0\to 1$. This establishes the only-if direction. To complete the proof, suppose that \cref{eqn.cart1} is a pullback, take $g\colon X\to X'$, and suppose given a commutative solid-arrow diagram as shown:
+is a pullback in $\smset$; we will freely use the natural isomorphism $D_\pi(X)\cong\bun(X!,\pi)$ from \cref{eqn.dir_bund}. The square in \cref{eqn.cart1} is a special case of that in \cref{eqn.cart2}, namely for $g\coloneqq 0!$ the unique function $0\to 1$; this establishes the only-if direction.
+
+To complete the proof, suppose that \cref{eqn.cart1} is a pullback, take an arbitrary $g\colon X\to X'$, and suppose given a commutative solid-arrow diagram as shown:
 \[
 \begin{tikzcd}[sep=small]
   X\ar[rr, "g"]\ar[dd]\ar[rd]&&
