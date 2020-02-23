@@ -1,7 +1,7 @@
 \documentclass[11pt, article, one side]{memoir}
 
 \settrims{0pt}{0pt} % page and stock same size
-\settypeblocksize{*}{33.5pc}{*} % {height}{width}{ratio}
+\settypeblocksize{*}{34pc}{*} % {height}{width}{ratio}
 \setlrmargins{*}{*}{1} % {spine}{edge}{ratio}
 \setulmarginsandblock{1in}{1in}{*} % height of typeblock computed
 \setheadfoot{\onelineskip}{2\onelineskip} % {headheight}{footskip}
@@ -256,7 +256,7 @@ replacement=\&]{}\ar[r,tick]\&{}\end{tikzcd}}
 %%fakesubsubsection generators
 %}
 
-\linespread{1.15}
+\linespread{1.07}
 %\allowdisplaybreaks
 \setsecnumdepth{subsubsection}
 \settocdepth{subsection}
@@ -277,7 +277,7 @@ replacement=\&]{}\ar[r,tick]\&{}\end{tikzcd}}
 \begin{abstract}
 One can think of power series or polynomials in one variable, such as $P(\yon)=2\yon^3+\yon+5$, as functors from the category $\smset$ of sets to itself; these are known as polynomial functors. Denote by $\poly_\smset$ the category of polynomial functors on $\smset$ and natural transformations between them. The constants $0,1$ and operations $+,\times$ that occur in $P(\yon)$ are actually the initial and terminal objects and the coproduct and product in $\poly_\smset$. 
 
-Just as the polynomial functors are the copresheaves that can be written as sums of representables, one can express any Dirichlet series, e.g.\ $\sum_{n=0}^\infty n^\yon$, as a coproduct of representable presheaves. A Dirichlet polynomial is a finite Dirichlet series, that is, a finite sum of representables $n^{\yon}$. Note that it is common to omit the $n=0$ term $0^\yon$, as it is ``just 0'', but it seems to us that this omission drops important category-theoretic content. Indeed, the category $\dir_\smset$ of Dirichlet polynomials has very nice formal properties: it is an elementary topos.
+Just as the polynomial functors on $\smset$ are the copresheaves that can be written as sums of representables, one can express any Dirichlet series, e.g.\ $\sum_{n=0}^\infty n^\yon$, as a coproduct of representable presheaves. A Dirichlet polynomial is a finite Dirichlet series, that is, a finite sum of representables $n^{\yon}$. Note that it is common to omit the $n=0$ term $0^\yon$, as it is ``just 0'', but it seems to us that this omission drops important category-theoretic content. Indeed, the category $\dir_\smset$ of Dirichlet polynomials has very nice formal properties: it is an elementary topos.
 
 %We also show that there is a double category, useful in applications, whose vertical category is isomorphic to $\poly$ and whose horizontal category is isomorphic to $\dir$.
 \end{abstract}
@@ -294,7 +294,7 @@ There are of course infinite versions of the above, but in this note we work ent
 If one allows \emph{countable} sums of functors represented by finite sets, one gets \emph{analytic} functors in the covariant case -- first defined by Joyal in his seminal paper on combinatorial species \cite{J:Combinatorial.Species} -- and \emph{Dirichlet} functors in the contravariant case -- first defined by Baez and Dolan and appearing in Baez's \emph{This Week's Finds} blog \cite{BD:This.Weeks.Finds.300}. Baez and Dolan also drop the traditional negative sign in the exponent (that is, they use $n^s$ where $n^{-s}$ usually appears), but also find a nice way to bring it back by moving to groupoids. Here, we drop the negative sign and work with finite sets to keep things as simple as possible.
 
 The first thing we should emphasize is that algebraic expressions such as those in \cref{eqn.poly_dir_simple} are in fact \emph{objects in a category}, in fact two categories $\poly$ and $\dir$. We will explain the morphisms later, but for now we note that in $\poly$, $\yon^2=\yon\times\yon$ is a product and $2\yon=\yon+\yon$ is a coproduct, and similarly for $\dir$. The operators---in both the polynomial and the Dirichlet case---are not just algebraic, they are category-theoretic. Moreover, these categories have a rich structure. The category $\poly$ is well studied (see \cite{GK:Polynomial.Functors}). We will show that $\dir$ is equivalent to the arrow category of finite sets, 
-$$\dir \simeq \finset^{\to},$$
+\[\dir \simeq \finset^{\to},\]
 and in particular that $\dir$ is an elementary topos.
 
 % While we will not belabor the point, our main goal is to make it clear that one should not generally drop the $a_0\cdot0^\yon$ term from a Dirichlet series as in \cref{eqn.poly_dir_simple}. To make the case, we will begin by defining the categories $\poly$ and $\dir$. These categories have excellent formal properties; for example we will show in \cref{cor.dir_topos} that $\dir$ is an elementary topos. In some sense the ``high status'' of the category $\dir$ is supposed to serve as evidence that identifying $0^\yon$ with the initial object $0$ could lead to perverse outcomes and thus may be fruitfully reconsidered.
@@ -370,7 +370,8 @@ For any small category $C$, let $\finset^C$ denote the category whose objects ar
 The \emph{category of polynomial functors}, denoted $\poly$, is the full subcategory of $\finset^\finset$ spanned by sums $P$ of representable functors. The \emph{category of Dirichlet functors}, denoted $\dir$, is the full subcategory of $\finset^{(\finset\op)}$ spanned by the sums $D$ of representable presheaves.
 \end{definition}
 
-While we will not pursue it here, one can take $\poly_\smset$ to be the full subcategory of functors $\smset\to\smset$ spanned by small coproducts of representables, and similarly for $\dir_\smset$.
+While we will not pursue it here, one can take $\poly_\smset$ to be the full subcategory of functors $\smset\to\smset$ spanned by small coproducts of representables, and similarly for $\dir_\smset$. Note that \cref{def.poly_dir} generalizes to any category, but it is not generally equivalent to the usual definition of polynomial functor, defined on any locally cartesian closed category.
+
 
 \begin{lemma}
 The number of polynomial maps $P\to Q$ and Dirichlet maps $D\to E$ are given by the following formulas:
@@ -577,12 +578,12 @@ Define $\bun$ (resp.\ $\cont$) to be the category for which an object is a funct
 One may note that $\bun$ is the Grothendieck construction of the self-indexing $\finset_{/(-)} : \finset\op \to \smcat$, while $\cont$ is the Grothendieck construction of its point-wise opposite $(\finset_{/(-)})\op : \finset\op \to \smcat$.
 
 \begin{remark}\label{rem.dir_fin2}
-By the universal property of pullbacks, $\bun\simeq\finset^{\to}$ is equivalent (in fact isomorphic) to the category of morphisms and commuting squares in $\finset$. Furthermore, $\bun_{\text{cart}}$ is equivalent to the category of morphisms and pullback squares in $\finset$, and $\bun_{\text{cart}} \simeq \cont_{\text{cart}}$ (as in both cases a cartesian morphism $(f, f_{\sharp}$ or $(f, f^{\sharp})$ is determined by $f$ alone).
-
-Next we show that $\bun\simeq\dir$ is also equivalent to the category of Dirichlet functors, from \cref{def.poly_dir}.
+By the universal property of pullbacks, $\bun\simeq\finset^{\to}$ is equivalent (in fact isomorphic) to the category of morphisms and commuting squares in $\finset$. Furthermore, $\bun_{\text{cart}}$ is equivalent to the category of morphisms and pullback squares in $\finset$, and $\bun_{\text{cart}} \simeq \cont_{\text{cart}}$ (as in both cases a cartesian morphism $(f, f_{\sharp}$ or $(f, f^{\sharp})$ is determined by $f$ alone). Next we show that $\bun\simeq\dir$ is also equivalent to the category of Dirichlet functors, from \cref{def.poly_dir}.
 
  The name \emph{container} comes from the work of Abbot, Altenkirch, and Ghani \cites{AAG:Containers.In.Proceedings}{AAG:Containers}{A:Containers.Thesis} (see Remark 2.18 in \cite{GK:Polynomial.Functors} for a discussion of the precise relationship between the notion of container and the notion of polynomial and polynomial functor).
 \end{remark}
+
+Recall that a natural transformation is called \emph{cartesian} if its naturality squares are pullbacks.
 
 \begin{theorem}\label{thm.equivs}
 We have equivalences of categories
@@ -591,69 +592,119 @@ We have equivalences of categories
 \qqand
 \dir\simeq\bun.
 \]
-This gives an equivalence $\poly_{\text{cart}} \simeq \dir_{\text{cart}}$ of the category of polynomial functors and \emph{cartesian} natural transformations (those whose naturality squares are pullbacks) and the category of Dirichlet functors and cartesian natural transformations.
+In particular, this gives an equivalence $\poly_{\text{cart}} \simeq \dir_{\text{cart}}$ of the category of polynomial functors and cartesian natural transformations and the category of Dirichlet functors and cartesian natural transformations.
 \end{theorem}
 \begin{proof}
 The functors $P_-\colon\cont\to\poly$ and $D_-\colon\bun\to\dir$ are defined on each object, i.e.\ function $\pi\colon s\to t$, by the formula $\pi\mapsto P_\pi$ and $\pi\mapsto D_\pi\coloneqq\overline{P_\pi}$ as in \cref{prop.poly_function}. For each $1\leq i\leq t$, denote the fiber of $\pi$ over $i$ by $k_i\coloneqq\pi\inv(i)$.
 
-For any finite set $X$, consider the unique map $X!\colon X\to 1$. Applying $P_-$ and $D_-$ to it, we obtain the corresponding representable: $P_{X!}\cong\yon^X$ and $D_{X!}\cong X^\yon$. We next check that
- \begin{gather*}
+For any finite set $X$, consider the unique map $X!\colon X\to 1$. Applying $P_-$ and $D_-$ to it, we obtain the corresponding representable: $P_{X!}\cong\yon^X$ and $D_{X!}\cong X^\yon$. We next check that there are natural isomorphisms
+ \begin{gather}\nonumber
   \poly(P_{X!},P_\pi)\cong 
   P_\pi(X)=
   \sum_{}X^{k_i}\cong
   \cont(X!, \pi),
-  \\
+  \\\label{eqn.dir_bund}
   \dir(D_{X!}, D_\pi)\cong 
   D_\pi(X)=
   \sum_{i=1}^{t}(k_i)^X\cong
   \bun(X!, \pi).
-\end{gather*}
+\end{gather}
 In both lines, the first isomorphism is the Yoneda lemma and the second is a computation using \cref{def.sheaves_bundles} (see \cref{fig.bund_cont_maps}). Thus we define $P_-$ on morphisms by sending $f\colon\pi\to\pi'$ in $\cont$ to the ``compose-with-$f$'' natural transformation, i.e.\ having $X$-component $\cont(X!,f)\colon\cont(X!,\pi)\to\cont(X!,\pi')$, which is clearly natural in $X$. We define $D_-$ on morphisms similarly: for $f$ in $\bun$, use the natural transformation $\bun(-!,f)$.
 
-By definition, every object in $\poly$ and $\dir$ is a coproduct of representables, so to complete the proof one first checks that coproducts in $\cont$ and $\bun$ are taken pointwise:
+By definition, every object in $\poly$ and $\dir$ is a coproduct of representables, so to prove that we have the desired equivalences, one first checks that coproducts in $\cont$ and $\bun$ are taken pointwise:
 \[
 (\pi\colon s\to t)+(\pi'\colon s'\to t')\cong(\pi+\pi')\colon (s+s')\to (t+t'),
 \]
 and then that $P_{\pi+\pi'}=P_\pi+P_{\pi'}$ and $D_{\pi+\pi'}=D_\pi+D_{\pi'}$; see \cref{rem.products_coproducts}.
 
-It remains to check that the equivalences $\poly \simeq \cont$ and $\dir \simeq \bun$ identify cartesian natural transformations with cartesian morphisms. For polynomial functors, we may refer to Section 2 of \cite{GK:Polynomial.Functors}. We now turn to Dirichlet functors. We first note that a natural transformation $\phi : D \to D'$ between Dirichlet functors is cartesian if and only if the naturality square induced by $! : 0 \to X$
-
-\begin{equation}\label{diagram:nat.square}
+Now that we have established the equivalences $\poly \simeq \cont$ and $\dir \simeq \bun$, it remains to check that they identify cartesian natural transformations with cartesian morphisms (in the sense of \cref{def.sheaves_bundles}). For polynomial functors, we may refer to \cite[Section 2]{GK:Polynomial.Functors}. We now turn to Dirichlet functors; we want to show that the square
+\begin{equation}\label{eqn.cart1}
 \begin{tikzcd}
-DX \arrow[r, "\phi_X"] \arrow[d, "D!"'] & D'X \arrow[d, "D'!"] \\
-D0 \arrow[r, "\phi_0"] & D'0
+	D(1)\ar[r, "f(1)"]\ar[d, "\pi"']&
+	D'(1)\ar[d, "\pi'"]\\
+	D(0)\ar[r, "f(0)"']&
+	D'(0)
 \end{tikzcd}
 \end{equation}
-
-is a pullback for all $X$, by the pullback pasting lemma. Now, the associated bundle morphism $\phi_{!_1}$ associated to $\phi$ is the particular naturality square
-
-\begin{equation}\label{diagram:bundle.morphism}
+is a pullback in $\smset$ iff for all functions $g\colon X\to X'$, the naturality square
+\begin{equation}\label{eqn.cart2}
 \begin{tikzcd}
-D1 \arrow[r, "\phi_1"] \arrow[d, "D!"'] & D'1 \arrow[d, "D'!"] \\
-D0 \arrow[r, "\phi_0"] & D'0
+  D(X')\ar[r, "f_{X'}"]\ar[d, "D(g)"']&
+  D'(X')\ar[d, "D'(g)"]\\
+  D(X)\ar[r, "f_X"']&
+  D'(X)
 \end{tikzcd}
 \end{equation}
-
-So, if $\phi$ is cartesian then the associated bundle morphism is. We now assume the associated bundle morphism \cref{diagram:bundle.morphism} is cartesian, and show that $\phi$ is by showing that \cref{diagram:nat.square} is a pullback for all $X$.
-
-Recall that $$DX \cong \bun\left(\begin{tikzcd}[sep=small] X \arrow[d] \\ 1 \end{tikzcd}, \begin{tikzcd}[sep=small] D(1) \arrow[d] \\ D(0) \end{tikzcd} \right) = \bun(X!, D!_1),$$ and the map $D! : DX \to D0$ is equivalent under this isomorphism to the map that projects off the bottom component of a bundle morphism. Therefore, we can equivalently write \cref{diagram:nat.square} as
-\begin{equation}
-    \begin{tikzcd}
-    \bun(X!, D!_1) \arrow[d] \arrow[r, "\phi_{D!_1} \circ -"] & \bun(X!, D'!_!) \arrow[d] \\
-    D0 \arrow[r] & D'0
-    \end{tikzcd}
-\end{equation}
-This will be a pullback if for all $z \in D0$, the induced map on the fibers of the vertical functions in this square over $z$ is bijection. This map is the map
+is a pullback in $\smset$; we will freely use \cref{eqn.dir_bund}, i.e.\ the natural isomorphism $D_\pi(X)\cong\bun(X!,\pi)$. One first checks that the square in \cref{eqn.cart1} is a special case of that in \cref{eqn.cart2}, namely for $g\coloneqq 0!$ the unique function $0\to 1$. This establishes the only-if direction. To complete the proof, suppose that \cref{eqn.cart1} is a pullback, take $g\colon X\to X'$, and suppose given a commutative solid-arrow diagram as shown:
 \[
-\zeta : \left\{ \begin{tikzcd}
-X \arrow[r, dashed] \arrow[d] & D1 \arrow[d] \\
-1 \arrow[r, "z"] & D0
-\end{tikzcd} \right\} \to \left\{\begin{tikzcd}
-X \arrow[r, dashed] \arrow[d] & D'1 \arrow[d] \\
-1 \arrow[r, "\phi_0 z"] & D'0
-\end{tikzcd} \right\}
+\begin{tikzcd}[sep=small]
+  X\ar[rr, "g"]\ar[dd]\ar[rd]&&
+  X'\ar[dr]\ar[dd]\ar[dl, dotted]\\&
+  D(1)\ar[rr, crossing over]&&
+  D'(1)\ar[dd]\\
+  1\ar[dr]\ar[rr, equal]&&
+  1\ar[dr]\ar[dl, dotted]\\&
+  D(0)\ar[from=uu, crossing over]\ar[rr]&&
+  D'(0)
+\end{tikzcd}
 \]
-given by post-composition by $\phi_{!_1}$. We have assumed that $\phi_{!_1}$ is a pullback square. The universal property of this pullback then says that the map $\zeta$ is a bijection.
+We need to show that if the front face is a pullback, then there exists diagonal dotted arrows as shown, making the diagram commute; this is straightforward.
+%
+%
+%
+%
+%
+%We first note that a natural transformation $\phi : D \to D'$ between Dirichlet functors is cartesian if and only if the naturality square induced by $!X\colon 0 \to X$
+%
+%\begin{equation}\label{diagram:nat.square}
+%\begin{tikzcd}
+%DX \arrow[r, "\phi_X"] \arrow[d, "D(!X)"'] & 
+%D'X \arrow[d, "D'(!X)"] \\
+%D0 \arrow[r, "\phi_0"'] & D'0
+%\end{tikzcd}
+%\end{equation}
+%is a pullback for all $X$, by the pullback pasting lemma. Now, the associated bundle morphism $\phi_{1!}$ associated to $\phi$ is the particular naturality square
+%\begin{equation}\label{diagram:bundle.morphism}
+%\begin{tikzcd}
+%D1 \arrow[r, "\phi_1"] \arrow[d, "D(!1)"'] & D'1 \arrow[d, "D'(!1)"] \\
+%D0 \arrow[r, "\phi_0"'] & D'0
+%\end{tikzcd}
+%\end{equation}
+%
+%So, if $\phi$ is cartesian then the associated bundle morphism is. We now assume the associated bundle morphism \cref{diagram:bundle.morphism} is cartesian, and show that $\phi$ is cartesian by showing that \cref{diagram:nat.square} is a pullback for each $X$.
+%
+%Recall that 
+%\[
+%DX \cong 
+%\bun\left(
+%	\begin{tikzcd}[sep=small] 
+%		X \arrow[d] \\ 
+%		1 
+%	\end{tikzcd}\,,\; 
+%	\begin{tikzcd}[sep=small] 
+%	D(1) \arrow[d] \\ 
+%	D(0) 
+%	\end{tikzcd} 
+%\right) = \bun(X!, D),
+%\]
+%and the map $D(!X)\colon DX \to D0$ is equivalent under this isomorphism to the map that returns just the bottom component of a bundle morphism. Therefore, we can equivalently write \cref{diagram:nat.square} as
+%\begin{equation}
+%    \begin{tikzcd}[column sep=large]
+%    \bun(X!, D) \arrow[d] \arrow[r, "\phi \circ -"] & \bun(X!, D') \arrow[d] \\
+%    D0 \arrow[r] & D'0
+%    \end{tikzcd}
+%\end{equation}
+%This will be a pullback if for all $z \in D0$, the induced map on the fibers of the vertical functions in this square over $z$ is bijection. This map is the map
+%\[
+%\zeta : \left\{ \begin{tikzcd}
+%X \arrow[r, dashed] \arrow[d] & D1 \arrow[d] \\
+%1 \arrow[r, "z"'] & D0
+%\end{tikzcd} \right\} \to \left\{\begin{tikzcd}
+%X \arrow[r, dashed] \arrow[d] & D'1 \arrow[d] \\
+%1 \arrow[r, "\phi_0 z"'] & D'0
+%\end{tikzcd} \right\}
+%\]
+%given by post-composition with \eqref{diagram:bundle.morphism}, which we have assumed is a pullback square. The universal property of this pullback then says that the map $\zeta$ is a bijection.
 \end{proof}
 
 \begin{corollary}\label{cor.dir_topos}
