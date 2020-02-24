@@ -33,6 +33,7 @@ citecolor=orange!50!black, urlcolor=orange!50!black, pdfencoding=unicode]{hyperr
 \usepackage[backend=biber, backref=true, maxbibnames = 10, style = alphabetic]{biblatex}
 %\usepackage[framemethod=tikz]{mdframed}
 %\usepackage{todonotes}
+\usepackage{ytableau} % for Young diagrams
 
 %-------- Package setup --------%
 
@@ -580,10 +581,25 @@ One may note that $\bun$ is the Grothendieck construction of the self-indexing $
  The name \emph{container} comes from the work of Abbot, Altenkirch, and Ghani \cites{AAG:Containers.In.Proceedings}{AAG:Containers}{A:Containers.Thesis} (see Remark 2.18 in \cite{GK:Polynomial.Functors} for a discussion of the precise relationship between the notion of container and the notion of polynomial and polynomial functor).
 
 \begin{remark}\label{rem.dir_fin2}
-By the universal property of pullbacks, $\bun\simeq\finset^{\to}$ is equivalent (in fact isomorphic) to the category of morphisms and commuting squares in $\finset$. Furthermore, $\bun_{\text{cart}}$ is equivalent to the category of morphisms and pullback squares in $\finset$, and $\bun_{\text{cart}} \simeq \cont_{\text{cart}}$ (as in both cases a cartesian morphism $(f, f_{\sharp})$ or $(f, f^{\sharp})$ is determined by $f$ alone). Next we show that $\bun\simeq\dir$ is also equivalent to the category of Dirichlet functors, from \cref{def.poly_dir}.
+By the universal property of pullbacks, $\bun\simeq\finset^{\to}$ is equivalent (in fact isomorphic) to the category of morphisms and commuting squares in $\finset$. Furthermore, $\bun_{\text{cart}}$ is equivalent to the category of morphisms and pullback squares in $\finset$, and $\bun_{\text{cart}} \simeq \cont_{\text{cart}}$ (as in both cases a cartesian morphism $(f, f_{\sharp})$ or $(f, f^{\sharp})$ is determined by $f$ alone).
 \end{remark}
 
-Recall that a natural transformation is called \emph{cartesian} if its naturality squares are pullbacks.
+\begin{remark}
+We can think of a function between finite sets $\pi : E \to B$ as the categorification of a \emph{Young diagram}. A Young diagram consists of $k$ natural numbers $n_k \geq n_{k-1} \geq \cdots \geq n_1 > 0$; the number $k$ is the number of rows and $n_i$ is the number of boxes in row $i$. Here is a Young diagram corresponding to \cref{eqn.bundle} (but ignoring the constant term, which is the number of empty rows):
+\[
+\ydiagram{3, 3, 2}
+\]
+
+If we allow for empty rows, then we can read a function $\pi : E \to B$ as a Young diagram in the following way:
+\begin{itemize}
+    \item $B$ is the set of rows.
+    \item $E$ is the set of pairs of a row and a box in that row.
+    \item $\pi : E \to B$ is the projection which sends each pair of a box and a row to that row.
+\end{itemize}
+Thinking of maps $\pi : E \to B$ in this way, we can see $\bun$ as the category of Young diagrams with functions covariant in the rows and boxes, and $\cont$ as the category of Young diagrams with functions covariant in the rows but contravariant in the boxes. The category $\bun_{\text{cart}}$ (equivalently $\cont_{\text{cart}}$) is the category of functions of rows that preserve the number of boxes in each row (though it may permute the boxes within a row).
+\end{remark}
+
+ Next we show that $\bun\simeq\dir$ is also equivalent to the category of Dirichlet functors, from \cref{def.poly_dir}. Recall that a natural transformation is called \emph{cartesian} if its naturality squares are pullbacks.
 
 \begin{theorem}\label{thm.equivs}
 We have equivalences of categories
