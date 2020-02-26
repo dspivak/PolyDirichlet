@@ -1,7 +1,7 @@
 \documentclass[11pt, article, one side]{memoir}
 
 \settrims{0pt}{0pt} % page and stock same size
-\settypeblocksize{*}{34.4pc}{*} % {height}{width}{ratio}
+\settypeblocksize{*}{36pc}{*} % {height}{width}{ratio}
 \setlrmargins{*}{*}{1} % {spine}{edge}{ratio}
 \setulmarginsandblock{1in}{1in}{*} % height of typeblock computed
 \setheadfoot{\onelineskip}{2\onelineskip} % {headheight}{footskip}
@@ -464,7 +464,7 @@ There is a bijection between the respective object-sets of these two categories
 	\ob(\poly)&\To{\cong}\ob(\dir)\\\label{eqn.poly_dir}
 	\sum_{i=1}^n\yon^{k_i}&\mapsto\sum_{i=1}^n (k_i)^\yon.
 \end{align}
-We call this mapping the \emph{Dirichlet transform} and denote it using an over-line $P\mapsto \overline{P}$.
+We call this mapping the \emph{Dirichlet transform} and denote it using an over-line $P\mapsto \overline{P}$. We will see in \cref{thm.equivs} that this bijection extends to an equivalence $\poly_{\text{cart}}\cong\dir_{\text{cart}}$ between the subcategories of cartesian maps.
 
 \begin{proposition}\label{prop.poly_function}
 There is a one-to-one correspondence between the set of polynomials in one variable, the set of Dirichlet polynomials, and the set of (isomorphism classes of) functions $\pi\colon s\to t$ between finite sets.
@@ -735,6 +735,10 @@ For any finite category $C$, the functor category $\finset^C$ is an elementary t
 \end{proof}
 
 As we mentioned in the introduction, this all goes through smoothly when one drops all finiteness conditions. The general topos of Dirichlet functors is the category of (arbitrary) sums of representables $\smset\op \to \smset$, and this is equivalent to the arrow category $\smset^{\to}$ and so is itself a topos.
+
+\section*{Acknowledgments}
+
+Thanks to Joachim Kock for helpful comments on an early draft of this note.
 
 %\chapter{The $\poly-\dir$ double category $\ff$}
 %
