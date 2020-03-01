@@ -446,6 +446,18 @@ Each of the categories $\poly$ and $\dir$ has pullbacks, which we denote using `
   \qqand
 	D=\sum_{i=1}^{D(0)}D\times_{D(0)}`i'.
 \]
+
+Day convolution for the cartesian product monoidal structure provides another symmetric monoidal structure $\otimes\colon\poly\times\poly\to\poly$, for which the monoidal unit is $\yon$. We can write an explicit formula for $P\otimes Q$, with $P,Q$ as in \cref{eqn.finite_sum}:
+\[
+  P\otimes
+  Q=
+  \sum_{i=1}^{P(1)}\sum_{j=1}^{Q(1)}\yon^{p_iq_j}
+\]
+We call this the \emph{Dirichlet product} of polynomials, because on objects it coincides with the Cartesian product on Dirichlet polynomials via the Dirichlet transform (which we introduce in the next section):
+\[\overline{P\otimes Q}=\overline{P}\times\overline{Q}.\]
+Polynomials functors can also be composed $(P\circ Q)(n)\coloneqq P(Q(n))$; this gives a nonsymmetric monoidal structure on $\poly$.
+
+
 \begin{remark}
  By a result of Rosebrugh and Wood \cite{RW:Adjoint.Characterization.Set}, the category of finite sets is characterized amongst locally finite categories by the existence of the five left adjoints to its Yoneda embedding $k \mapsto y^k\colon \finset \to \finset^{\finset\op}$. The adjoint sextuple displayed in \eqref{eqn.adjoints_galore} is just the observation that these six functors restrict to the subcategory $\dir$.
 \end{remark}
@@ -457,7 +469,7 @@ The Yoneda embedding for $\poly$ also has a left adjoint given by \emph{global s
 \]
 \end{remark}
 
-\chapter{$\poly$ and $\dir$ in terms of bundles}
+\chapter{$\poly$ and $\dir$ in terms of bundles}\label{chap.poly_dir_bund}
 There is a bijection between the respective object-sets of these two categories
 \begin{align}
 \nonumber
@@ -553,21 +565,21 @@ We say a bundle morphism $(f, f_\sharp)$ (resp. a container morphism $(f, f^{\sh
 
 \begin{figure}
 \[
-\begin{tikzcd}
-s\ar[dr, bend right=40pt, "\pi"']&[-5pt]
-t\times_{t'}s'\ar[r]\ar[d, "f^*\pi'"']\ar[from=l, "f_\sharp"]&
-s'\ar[d, "\pi'"]\\&
-t\ar[r, "f"']&
-t'\ar[ul, phantom, very near end, "\lrcorner"]
-\end{tikzcd}
-\hspace{.75in}
-\begin{tikzcd}
-s\ar[dr, bend right=40pt, "\pi"']&[-5pt]
-t\times_{t'}s'\ar[r]\ar[d, "f^*\pi'"']\ar[l, "f^\sharp"']&
-s'\ar[d, "\pi'"]\\&
-t\ar[r, "f"']&
-t'\ar[ul, phantom, very near end, "\lrcorner"]
-\end{tikzcd}
+  \begin{tikzcd}
+  s\ar[dr, bend right=40pt, "\pi"']&[-5pt]
+  t\times_{t'}s'\ar[r]\ar[d, "f^*\pi'"']\ar[from=l, "f_\sharp"]&
+  s'\ar[d, "\pi'"]\\&
+  t\ar[r, "f"']&
+  t'\ar[ul, phantom, very near end, "\lrcorner"]
+  \end{tikzcd}
+  \hspace{.75in}
+  \begin{tikzcd}
+  s\ar[dr, bend right=40pt, "\pi"']&[-5pt]
+  t\times_{t'}s'\ar[r]\ar[d, "f^*\pi'"']\ar[l, "f^\sharp"']&
+  s'\ar[d, "\pi'"]\\&
+  t\ar[r, "f"']&
+  t'\ar[ul, phantom, very near end, "\lrcorner"]
+  \end{tikzcd}
 \]
 \caption{The categories $\bun$ and $\cont$ have the same objects, functions $\pi\colon s\to t$. Here a morphism $(f,f_\sharp)\colon \pi\to \pi'$ in $\bun$ and a morphism $(f,f^\sharp)\colon \pi\to\pi'$ in $\cont$ are shown.
 }
