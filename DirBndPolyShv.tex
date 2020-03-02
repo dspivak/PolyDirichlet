@@ -232,7 +232,7 @@ replacement=\&]{}\ar[r,tick]\&{}\end{tikzcd}}
 
 \newcommand{\smset}{\Cat{Set}}
 \newcommand{\smcat}{\Cat{Cat}}
-\newcommand{\finset}{\Cat{Fin}}
+\newcommand{\fin}{\Cat{Fin}}
 \newcommand{\cont}{\Cat{Cont}}
 \newcommand{\core}{\Fun{Core}}
 \newcommand{\bun}{\Cat{Bun}}
@@ -291,23 +291,23 @@ Polynomials $P(\yon)$ and finite Dirichlet series $D(\yon)$ in one variable $\ca
 \end{aligned}
 \end{equation}
 The first thing we should emphasize is that the algebraic expressions in \eqref{eqn.poly_dir_simple} can in fact be regarded as \emph{objects in a category}, in fact two categories: $\poly$ and $\dir$. We will explain the morphisms later, but for now we note that in $\poly$, $\yon^2=\yon\times\yon$ is a product and $2\yon=\yon+\yon$ is a coproduct, and similarly for $\dir$. The operators---in both the polynomial and the Dirichlet case---are not just algebraic, they are category-theoretic. Moreover, these categories have a rich structure. The category $\poly$ is well studied (see \cite{GK:Polynomial.Functors}). We will show that $\dir$ is equivalent to the arrow category of finite sets, 
-\[\dir \simeq \finset^{\to},\]
+\[\dir \simeq \fin^{\to},\]
 and in particular that $\dir$ is an elementary topos.
 
-If one allows \emph{arbitary} sums of functors represented by finite sets, one gets \emph{analytic} functors in the covariant case---first defined by Joyal in his seminal paper on combinatorial species \cite{J:Combinatorial.Species}---and \emph{Dirichlet} functors in the contravariant case---first defined by Baez and Dolan and appearing in Baez's \emph{This Week's Finds} blog \cite{BD:This.Weeks.Finds.300}. Baez and Dolan also drop the traditional negative sign in the exponent (that is, they use $n^s$ where $n^{-s}$ usually appears), but also find a nice way to bring it back by moving to groupoids. Here, we drop the negative sign and work with finite sets to keep things as simple as possible. Similar considerations hold with little extra work for infinite Dirichlet series or power series, and even more generally, by replacing $\finset$ with $\smset$. 
+If one allows \emph{arbitary} sums of functors represented by finite sets, one gets \emph{analytic} functors in the covariant case---first defined by Joyal in his seminal paper on combinatorial species \cite{J:Combinatorial.Species}---and \emph{Dirichlet} functors in the contravariant case---first defined by Baez and Dolan and appearing in Baez's \emph{This Week's Finds} blog \cite{BD:This.Weeks.Finds.300}. Baez and Dolan also drop the traditional negative sign in the exponent (that is, they use $n^s$ where $n^{-s}$ usually appears), but also find a nice way to bring it back by moving to groupoids. Here, we drop the negative sign and work with finite sets to keep things as simple as possible. Similar considerations hold with little extra work for infinite Dirichlet series or power series, and even more generally, by replacing $\fin$ with $\smset$. 
 
 
 % While we will not belabor the point, our main goal is to make it clear that one should not generally drop the $a_0\cdot0^\yon$ term from a Dirichlet series as in \cref{eqn.poly_dir_simple}. To make the case, we will begin by defining the categories $\poly$ and $\dir$. These categories have excellent formal properties; for example we will show in \cref{cor.dir_topos} that $\dir$ is an elementary topos. In some sense the ``high status'' of the category $\dir$ is supposed to serve as evidence that identifying $0^\yon$ with the initial object $0$ could lead to perverse outcomes and thus may be fruitfully reconsidered.
 
 \chapter{Polynomial and Dirichlet functors}
 
-Recall that a \emph{co-representable functor} $\finset\to\finset$ is one of the form $\finset(k, -)$ for a finite set
+Recall that a \emph{co-representable functor} $\fin\to\fin$ is one of the form $\fin(k, -)$ for a finite set
 \[k=\{`1', `2',\ldots,`k'\}.\]
-We denote this functor by $\yon^k$ and say it is \emph{represented by} $k\in\finset$. Similarly, a \emph{(contra-) representable functor} $\finset\op\to\finset$ is contravariant functor of the form $\finset(-,k)$; we denote this functor by $k^\yon$. The functors $\yon^-$ and $-^\yon$ are the contravariant and covariant Yoneda embeddings,
+We denote this functor by $\yon^k$ and say it is \emph{represented by} $k\in\fin$. Similarly, a \emph{(contra-) representable functor} $\fin\op\to\fin$ is contravariant functor of the form $\fin(-,k)$; we denote this functor by $k^\yon$. The functors $\yon^-$ and $-^\yon$ are the contravariant and covariant Yoneda embeddings,
 \[
-  \yon^k \coloneqq \finset(k,-)
+  \yon^k \coloneqq \fin(k,-)
   \qqand
-  k^\yon\coloneqq\finset(-,k).
+  k^\yon\coloneqq\fin(-,k).
 \]
 For example $\yon^3(2)\cong8$ and $3^\yon(2)\cong9$.
 
@@ -354,33 +354,33 @@ The set $P(1)$ (resp.\ the set $D(0)$) has particular importance; it is the set 
 of the zero-content terms into the set of all pure-exponential terms.
 
 \begin{definition}\label{def.poly_dir_obs}
-A \emph{polynomial functor} is a functor $P\colon\finset\to\finset$ that can be expressed as a sum of co-representable functors. Similarly, we define a \emph{Dirichlet functor} to be a functor $D\colon\finset\op\to\finset$ that can be expressed as a sum of representable presheaves (contravariant functors):
+A \emph{polynomial functor} is a functor $P\colon\fin\to\fin$ that can be expressed as a sum of co-representable functors. Similarly, we define a \emph{Dirichlet functor} to be a functor $D\colon\fin\op\to\fin$ that can be expressed as a sum of representable presheaves (contravariant functors):
 \begin{equation}\label{eqn.finite_sum}
   P=\sum_{i=1}^{P(1)}\yon^{p_i}
   \qqand
   D=\sum_{i=1}^{D(0)}(d_i)^\yon.
 \end{equation}
-That is, $P(X)=\sum_{i=1}^{P(1)}\finset(p_i,X)$ and $D(X)=\sum_{i=1}^{D(0)}\finset(X,d_i)$ as functors applied to $X\in\finset$.
+That is, $P(X)=\sum_{i=1}^{P(1)}\fin(p_i,X)$ and $D(X)=\sum_{i=1}^{D(0)}\fin(X,d_i)$ as functors applied to $X\in\fin$.
 \end{definition}
 
 Note that \cref{def.poly_dir_obs} generalizes to any category, but it is not generally equivalent to the usual definition of polynomial functor, defined on any locally cartesian closed category; see \cite{GK:Polynomial.Functors}.
 
 \chapter{The categories $\poly$ and $\dir$}
 
-For any small category $C$, let $\finset^C$ denote the category whose objects are the functors $C\to\finset$ and whose morphisms are the natural transformations between them.
+For any small category $C$, let $\fin^C$ denote the category whose objects are the functors $C\to\fin$ and whose morphisms are the natural transformations between them.
 \begin{definition}\label{def.poly_dir}
-The \emph{category of polynomial functors}, denoted $\poly$, is the full subcategory of $\finset^\finset$ spanned by sums $P$ of representable functors. The \emph{category of Dirichlet functors}, denoted $\dir$, is the full subcategory of $\finset^{(\finset\op)}$ spanned by the sums $D$ of representable presheaves.
+The \emph{category of polynomial functors}, denoted $\poly$, is the full subcategory of $\fin^\fin$ spanned by sums $P$ of representable functors. The \emph{category of Dirichlet functors}, denoted $\dir$, is the full subcategory of $\fin^{(\fin\op)}$ spanned by the sums $D$ of representable presheaves.
 \end{definition}
 
 While we will not pursue it here, one can take $\poly_\smset$ to be the full subcategory of functors $\smset\to\smset$ spanned by small coproducts of representables, and similarly for $\dir_\smset$. 
 
 
-\begin{lemma}
+\begin{lemma}\label{lemma.count_maps}
 The number of polynomial maps $P\to Q$ and Dirichlet maps $D\to E$ are given by the following formulas:
 \[
-  [P, Q]\coloneqq\prod_{i\in P(1)}Q(p_i)
+  \poly(P,Q)\coloneqq\prod_{i\in P(1)}Q(p_i)
   \qqand
-  [D, E]\coloneqq\prod_{i\in D(0)}E(d_i).
+  \dir(D,E)\coloneqq\prod_{i\in D(0)}E(d_i).
 \]
 \end{lemma}
 
@@ -393,10 +393,10 @@ Sums and products of polynomials in the usual algebraic sense agrees exactly wit
 \end{remark}
 
 \paragraph{Formal structures.}
-There is an adjoint quadruple and adjoint sextuple as follows, labeled by where they send objects $n\in\finset$, $P\in\poly$, $D\in\dir$:
+There is an adjoint quadruple and adjoint sextuple as follows, labeled by where they send objects $n\in\fin$, $P\in\poly$, $D\in\dir$:
 \begin{equation}\label{eqn.adjoints_galore}
 \begin{tikzcd}[column sep=60pt]
-  \finset
+  \fin
   	\ar[r, shift left=7pt, "n" description]
 		\ar[r, shift left=-21pt, "n\yon"']&
   \poly
@@ -408,7 +408,7 @@ There is an adjoint quadruple and adjoint sextuple as follows, labeled by where 
 \end{tikzcd}
 \hspace{1in}
 \begin{tikzcd}[column sep=60pt]
-  \finset
+  \fin
   	\ar[r, shift left=7pt, "n\cdot 0^\yon" description]
 		\ar[r, shift left=-21pt, "n" description]
 		\ar[r, shift left=-49pt, "n^\yon"']&
@@ -423,9 +423,9 @@ There is an adjoint quadruple and adjoint sextuple as follows, labeled by where 
 	\ar[l, phantom, shift right=-42pt, "\scriptstyle\bot"]
 \end{tikzcd}
 \end{equation}
-All six of the displayed functors out of $\finset$ are fully faithful.
+All six of the displayed functors out of $\fin$ are fully faithful.
 
-The inclusion $\zero{D}\to D(0)$ from \cref{eqn.zerocontent} is natural and induces three other natural transformations on $\finset$ and $\dir$ via the adjunctions in \cref{eqn.adjoints_galore}; in \cref{prop.poly_function} we will have occasion to use the one labeled $\pi_D$:
+The inclusion $\zero{D}\to D(0)$ from \cref{eqn.zerocontent} is natural and induces three other natural transformations on $\fin$ and $\dir$ via the adjunctions in \cref{eqn.adjoints_galore}; in \cref{prop.poly_function} we will have occasion to use the one labeled $\pi_D$:
 \begin{equation}\label{eqn.obtain_pi}
 \zero{D}\to D(0),\qquad
 n\mdot0^\yon\to n,\qquad
@@ -433,12 +433,43 @@ D(1)\To{\pi_D} D(0),\qquad
 n\to n^\yon.
 \end{equation}
 
-There are also two-variable adjunctions $\finset\times\poly\to\poly$ and $\finset\times\dir\to\dir$. Indeed, for $n\in\finset$ and $P,Q\in\poly$ (respectively $D,E\in\dir$), we have
-\begin{gather*}
-\poly(nP,Q)\cong\poly(P,Q^n)\cong\finset(n,[P,Q]),\\
-\dir(nD,E)\cong\dir(D,E^n)\cong\finset(n,[D,E]),
-\end{gather*}
-where $nP$ and $nD$ denote $n$-fold coproducts and $P^n$ and $D^n$ denote $n$-fold products.
+Polynomials functors can of course be composed $(P\circ Q)(n)\coloneqq P(Q(n))$; this gives a nonsymmetric monoidal structure on $\poly$. The monoidal unit is $\yon$.
+
+Day convolution for the cartesian product monoidal structure provides symmetric monoidal structure $\otimes\colon\poly\times\poly\to\poly$, for which the monoidal unit is $\yon$. This monoidal structure---like the Cartesian monoidal structure---distributes over $+$ We can write an explicit formula for $P\otimes Q$, with $P,Q$ as in \cref{eqn.finite_sum}:
+\begin{equation}\label{eqn.dir_monoidal_product}
+  P\otimes
+  Q=
+  \sum_{i=1}^{P(1)}\sum_{j=1}^{Q(1)}\yon^{p_iq_j}
+\end{equation}
+We call this the \emph{Dirichlet product} of polynomials, for reasons we will see in \cref{rem.dir_prod_reason}.
+
+The Dirichlet monoidal structure is closed; that is, for any $P,Q:\poly$ we define
+\begin{equation}\label{eqn.poly_mon_closed}
+[P,Q]\coloneqq\prod_{i:P(1)}Q\circ(p_i\yon),
+\end{equation}
+for example $[n\yon,\yon]\cong \yon^n$ and $[\yon^n,\yon]\cong n\yon$.
+\begin{proposition}
+We have an adjunction 
+\[
+	\poly(A\otimes P,Q)\cong\poly(A,[P,Q]).
+\]
+\end{proposition}
+\begin{proof}
+We first note that $Q\circ p\yon=[\yon^p,Q]$ and that $\poly(\yon^n,[P,Q])\cong[P,Q](n)$ and $\cong\poly(P,Q)^n$.
+\begin{align*}
+	\poly(A\otimes P,Q)&\cong
+	\poly\left(\sum_{i:A(1)}\sum_{j:P(1)}\yon^{a_i}\otimes\yon^{p_j},Q\right)\\&\cong
+	\prod_{i:A(1)}\prod_{j:P(1)}\poly(\yon^{a_ip_j},Q)\\&\cong
+	\prod_{i:A(1)}\prod_{j:P(1)}Q(a_ip_j)
+\end{align*}
+**finish**
+\end{proof}
+In particular we recover \cref{lemma.count_maps} using  \cref{eqn.poly_mon_closed,eqn.adjoints_galore}. This is just the fact that the usual Day closed structure on the functor category $\fin^\fin$ restricts to the category of polynomials. 
+
+If we define the \emph{global sections} functor $\Gamma\colon \poly\to\fin\op$ by $\Gamma P\coloneqq\poly(P,\yon)$, or explicitly $\Gamma(P)=[P,\yon](1)=\prod_{i}p_i$, we find that it is left adjoint to the Yoneda embedding
+\[
+	\adjr[50pt]{\fin\op}{n\mapsto\yon^n}{\Gamma P\mapsfrom P}{\poly}.
+\]
 
 Each of the categories $\poly$ and $\dir$ has pullbacks, which we denote using ``fiber product notation'' $A\times_CB$. We can use pullbacks in combination with monad units $\eta_P\colon P\to P(1)$ and $\eta_D\colon D\to D(0)$ arising from \cref{eqn.adjoints_galore} to recover \cref{eqn.finite_sum}:
 \[
@@ -447,26 +478,16 @@ Each of the categories $\poly$ and $\dir$ has pullbacks, which we denote using `
 	D=\sum_{i=1}^{D(0)}D\times_{D(0)}`i'.
 \]
 
-Day convolution for the cartesian product monoidal structure provides another symmetric monoidal structure $\otimes\colon\poly\times\poly\to\poly$, for which the monoidal unit is $\yon$. We can write an explicit formula for $P\otimes Q$, with $P,Q$ as in \cref{eqn.finite_sum}:
-\[
-  P\otimes
-  Q=
-  \sum_{i=1}^{P(1)}\sum_{j=1}^{Q(1)}\yon^{p_iq_j}
-\]
-We call this the \emph{Dirichlet product} of polynomials, because on objects it coincides with the Cartesian product on Dirichlet polynomials via the Dirichlet transform (which we introduce in the next section):
-\[\overline{P\otimes Q}=\overline{P}\times\overline{Q}.\]
-Polynomials functors can also be composed $(P\circ Q)(n)\coloneqq P(Q(n))$; this gives a nonsymmetric monoidal structure on $\poly$.
 
 
 \begin{remark}
- By a result of Rosebrugh and Wood \cite{RW:Adjoint.Characterization.Set}, the category of finite sets is characterized amongst locally finite categories by the existence of the five left adjoints to its Yoneda embedding $k \mapsto y^k\colon \finset \to \finset^{\finset\op}$. The adjoint sextuple displayed in \eqref{eqn.adjoints_galore} is just the observation that these six functors restrict to the subcategory $\dir$.
+ By a result of Rosebrugh and Wood \cite{RW:Adjoint.Characterization.Set}, the category of finite sets is characterized amongst locally finite categories by the existence of the five left adjoints to its Yoneda embedding $k \mapsto y^k\colon \fin \to \fin^{\fin\op}$. The adjoint sextuple displayed in \eqref{eqn.adjoints_galore} is just the observation that these six functors restrict to the subcategory $\dir$.
 \end{remark}
 
+
 \begin{remark}
-The Yoneda embedding for $\poly$ also has a left adjoint given by \emph{global sections}
-\[
-	\adjr[50pt]{\finset\op}{n\mapsto\yon^n}{\prod_ip_i\mapsfrom P}{\poly}.
-\]
+Let $s:\fin$ be a finite set; the functor part of the usual $s$-states monad on $\fin$ is $n\mapsto (sn)^s$, and the corresponding polynomial is $(s\yon)^s$. This is given by internal global sections of $s\yon^s$:
+\[(s\yon)^s\cong[s\yon^s,\yon].\]
 \end{remark}
 
 \chapter{$\poly$ and $\dir$ in terms of bundles}\label{chap.poly_dir_bund}
@@ -477,6 +498,12 @@ There is a bijection between the respective object-sets of these two categories
 	\sum_{i=1}^n\yon^{k_i}&\mapsto\sum_{i=1}^n (k_i)^\yon.
 \end{align}
 We call this mapping the \emph{Dirichlet transform} and denote it using an over-line $P\mapsto \overline{P}$. We will see in \cref{thm.equivs} that this bijection extends to an equivalence $\poly_{\text{cart}}\cong\dir_{\text{cart}}$ between the subcategories of cartesian maps.
+
+\begin{remark}\label{rem.dir_prod_reason}
+With the Dirichlet transform in hand, we see why $P\otimes Q$ can be called the Dirichlet product, e.g.\ in \cref{eqn.dir_monoidal_product}. Namely, the Dirichlet transform is strong monoidal with respect to $\otimes$ and the cartesian monoidal structure $\times$ in $\dir$:
+\[\overline{P\otimes Q}=\overline{P}\times\overline{Q}.\]
+
+\end{remark}
 
 \begin{proposition}\label{prop.poly_function}
 There is a one-to-one correspondence between the set of polynomials in one variable, the set of Dirichlet polynomials, and the set of (isomorphism classes of) functions $\pi\colon s\to t$ between finite sets.
@@ -588,12 +615,12 @@ We say a bundle morphism $(f, f_\sharp)$ (resp. a container morphism $(f, f^{\sh
 Define $\bun$ (resp.\ $\cont$) to be the category for which an object is a function between finite sets and a morphism is a bundle morphism (resp.\ container morphism); see \cref{fig.bund_cont_maps}. Denote by $\bun_{\text{cart}}$ (res. $\cont_{\text{cart}}$) the subcategory of cartesian bundle morphisms.
 \end{definition}
 
-One may note that $\bun$ is the Grothendieck construction of the self-indexing $\finset_{/(-)} \colon \finset\op \to \smcat$, while $\cont$ is the Grothendieck construction of its point-wise opposite $(\finset_{/(-)})\op \colon \finset\op \to \smcat$.
+One may note that $\bun$ is the Grothendieck construction of the self-indexing $\fin_{/(-)} \colon \fin\op \to \smcat$, while $\cont$ is the Grothendieck construction of its point-wise opposite $(\fin_{/(-)})\op \colon \fin\op \to \smcat$.
 
  The name \emph{container} comes from the work of Abbot, Altenkirch, and Ghani \cites{AAG:Containers.In.Proceedings}{AAG:Containers}{A:Containers.Thesis} (see Remark 2.18 in \cite{GK:Polynomial.Functors} for a discussion of the precise relationship between the notion of container and the notion of polynomial and polynomial functor).
 
 \begin{remark}\label{rem.dir_fin2}
-By the universal property of pullbacks, $\bun\simeq\finset^{\to}$ is equivalent (in fact isomorphic) to the category of morphisms and commuting squares in $\finset$. Furthermore, $\bun_{\text{cart}}$ is equivalent to the category of morphisms and pullback squares in $\finset$, and $\bun_{\text{cart}} \simeq \cont_{\text{cart}}$ (as in both cases a cartesian morphism $(f, f_{\sharp})$ or $(f, f^{\sharp})$ is determined by $f$ alone).
+By the universal property of pullbacks, $\bun\simeq\fin^{\to}$ is equivalent (in fact isomorphic) to the category of morphisms and commuting squares in $\fin$. Furthermore, $\bun_{\text{cart}}$ is equivalent to the category of morphisms and pullback squares in $\fin$, and $\bun_{\text{cart}} \simeq \cont_{\text{cart}}$ (as in both cases a cartesian morphism $(f, f_{\sharp})$ or $(f, f^{\sharp})$ is determined by $f$ alone).
 \end{remark}
 
 \begin{remark}
@@ -743,7 +770,7 @@ We can interpret the statement that \cref{eqn.cart2} is a pullback as saying tha
 $\dir$ is an elementary topos.
 \end{corollary}
 \begin{proof}
-For any finite category $C$, the functor category $\finset^C$ is an elementary topos. The result now follows from \cref{rem.dir_fin2,thm.equivs}, noting that $\dir \simeq \finset^{\to}$.
+For any finite category $C$, the functor category $\fin^C$ is an elementary topos. The result now follows from \cref{rem.dir_fin2,thm.equivs}, noting that $\dir \simeq \fin^{\to}$.
 \end{proof}
 
 As we mentioned in the introduction, this all goes through smoothly when one drops all finiteness conditions. The general topos of Dirichlet functors is the category of (arbitrary) sums of representables $\smset\op \to \smset$, and this is equivalent to the arrow category $\smset^{\to}$ and so is itself a topos.
@@ -809,12 +836,12 @@ Thanks to Joachim Kock for helpful comments on an early draft of this note.
 \iffalse
 \section{Analytic Functors and Dirichlet Series}
 
-Given a combinatorial species $A : \finset^{\cong} \to \smset$, its
-\emph{Cauchy generating functor} $X \mapsto \sum_{n : \finset} A_n \times X^n/n!$
-is the left Kan extension of $A$ along the inclusion $\finset^{\cong}
+Given a combinatorial species $A : \fin^{\cong} \to \smset$, its
+\emph{Cauchy generating functor} $X \mapsto \sum_{n : \fin} A_n \times X^n/n!$
+is the left Kan extension of $A$ along the inclusion $\fin^{\cong}
 \hookrightarrow \smset$, and the \emph{Dirichlet generating functor} $S \mapsto
-\sum_{n : \finset} A_n n^S/n!$ is the left Kan extension of $A$ along the
-inclusion $\finset^{\cong} \hookrightarrow \smset^{\text{op}}$. These give
+\sum_{n : \fin} A_n n^S/n!$ is the left Kan extension of $A$ along the
+inclusion $\fin^{\cong} \hookrightarrow \smset^{\text{op}}$. These give
 functors
 \[
   \begin{tikzcd}
@@ -824,11 +851,11 @@ functors
 \]
 
 The Cauchy product $\otimes_{\poly}$ of combinatorial species is given by Day
-convolution from $+ : \finset^{\cong} \times \finset^{\cong}$, and
+convolution from $+ : \fin^{\cong} \times \fin^{\cong}$, and
 $|\cdot|_{\poly}$ sends $\otimes_{\poly}$ to the cartesian product in $\poly$. On the
 other hand, the Dirichlet product $\otimes_{\dir}$ of combinatorial species is
-given by Day convolution from $\times : \finset^{\cong} \times
-\finset^{\cong}$, and this is sent by $|\cdot|_{\dir}$ to the cartesian
+given by Day convolution from $\times : \fin^{\cong} \times
+\fin^{\cong}$, and this is sent by $|\cdot|_{\dir}$ to the cartesian
 product in $\dir$. This gives us an interpretation of the generating \emph{functors}
 associated to a species in which sum is coproduct and product is cartesian
 product -- the difference between the Cauchy generating functor and the
@@ -836,7 +863,7 @@ Dirichlet generating functor is that the latter is contravariant.
 
 Dirichlet series also form a topos.
 \begin{theorem}
-The category $\dir_{\infty}$ of \emph{Dirichlet series} -- functors $\finset\op \to \smset$ which are sums of representables -- \emph{almost} form an elementary topos.
+The category $\dir_{\infty}$ of \emph{Dirichlet series} -- functors $\fin\op \to \smset$ which are sums of representables -- \emph{almost} form an elementary topos.
 \end{theorem}
 \begin{proof}
 As for Diriclet polynomials, for any Dirichlet series $D$ we have a map $\pi_D : D(1) \to D(0)$; however, $D(1)$ and $D(0)$ are no longer finite sets. It is the case, however, that $\pi_D$ has finite fibers. This gives us a functor $\dir_{\infty} \to \bun_f$ from Dirichlet series to the full subcategory $\bun_f \hookrightarrow \smset^{\to}$ of the arrow category of $\smset$ consisting of those maps with finite fibers. We will show that this map is an equivalence, and that $\bun_f$ is an \emph{almost} elementary topos.
