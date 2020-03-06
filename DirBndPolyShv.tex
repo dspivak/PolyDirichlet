@@ -1,7 +1,7 @@
 \documentclass[11pt, article, one side]{memoir}
 
 \settrims{0pt}{0pt} % page and stock same size
-\settypeblocksize{*}{36pc}{*} % {height}{width}{ratio}
+\settypeblocksize{*}{33.5pc}{*} % {height}{width}{ratio}
 \setlrmargins{*}{*}{1} % {spine}{edge}{ratio}
 \setulmarginsandblock{1in}{1in}{*} % height of typeblock computed
 \setheadfoot{\onelineskip}{2\onelineskip} % {headheight}{footskip}
@@ -490,7 +490,12 @@ for example $[n\yon,\yon]\cong \yon^n$ and $[\yon^n,\yon]\cong n\yon$. For any p
 %\end{align*}
 %\end{proof}
 %
-In particular we recover \cref{lemma.count_maps} using  \cref{eqn.poly_mon_closed,eqn.adjoints_galore}. This is just the fact that the usual Day closed structure on the functor category $\fin^\fin$ restricts to the category of polynomials. 
+In particular we recover \cref{lemma.count_maps} using  \cref{eqn.poly_mon_closed,eqn.adjoints_galore}. The cartesian monoidal structure on $\poly$ is also closed, $\poly(P\times A,Q)\cong\poly(P,Q^A)$, and the formula for $Q^A$ is similar to \cref{eqn.poly_mon_closed}:
+\[
+  Q^A\coloneqq\prod_{i:A(1)}Q\circ (a_i+\yon).
+\]
+
+%This is just the fact that the usual Day closed structure on the functor category $\fin^\fin$ restricts to the category of polynomials. 
 
 If we define the \emph{global sections} functor $\Gamma\colon \poly\to\fin\op$ by $\Gamma P\coloneqq\poly(P,\yon)$, or explicitly $\Gamma(P)=[P,\yon](1)=\prod_{i}p_i$, we find that it is left adjoint to the Yoneda embedding
 \[
