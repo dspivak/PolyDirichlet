@@ -1,7 +1,7 @@
 \documentclass[11pt, article, one side]{memoir}
 
 \settrims{0pt}{0pt} % page and stock same size
-\settypeblocksize{*}{34pc}{*} % {height}{width}{ratio}
+\settypeblocksize{*}{36pc}{*} % {height}{width}{ratio}
 \setlrmargins{*}{*}{1} % {spine}{edge}{ratio}
 \setulmarginsandblock{1in}{1in}{*} % height of typeblock computed
 \setheadfoot{\onelineskip}{2\onelineskip} % {headheight}{footskip}
@@ -423,7 +423,15 @@ There is an adjoint quadruple and adjoint sextuple as follows, labeled by where 
 	\ar[l, phantom, shift right=-42pt, "\scriptstyle\bot"]
 \end{tikzcd}
 \end{equation}
-All six of the displayed functors out of $\fin$ are fully faithful. For each $k:\fin$ the functors $P\mapsto P(k)$ and $D\mapsto D(k)$ have left adjoints, namely $n\mapsto n\yon^k$ and $n\mapsto n\mdot k^\yon$ respectively.
+All six of the displayed functors out of $\fin$ are fully faithful.
+
+For each $k:\fin$ the functors $P\mapsto P(k)$ and $D\mapsto D(k)$ have left adjoints, namely $n\mapsto n\yon^k$ and $n\mapsto n\mdot k^\yon$ respectively. These are functorial and in fact extend to two-variable adjunctions $\fin\times\poly\to\poly$ and $\fin\times\dir\to\dir$. Indeed, for $n\in\fin$ and $P,Q\in\poly$ (respectively $D,E\in\dir$), we have
+\begin{gather*}
+\poly(nP,Q)\cong\poly(P,Q^n)\cong\fin(n,\poly(P,Q)),\\
+\dir(nD,E)\cong\dir(D,E^n)\cong\fin(n,\dir(D,E)),
+\end{gather*}
+where $nP$ and $nD$ denote $n$-fold coproducts and $P^n$ and $D^n$ denote $n$-fold products.
+
 
 The inclusion $\zero{D}\to D(0)$ from \cref{eqn.zerocontent} is natural and induces three other natural transformations on $\fin$ and $\dir$ via the adjunctions in \cref{eqn.adjoints_galore}; in \cref{prop.poly_function} we will have occasion to use the one labeled $\pi_D$:
 \begin{equation}\label{eqn.obtain_pi}
@@ -447,38 +455,41 @@ The Dirichlet monoidal structure is closed; that is, for any $A,Q:\poly$ we defi
 \begin{equation}\label{eqn.poly_mon_closed}
 [A,Q]\coloneqq\prod_{i:A(1)}Q\circ(a_i\yon),
 \end{equation}
-for example $[n\yon,\yon]\cong \yon^n$ and $[\yon^n,\yon]\cong n\yon$.
-
-\begin{proposition}
-We have an adjunction 
+for example $[n\yon,\yon]\cong \yon^n$ and $[\yon^n,\yon]\cong n\yon$. For any polynomial $A$ there is an $(-\otimes A)\dashv[A,-]$ adjunction 
 \begin{equation}\label{eqn.hom_tensor}
 	\poly(P\otimes A,Q)\cong\poly(P,[A,Q]).
 \end{equation}
-\end{proposition}
-\begin{proof}
-We begin with the pure-power case $P=\yon^p$ and $A=\yon^a$. Then
-\[
-\poly(\yon^p\otimes\yon^a,Q)=\poly(\yon^{pa},Q)=Q(pa)=(Q\circ a\yon)(p)=\poly(\yon^p,[\yon^a,Q]).
-\]
-Every polynomial is a finite sum of pure powers, so we proceed by induction---first on $P$ then on $A$. If $P=0$ then for any $A$ we have $\poly(0\otimes A,Q)=1=\poly(0,[A,Q])$ because $0$ is initial. If $P=P_1+P_2$ and \cref{eqn.hom_tensor} holds for both $P_1$ and $P_2$ with a given $A$, then
-\begin{align*}
-  \poly((P_1+P_2)\otimes A,Q)&\cong
-  \poly(P_1\otimes A,Q)\times\poly(P_2\otimes A,Q)\\&\cong
-  \poly(P_1,[A,Q])\times\poly(P_2,[A,Q])\\&
-  \cong\poly(P_1+P_2,[A,Q]).
-\end{align*}
-
-Before beginning the induction on $A$, we establish two easy facts from \cref{eqn.poly_mon_closed} for any $Q:\poly$. First $[0,Q]\cong1$ because it is an empty product. Second $[A_1+A_2,Q]\cong[A_1,Q]\times[A_2,Q]$ because $(A_1+A_2)(1)=A_1(1)+A_2(1)$ and the product splits into two factors. For the case $A=0$ then we have $\poly(P\otimes 0,A)\cong1\cong\poly(P,[0,A])$ for any $P$. If $A=A_1+A_2$ and \cref{eqn.hom_tensor} holds for both $A_1$ and $A_2$ with a given $P$, then
-\begin{align*}
-	\poly(P\otimes(A_1+A_2),Q)&\cong
-	\poly(P\otimes A_1,Q)\times\poly(P\otimes A_2,Q)\\&\cong
-	\poly(P,[A_1,Q])\times\poly(P,[A_2,Q])\\&\cong
-	\poly(P,[A_1,Q]\times[A_2,Q])\\&\cong
-	\poly(P,[A_1+A_2,Q]).
-\qedhere
-\end{align*}
-\end{proof}
-
+%
+%\begin{proposition}
+%For any polynomial $A$ there is an $(-\otimes A)\dashv[A,-]$ adjunction 
+%\begin{equation}\label{eqn.hom_tensor}
+%	\poly(P\otimes A,Q)\cong\poly(P,[A,Q]).
+%\end{equation}
+%\end{proposition}
+%\begin{proof}
+%We begin with the pure-power case $P=\yon^p$ and $A=\yon^a$. Then
+%\[
+%\poly(\yon^p\otimes\yon^a,Q)=\poly(\yon^{pa},Q)=Q(pa)=(Q\circ a\yon)(p)=\poly(\yon^p,[\yon^a,Q]).
+%\]
+%Every polynomial is a finite sum of pure powers, so we proceed by induction---first on $P$ then on $A$. If $P=0$ then for any $A$ we have $\poly(0\otimes A,Q)=1=\poly(0,[A,Q])$ because $0$ is initial. If $P=P_1+P_2$ and \cref{eqn.hom_tensor} holds for both $P_1$ and $P_2$ with a given $A$, then
+%\begin{align*}
+%  \poly((P_1+P_2)\otimes A,Q)&\cong
+%  \poly(P_1\otimes A,Q)\times\poly(P_2\otimes A,Q)\\&\cong
+%  \poly(P_1,[A,Q])\times\poly(P_2,[A,Q])\\&
+%  \cong\poly(P_1+P_2,[A,Q]).
+%\end{align*}
+%
+%Before beginning the induction on $A$, we establish two easy facts from \cref{eqn.poly_mon_closed} for any $Q:\poly$. First $[0,Q]\cong1$ because it is an empty product. Second $[A_1+A_2,Q]\cong[A_1,Q]\times[A_2,Q]$ because $(A_1+A_2)(1)=A_1(1)+A_2(1)$ and the product splits into two factors. For the case $A=0$ then we have $\poly(P\otimes 0,A)\cong1\cong\poly(P,[0,A])$ for any $P$. If $A=A_1+A_2$ and \cref{eqn.hom_tensor} holds for both $A_1$ and $A_2$ with a given $P$, then
+%\begin{align*}
+%	\poly(P\otimes(A_1+A_2),Q)&\cong
+%	\poly(P\otimes A_1,Q)\times\poly(P\otimes A_2,Q)\\&\cong
+%	\poly(P,[A_1,Q])\times\poly(P,[A_2,Q])\\&\cong
+%	\poly(P,[A_1,Q]\times[A_2,Q])\\&\cong
+%	\poly(P,[A_1+A_2,Q]).
+%\qedhere
+%\end{align*}
+%\end{proof}
+%
 In particular we recover \cref{lemma.count_maps} using  \cref{eqn.poly_mon_closed,eqn.adjoints_galore}. This is just the fact that the usual Day closed structure on the functor category $\fin^\fin$ restricts to the category of polynomials. 
 
 If we define the \emph{global sections} functor $\Gamma\colon \poly\to\fin\op$ by $\Gamma P\coloneqq\poly(P,\yon)$, or explicitly $\Gamma(P)=[P,\yon](1)=\prod_{i}p_i$, we find that it is left adjoint to the Yoneda embedding
