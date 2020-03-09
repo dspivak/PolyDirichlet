@@ -293,7 +293,7 @@ The first thing we should emphasize is that the algebraic expressions in \eqref{
 
 The category $\poly$ is well studied (see \cite{GK:Polynomial.Functors}). In particular, the following are equivalent:
 \begin{theorem}{\cite{GK:Polynomial.Functors}}
-For a functor $P : \finset \to \finset$, the following are equivalent:
+For a functor $P : \fin \to \fin$, the following are equivalent:
 \begin{enumerate}
     \item $P$ is polynomial.
     \item $P$ is a sum of representables.
@@ -303,7 +303,7 @@ For a functor $P : \finset \to \finset$, the following are equivalent:
 
 We will prove an analogous result characterizing Dirichlet polynomials:
 \begin{theorem}
-For a functor $D : \finset\op \to \finset$, the following are equivalent:
+For a functor $D : \fin\op \to \fin$, the following are equivalent:
 \begin{enumerate}
     \item $D$ is a Dirichlet polynomial.
     \item $D$ is a sum of representables.
@@ -821,7 +821,7 @@ For any finite category $C$, the functor category $\fin^C$ is an elementary topo
 \end{proof}
 
 \begin{theorem}
-A functor $D : \finset\op \to \finset$ is a Dirichlet polynomial if and only if it preserves connected limits, or equivalently wide pullbacks.
+A functor $D : \fin\op \to \fin$ is a Dirichlet polynomial if and only if it preserves connected limits, or equivalently wide pullbacks.
 \end{theorem}
 \begin{proof}
 If $D(X) = \sum_{b \in B} E_b^X$ is a Dirichlet polynomial corresponding to the map $\pi : E \to B$, then
