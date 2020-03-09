@@ -290,7 +290,29 @@ Polynomials $P(\yon)$ and finite Dirichlet series $D(\yon)$ in one variable $\ca
   D(\yon)&=a_n n^\yon+\cdots+a_22^\yon+a_11^\yon+a_00^\yon.
 \end{aligned}
 \end{equation}
-The first thing we should emphasize is that the algebraic expressions in \eqref{eqn.poly_dir_simple} can in fact be regarded as \emph{objects in a category}, in fact two categories: $\poly$ and $\dir$. We will explain the morphisms later, but for now we note that in $\poly$, $\yon^2=\yon\times\yon$ is a product and $2\yon=\yon+\yon$ is a coproduct, and similarly for $\dir$. The operators---in both the polynomial and the Dirichlet case---are not just algebraic, they are category-theoretic. Moreover, these categories have a rich structure. The category $\poly$ is well studied (see \cite{GK:Polynomial.Functors}). We will show that $\dir$ is equivalent to the arrow category of finite sets, 
+The first thing we should emphasize is that the algebraic expressions in \eqref{eqn.poly_dir_simple} can in fact be regarded as \emph{objects in a category}, in fact two categories: $\poly$ and $\dir$. We will explain the morphisms later, but for now we note that in $\poly$, $\yon^2=\yon\times\yon$ is a product and $2\yon=\yon+\yon$ is a coproduct, and similarly for $\dir$. The operators---in both the polynomial and the Dirichlet case---are not just algebraic, they are category-theoretic. Moreover, these categories have a rich structure. 
+
+The category $\poly$ is well studied (see \cite{GK:Polynomial.Functors}). In particular, the following are equivalent:
+\begin{theorem}{\cite{GK:Polynomial.Functors}}
+For a functor $P : \finset \to \finset$, the following are equivalent:
+\begin{enumerate}
+    \item $P$ is polynomial.
+    \item $P$ is a sum of representables.
+    \item $P$ preserves connected limits -- or equivalently, wide pullbacks.
+\end{enumerate}
+\end{theorem}
+
+We will prove an analogous result characterizing Dirichlet polynomials:
+\begin{theorem}
+For a functor $D : \finset\op \to \finset$, the following are equivalent:
+\begin{enumerate}
+    \item $D$ is a Dirichlet polynomial.
+    \item $D$ is a sum of representables.
+    \item $D$ sends connected colimits to limits -- or equivalently, $D$ preserves wide pushouts.
+\end{enumerate}
+\end{theorem}
+
+We will also show that $\dir$ is equivalent to the arrow category of finite sets, 
 \[\dir \simeq \fin^{\to},\]
 and in particular that $\dir$ is an elementary topos.
 
@@ -782,6 +804,41 @@ $\dir$ is an elementary topos.
 \begin{proof}
 For any finite category $C$, the functor category $\fin^C$ is an elementary topos. The result now follows from \cref{rem.dir_fin2,thm.equivs}, noting that $\dir \simeq \fin^{\to}$.
 \end{proof}
+
+\begin{theorem}
+A functor $D : \finset\op \to \finset$ is a Dirichlet polynomial if and only if it preserves connected limits, or equivalently wide pullbacks.
+\end{theorem}
+\begin{proof}
+If $D(X) = \sum_{b \in B} E_b^X$ is a Dirichlet polynomial corresponding to the map $\pi : E \to B$, then
+\begin{align*}
+    D(\colim X_i) &= \sum_{b \in B} E_b^{\colim X_i} \\
+    &\cong \sum_{b \in B} \lim E_b^{X_i} \\
+    &\cong \lim \sum_{b \in B} E_b^{X_i} \\
+    &= \lim D(X_i)
+\end{align*}
+for any connected colimit, since connected limits commute with sums. On the other hand, suppose $D$ sends connected colimits to connected limits -- in particular, it sends wide pushouts to wide pullbacks. Every finite set $X$ can be expressed as the wide pushout
+\[
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBoBGAXVJADcBDAGwFcYkRyQBfU9TXfIRTkK1Ok1btOPPtjwEiAZlE0GLNog7deIDHMFEALCvHqp22QIUoATCbWTNAHScBjKBBwIZu-vKHIdjZiDhogxBa++taBpMQhEmEAGtxiMFAA5vBEoABmAE4QALZIAKw0OBBIxD4FxWUVVYjktYUliOUglUg2rfUdjUiKfe1kXU0AbCNIIuNIUzp17XZziAt5bUODa1yUXEA
+\begin{tikzcd}
+              &              & X                                               &              &               \\
+1 \arrow[rru] & 1 \arrow[ru] & \cdots                                          & 1 \arrow[lu] & 1 \arrow[llu] \\
+              &              & 0 \arrow[llu] \arrow[lu] \arrow[ru] \arrow[rru] &              &              
+\end{tikzcd}
+\]
+of its elements. Therefore, we have the following limit diagram:
+\[
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBoBGAXVJADcBDAGwFcYkQARACnIEoQAvqXSZc+QinIVqdJq3bc+g4SAzY8BIgCZpNBizaIQAHWMBjKBBwIhI9eKIBmXbIMKe-W6tEaJyACwu+vJGip4qamKaKDpaMsGGnFzE4XZRfjrE8XKJ3AAanjIwUADm8ESgAGYAThAAtkgAbDQ4EEjEXjX1TS1tiOSdtQ2IzSCtSI6D3SO9SP5Tw2RjfQCsC0hSy0hrKl3DzluIO1VDc7NHApQCQA
+\begin{tikzcd}
+                 &                 & D(X) \arrow[lld] \arrow[ld] \arrow[rd] \arrow[rrd] &                 &                  \\
+D(1) \arrow[rrd] & D(1) \arrow[rd] & \cdots                                             & D(1) \arrow[ld] & D(1) \arrow[lld] \\
+                 &                 & D(0)                                               &                 &                 
+\end{tikzcd}
+\]
+That is, an element of $D(X)$ is a family of elements $a_x \in D(1)$ for each $x \in X$, such that the $D0!(a_x)$ are all equal in $D(0)$. In other words, 
+$$D(X) \cong \bun(X!, D0!)$$
+which is to say $D$ is the Dirichlet polynomial associated to the bundle $D0!$.
+\end{proof}
+
 
 As we mentioned in the introduction, this all goes through smoothly when one drops all finiteness conditions. The general topos of Dirichlet functors is the category of (arbitrary) sums of representables $\smset\op \to \smset$, and this is equivalent to the arrow category $\smset^{\to}$ and so is itself a topos.
 
