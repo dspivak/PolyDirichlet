@@ -1,18 +1,9 @@
-\documentclass[11pt, article, one side]{memoir}
-
-\settrims{0pt}{0pt} % page and stock same size
-\settypeblocksize{*}{34pc}{*} % {height}{width}{ratio}
-\setlrmargins{*}{*}{1} % {spine}{edge}{ratio}
-\setulmarginsandblock{1in}{1in}{*} % height of typeblock computed
-\setheadfoot{\onelineskip}{2\onelineskip} % {headheight}{footskip}
-\setheaderspaces{*}{1.5\onelineskip}{*} % {headdrop}{headsep}{ratio}
-\checkandfixthelayout
+\documentclass{tac}
 
 
 %-------- Packages --------%
 
 \usepackage{mathtools}
-\usepackage{amsthm}
 %\usepackage{amssymb}
 \usepackage{dutchcal}
 \usepackage{newpxtext}
@@ -30,7 +21,7 @@
 \usepackage[bookmarks=true, colorlinks=true, linkcolor=blue!50!black,
 citecolor=orange!50!black, urlcolor=orange!50!black, pdfencoding=unicode]{hyperref}
 \usepackage[capitalize]{cleveref}
-\usepackage[backend=biber, backref=true, maxbibnames = 10, style = alphabetic]{biblatex}
+%\usepackage[backend=biber, backref=true, maxbibnames = 10, style = alphabetic]{biblatex}
 %\usepackage[framemethod=tikz]{mdframed}
 %\usepackage{todonotes}
 \usepackage{ytableau} % for Young diagrams
@@ -41,7 +32,10 @@ citecolor=orange!50!black, urlcolor=orange!50!black, pdfencoding=unicode]{hyperr
   \newcommand{\creflastconjunction}{, and\nobreakspace} % serial comma
 	\crefalias{chapter}{section}
 % biblatex %
-  \addbibresource{Library20200310.bib} 
+%  \addbibresource{Library20200310.bib} 
+
+% makeidx %
+  \makeindex 
 
 % hyperref %
   \hypersetup{final}
@@ -82,23 +76,6 @@ citecolor=orange!50!black, urlcolor=orange!50!black, pdfencoding=unicode]{hyperr
 %    }
 
 
-% amsthm %
-  \theoremstyle{theorem}
-  \newtheorem{theorem}[section]{Theorem}
-  \newtheorem{proposition}[section]{Proposition}
-  \newtheorem{corollary}[section]{Corollary}
-  \newtheorem{lemma}[section]{Lemma}
-  
-  \theoremstyle{definition}
-  \newtheorem{definition}[section]{Definition}
-  \newtheorem{notation}[section]{Notation}
-  \newtheorem{axiom}{Axiom}
-  \newtheorem*{axiom*}{Axiom}
-  
-  \theoremstyle{remark}
-  \newtheorem{example}[section]{Example}
-  \newtheorem{remark}[section]{Remark}
-  \newtheorem{warning}[section]{Warning}
 %  \newtheorem{exercise}[equation]{Exercise}
 
 % Adjunctions
@@ -256,19 +233,21 @@ replacement=\&]{}\ar[r,tick]\&{}\end{tikzcd}}
 
 \linespread{1.07}
 %\allowdisplaybreaks
-\setsecnumdepth{subsubsection}
-\settocdepth{subsection}
 \setlength{\parindent}{15pt}
 \setcounter{tocdepth}{2}
 \setlength{\parskip}{0em}
 
 \begin{document}
 
-\title{Dirichlet Polynomials form a Topos}
+\title{Dirichlet polynomials form a topos}
 
-\author{David I.\ Spivak%
-\and David Jaz Myers%\thanks{Myers thanks}
-}
+\author{David I.\ Spivak\quad and\quad David Jaz Myers}
+
+
+\address{MIT; Department of Mathematics; 77 Massachusetts Ave.\ Cambridge MA 02139}
+\eaddress{dspivak@gmail.com}
+\keywords{Dirichlet series, Polynomial functor, topos, bundle, container}
+\amsclass{18B25, 18M80}
 
 \maketitle
 \begin{abstract}
@@ -279,7 +258,7 @@ Just as the polynomial functors on $\smset$ are the copresheaves that can be wri
 %We also show that there is a double category, useful in applications, whose vertical category is isomorphic to $\poly$ and whose horizontal category is isomorphic to $\dir$.
 \end{abstract}
 
-\chapter{Introduction}\label{chap.intro}
+\section{Introduction}\label{chap.intro}
 
 Polynomials $P(\yon)$ and finite Dirichlet series $D(\yon)$ in one variable $\cat{y}$, with natural number coefficients $a_i\in\nn$, are respectively functions of the form
 \begin{equation}\label{eqn.poly_dir_simple}
@@ -314,12 +293,12 @@ We will also show that $\dir$ is equivalent to the arrow category of finite sets
 \[\dir \simeq \fin^{\to},\]
 and in particular that $\dir$ is an elementary topos.
 
-If one allows \emph{arbitary} sums of functors represented by finite sets, one gets \emph{analytic} functors in the covariant case---first defined by Joyal in his seminal paper on combinatorial species \cite{joyal1981combinatorial}---and \emph{Dirichlet} functors in the contravariant case---first defined by Baez and Dolan and appearing in Baez's \emph{This Week's Finds} blog \cite{baez300}. Baez and Dolan also drop the traditional negative sign in the exponent (that is, they use $n^s$ where $n^{-s}$ usually appears), but also find a nice way to bring it back by moving to groupoids. Here, we drop the negative sign and work with finite sets to keep things as simple as possible. Similar considerations hold with little extra work for infinite Dirichlet series or power series, and even more generally, by replacing $\fin$ with $\smset$. 
+If one allows \emph{arbitary} sums of functors represented by finite sets, one gets \emph{analytic} functors in the covariant case---first defined by Joyal in his seminal paper on combinatorial species \cite{joyal1981species}---and \emph{Dirichlet} functors in the contravariant case---first defined by Baez and Dolan and appearing in Baez's \emph{This Week's Finds} blog \cite{baez300}. Baez and Dolan also drop the traditional negative sign in the exponent (that is, they use $n^s$ where $n^{-s}$ usually appears), but also find a nice way to bring it back by moving to groupoids. Here, we drop the negative sign and work with finite sets to keep things as simple as possible. Similar considerations hold with little extra work for infinite Dirichlet series or power series, and even more generally, by replacing $\fin$ with $\smset$. 
 
 
 % While we will not belabor the point, our main goal is to make it clear that one should not generally drop the $a_0\cdot0^\yon$ term from a Dirichlet series as in \cref{eqn.poly_dir_simple}. To make the case, we will begin by defining the categories $\poly$ and $\dir$. These categories have excellent formal properties; for example we will show in \cref{cor.dir_topos} that $\dir$ is an elementary topos. In some sense the ``high status'' of the category $\dir$ is supposed to serve as evidence that identifying $0^\yon$ with the initial object $0$ could lead to perverse outcomes and thus may be fruitfully reconsidered.
 
-\chapter{Polynomial and Dirichlet functors}
+\section{Polynomial and Dirichlet functors}
 
 Recall that a \emph{co-representable functor} $\fin\to\fin$ is one of the form $\fin(k, -)$ for a finite set
 \[k=\{`1', `2',\ldots,`k'\}.\]
@@ -385,7 +364,7 @@ That is, $P(X)=\sum_{i=1}^{P(1)}\fin(p_i,X)$ and $D(X)=\sum_{i=1}^{D(0)}\fin(X,d
 
 See \cref{thm.poly_equiv} above for well-known equivalent conditions in $\poly$ and \cref{thm.dir_equiv} below for a Dirichlet analogue.
 
-\chapter{The categories $\poly$ and $\dir$}
+\section{The categories $\poly$ and $\dir$}
 
 For any small category $C$, let $\fin^C$ denote the category whose objects are the functors $C\to\fin$ and whose morphisms are the natural transformations between them.
 \begin{definition}\label{def.poly_dir}
@@ -537,7 +516,7 @@ Each of the categories $\poly$ and $\dir$ has pullbacks, which we denote using `
 \end{remark}
 
 
-\chapter{$\poly$ and $\dir$ in terms of bundles}\label{chap.poly_dir_bund}
+\section{$\poly$ and $\dir$ in terms of bundles}\label{chap.poly_dir_bund}
 There is a bijection between the respective object-sets of these two categories
 \begin{align}
 \nonumber
@@ -666,7 +645,7 @@ Define $\bun$ (resp.\ $\cont$) to be the category for which an object is a funct
 
 One may note that $\bun$ is the Grothendieck construction of the self-indexing $\fin_{/(-)} \colon \fin\op \to \smcat$, while $\cont$ is the Grothendieck construction of its point-wise opposite $(\fin_{/(-)})\op \colon \fin\op \to \smcat$.
 
- The name \emph{container} comes from the work of Abbot, Altenkirch, and Ghani \cites{abbott2003categories}{abbott2005containers}{abbot2003categoriesthesis} (see Remark 2.18 in \cite{kock2012polynomial} for a discussion of the precise relationship between the notion of container and the notion of polynomial and polynomial functor).
+ The name \emph{container} comes from the work of Abbot, Altenkirch, and Ghani \cite{abbot2003categoriesthesis,abbott2005containers,abbott2003categories} (see Remark 2.18 in \cite{kock2012polynomial} for a discussion of the precise relationship between the notion of container and the notion of polynomial and polynomial functor).
 
 \begin{remark}\label{rem.dir_fin2}
 By the universal property of pullbacks, $\bun\simeq\fin^{\to}$ is equivalent (in fact isomorphic) to the category of morphisms and commuting squares in $\fin$. Furthermore, $\bun_{\tn{cart}}$ is equivalent to the category of morphisms and pullback squares in $\fin$, and $\bun_{\tn{cart}} \simeq \cont_{\tn{cart}}$ (as in both cases a cartesian morphism $(f, f_{\sharp})$ or $(f, f^{\sharp})$ is determined by $f$ alone).
@@ -868,7 +847,7 @@ where $X!\colon X\to 1$ and $D(0!)\colon D(1)\to D(0)$. Thus by \cref{thm.equivs
 
 The authors thank Joachim Kock, Andr\'{e} Joyal, and Brendan Fong for helpful comments that improved the quality of this note. Spivak also appreciates support by Honeywell Inc.\ as well as AFOSR grants FA9550-17-1-0058 and FA9550-19-1-0113.
 
-%\chapter{The $\poly-\dir$ double category $\ff$}
+%\section{The $\poly-\dir$ double category $\ff$}
 %
 %There is a double category $\ff$ whose objects are functions between finite sets, whose vertical category is $\poly$, whose horizontal category is isomorphic to $\bun$. This double category shows up in the theory of mode-dependent dynamical systems, though we save this for future work.
 %
@@ -960,6 +939,21 @@ As for Diriclet polynomials, for any Dirichlet series $D$ we have a map $\pi_D\c
 \fi
 
 
-\printbibliography
+\begin{references*}
 
+\bibitem{abbot2003categoriesthesis} Michael Gordon Abbott. “Categories of Containers”. PhD thesis. University ofLeicester, Aug. 2003.
+
+\bibitem{abbott2005containers} Michael Gordon Abbott, Thorsten Altenkirch, and Neil Ghani. “Categories ofContainers”. In: FoSSaCS. 2003.
+
+\bibitem{abbott2003categories} Michael Abbott, Thorsten Altenkirch, and Neil Ghani. “Containers: Constructingstrictly positive types”. In: Theoretical Computer Science 342.1 (2005). AppliedSemantics: Selected Topics, pp. 3–27.
+
+\bibitem{baez300} John Baez and James Dolan. This Week’s Finds 300. Accessed: 2020-02-16. \url{http://math.ucr.edu/home/baez/week300.html}
+
+\bibitem{kock2012polynomial} Nicola Gambino and Joachim Kock. “Polynomial functors and polynomial monads”.In: Mathematical Proceedings of the Cambridge Philosophical Society 154.1 (Sept.2012), pp. 153–192. 
+
+\bibitem{joyal1981species} André Joyal. “Une théorie combinatoire des séries formelles”. In: Advances inMathematics 42.1 (1981), pp. 1–82. 
+
+\bibitem{rosebrugh1994adjoint} Robert Rosebrugh and R.\ J.\ Wood. “An Adjoint Characterization of the Categoryof Sets”. In: Proc. Amer. Math. Soc 122 (1994), pp. 409–413.
+
+\end{references*}
 \end{document}
