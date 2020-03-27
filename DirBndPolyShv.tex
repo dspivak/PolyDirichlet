@@ -264,6 +264,7 @@ replacement=\&]{}\ar[r,tick]\&{}\end{tikzcd}}
 
 \begin{document}
 
+\title{Dirichlet Polynomials}
 \title{Dirichlet Polynomials form a Topos}
 
 \author{David I.\ Spivak%
@@ -322,7 +323,7 @@ If one allows \emph{arbitary} sums of functors represented by finite sets, one g
 \chapter{Polynomial and Dirichlet functors}
 
 Recall that a \emph{co-representable functor} $\fin\to\fin$ is one of the form $\fin(k, -)$ for a finite set
-\[k=\{`1', `2',\ldots,`k'\}.\]
+\[k=\{`1\text{'}, `2\text{'},\ldots,`k\text{'}\}.\]
 We denote this functor by $\yon^k$ and say it is \emph{represented by} $k\in\fin$. Similarly, a \emph{(contra-) representable functor} $\fin\op\to\fin$ is contravariant functor of the form $\fin(-,k)$; we denote this functor by $k^\yon$. The functors $\yon^-$ and $-^\yon$ are the contravariant and covariant Yoneda embeddings,
 \[
   \yon^k \coloneqq \fin(k,-)
@@ -389,7 +390,7 @@ See \cref{thm.poly_equiv} above for well-known equivalent conditions in $\poly$ 
 
 For any small category $C$, let $\fin^C$ denote the category whose objects are the functors $C\to\fin$ and whose morphisms are the natural transformations between them.
 \begin{definition}\label{def.poly_dir}
-The \emph{category of polynomial functors}, denoted $\poly$, is the full subcategory of $\fin^\fin$ spanned by sums $P$ of representable functors. The \emph{category of Dirichlet functors}, denoted $\dir$, is the full subcategory of $\fin^{(\fin\op)}$ spanned by the sums $D$ of representable presheaves.
+The \emph{category of polynomial functors}, denoted $\poly$, is the (skeleton of the) full subcategory of $\fin^\fin$ spanned by sums $P$ of representable functors. The \emph{category of Dirichlet functors}, denoted $\dir$, is the (skeleton of the) full subcategory of $\fin^{(\fin\op)}$ spanned by the sums $D$ of representable presheaves.
 \end{definition}
 
 While we will not pursue it here, one can take $\poly_\smset$ to be the full subcategory of functors $\smset\to\smset$ spanned by small coproducts of representables, and similarly for $\dir_\smset$. 
@@ -525,9 +526,9 @@ If we define the \emph{global sections} functor $\Gamma\colon \poly\to\fin\op$ b
 
 Each of the categories $\poly$ and $\dir$ has pullbacks, which we denote using ``fiber product notation'' $A\times_CB$. We can use pullbacks in combination with monad units $\eta_P\colon P\to P(1)$ and $\eta_D\colon D\to D(0)$ arising from \cref{eqn.adjoints_galore} to recover \cref{eqn.finite_sum}:
 \[
-  P=\sum_{i=1}^{P(1)}P\times_{P(1)}`i'
+  P=\sum_{i=1}^{P(1)}P\times_{P(1)}`i\text{'}
   \qqand
-	D=\sum_{i=1}^{D(0)}D\times_{D(0)}`i'.
+	D=\sum_{i=1}^{D(0)}D\times_{D(0)}`i\text{'}.
 \]
 
 
@@ -576,7 +577,7 @@ Under the identification from \cref{prop.poly_function}, both the polynomial $2\
 	\node[right=1 of Ye,  label={[above=-5pt]:$5$}] (Yf) {$\bullet$};
 	\node[right=1 of Yf,  label={[above=-5pt]:$6$}] (Yg) {$\bullet$};
 	\node[draw, inner ysep=4pt, fit={($(Ya)+(-1em,3ex)$) (Yg)}] (Y) {};
-	\node[left=0 of Y] (Ylab) {$6=D(0)\cong$};
+	\node[left=0 of Y] (Ylab) {$6\cong D(0)\cong$};
 %
   \node[above=4 of Ya, label={[above=-5pt]:$(1,1)$}] (X11) {$\bullet$};
   \node[above=1 of X11, label={[above=-5pt]:$(1,2)$}] (X12) {$\bullet$};
@@ -590,14 +591,14 @@ Under the identification from \cref{prop.poly_function}, both the polynomial $2\
   \node[above=1 of X41, label={[above=-5pt]:$(3,2)$}] (X42) {$\bullet$};
   \node [above=4 of Yg] (xend) {};
 	\node[draw, inner ysep=3pt, fit={($(X13)+(-1em,3ex)$) ($(xend)+(.4,0)$)}] (X) {};
-	\node[left=0 of X] {$8=D(1)\cong$};
+	\node[left=0 of X] {$8\cong D(1)\cong$};
 %
 	\draw[->, shorten <=3pt, shorten >=3pt] (X) to node[left] (f) {$\pi$} (Y);
 \end{tikzpicture}
 \end{equation}
 \end{example}
 
-We can think of a function $\pi\colon s\to t$, e.g.\ that shown in \eqref{eqn.bundle}, as a \emph{bundle} of fibers $\pi\inv(`i')$, one for each element $`i'\in t$. In \cref{def.sheaves_bundles} we define two different notions of morphism between bundles. We will see in \cref{thm.equivs} that they correspond to morphisms in the categories $\poly$ and $\dir$.
+We can think of a function $\pi\colon s\to t$, e.g.\ that shown in \eqref{eqn.bundle}, as a \emph{bundle} of fibers $\pi\inv(`i\text{'})$, one for each element $`i\text{'}\in t$. In \cref{def.sheaves_bundles} we define two different notions of morphism between bundles. We will see in \cref{thm.equivs} that they correspond to morphisms in the categories $\poly$ and $\dir$.
 
 For any function $\pi'\colon s'\to t'$ and function $f\colon t\to t'$, denote by $f^*(\pi')$ the pullback function as shown
 \[
@@ -672,21 +673,22 @@ One may note that $\bun$ is the Grothendieck construction of the self-indexing $
 By the universal property of pullbacks, $\bun\simeq\fin^{\to}$ is equivalent (in fact isomorphic) to the category of morphisms and commuting squares in $\fin$. Furthermore, $\bun_{\tn{cart}}$ is equivalent to the category of morphisms and pullback squares in $\fin$, and $\bun_{\tn{cart}} \simeq \cont_{\tn{cart}}$ (as in both cases a cartesian morphism $(f, f_{\sharp})$ or $(f, f^{\sharp})$ is determined by $f$ alone).
 \end{remark}
 
-\begin{remark}
-We can think of a function between finite sets $\pi\colon E \to B$ as the categorification of a \emph{Young diagram}. A Young diagram consists of $k$ natural numbers $n_k \geq n_{k-1} \geq \cdots \geq n_1 > 0$; the number $k$ is the number of rows and $n_i$ is the number of boxes in row $i$. Here is a Young diagram corresponding to \cref{eqn.bundle} (but ignoring the constant term, which is the number of empty rows):
-\[
-\ydiagram{3, 3, 2}
-\]
-
-If we allow for empty rows, then we can read a function $\pi\colon E \to B$ as a Young diagram in the following way:
-\begin{itemize}
-    \item $B$ is the set of rows.
-    \item $E$ is the set of pairs of a row and a box in that row.
-    \item $\pi\colon E \to B$ is the projection which sends each pair of a box and a row to that row.
-\end{itemize}
-Thinking of maps $\pi\colon E \to B$ in this way, we can see $\bun$ as the category of Young diagrams with functions covariant in the rows and boxes, and $\cont$ as the category of Young diagrams with functions covariant in the rows but contravariant in the boxes. The category $\bun_{\tn{cart}}$ (equivalently $\cont_{\tn{cart}}$) is the category of functions of rows that preserve the number of boxes in each row (though it may permute the boxes within a row).
-\end{remark}
-
+%--Joachim said he found this part misleading. You shouldn't have empty rows. And it doesn't have a story for what you usually do with Young diagrams, decreasing order, you subtract them, etc.
+%\begin{remark}
+%We can think of a function between finite sets $\pi\colon E \to B$ as the categorification of a \emph{Young diagram}. A Young diagram consists of $k$ natural numbers $n_k \geq n_{k-1} \geq \cdots \geq n_1 > 0$; the number $k$ is the number of rows and $n_i$ is the number of boxes in row $i$. Here is a Young diagram corresponding to \cref{eqn.bundle} (but ignoring the constant term, which is the number of empty rows):
+%\[
+%\ydiagram{3, 3, 2}
+%\]
+%
+%If we allow for empty rows, then we can read a function $\pi\colon E \to B$ as a Young diagram in the following way:
+%\begin{itemize}
+%    \item $B$ is the set of rows.
+%    \item $E$ is the set of pairs of a row and a box in that row.
+%    \item $\pi\colon E \to B$ is the projection which sends each pair of a box and a row to that row.
+%\end{itemize}
+%Thinking of maps $\pi\colon E \to B$ in this way, we can see $\bun$ as the category of Young diagrams with functions covariant in the rows and boxes, and $\cont$ as the category of Young diagrams with functions covariant in the rows but contravariant in the boxes. The category $\bun_{\tn{cart}}$ (equivalently $\cont_{\tn{cart}}$) is the category of functions of rows that preserve the number of boxes in each row (though it may permute the boxes within a row).
+%\end{remark}
+%
  Next we show that $\bun\simeq\dir$ is also equivalent to the category of Dirichlet functors, from \cref{def.poly_dir}. Recall that a natural transformation is called \emph{cartesian} if its naturality squares are pullbacks.
 
 \begin{theorem}\label{thm.equivs}
