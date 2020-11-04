@@ -368,11 +368,12 @@ D(\yon)&
 Hint: its zero-content term is $\zero{D}=4$.
 \end{example}
 
-The set $P(1)$ (resp.\ the set $D(0)$) has particular importance; it is the set of pure-power terms $\yon^k$ in $P$ (resp.\ the pure-exponential terms $k^\yon$ in $D$). For example if $P=\yon^2+4\yon+4$ and $D=2^\yon+4+4\mdot0^\yon$ then $P(1)=D(0)=9$. We will later have reason to consider the inclusion
-\begin{equation}\label{eqn.zerocontent}
-\zero{D}\to D(0)
-\end{equation}
-of the zero-content terms into the set of all pure-exponential terms.
+The set $P(1)$ (resp.\ the set $D(0)$) has particular importance; it is the set of pure-power terms $\yon^k$ in $P$ (resp.\ the pure-exponential terms $k^\yon$ in $D$). For example if $P=\yon^2+4\yon+4$ and $D=2^\yon+4+4\mdot0^\yon$ then $P(1)=D(0)=9$. 
+%We will later have reason to consider the inclusion
+%\begin{equation}\label{eqn.zerocontent}
+%\zero{D}\to D(0)
+%\end{equation}
+%of the zero-content terms into the set of all pure-exponential terms.
 
 \begin{definition}\label{def.poly_dir_obs}
 A \emph{polynomial functor} is a functor $P\colon\fin\to\fin$ that can be expressed as a sum of co-representable functors. Similarly, we define a \emph{Dirichlet functor} to be a functor $D\colon\fin\op\to\fin$ that can be expressed as a sum of representable presheaves (contravariant functors):
@@ -414,7 +415,7 @@ Sums and products of polynomials in the usual algebraic sense agree exactly with
 \end{remark}
 
 \paragraph{Formal structures.}
-We review some formal structures of the categories $\poly$ and $\dir$; all are straightforward to prove. There is an adjoint quadruple and adjoint sextuple as follows, labeled by where they send objects $n\in\fin$, $P\in\poly$, $D\in\dir$:
+We review some formal structures of the categories $\poly$ and $\dir$; all are straightforward to prove. There is an adjoint quadruple and adjoint 5-tuple as follows, labeled by where they send objects $n\in\fin$, $P\in\poly$, $D\in\dir$:
 \begin{equation}\label{eqn.adjoints_galore}
 \begin{tikzcd}[column sep=60pt]
   \fin
@@ -430,21 +431,19 @@ We review some formal structures of the categories $\poly$ and $\dir$; all are s
 \hspace{1in}
 \begin{tikzcd}[column sep=60pt]
   \fin
-  	\ar[r, shift left=8pt, "n\cdot 0^\yon" description]
-		\ar[r, shift left=-24pt, "n" description]
-		\ar[r, shift left=-56pt, "n^\yon"']&
+  	\ar[r, shift left=40pt, "n\cdot 0^\yon" description]
+		\ar[r, shift left=8pt, "n" description]
+		\ar[r, shift left=-24pt, "n^\yon"']&
   \dir
-  	\ar[l, shift right=24pt, "\zero{D}"']
-  	\ar[l, shift right=-8pt, "D(0)" description]
-		\ar[l, shift right=-40pt, "D(1)" description]
+  	\ar[l, shift right=24pt, "D(0)" description]
+		\ar[l, shift right=-8pt, "D(1)" description]
 	\ar[l, phantom, shift right=16pt, "\scriptstyle\bot"]
 	\ar[l, phantom, shift right=0pt, "\scriptstyle\bot"]
 	\ar[l, phantom, shift right=-16pt, "\scriptstyle\bot"]
-	\ar[l, phantom, shift right=-32pt, "\scriptstyle\bot"]
-	\ar[l, phantom, shift right=-48pt, "\scriptstyle\bot"]
+	\ar[l, phantom, shift right=32pt, "\scriptstyle\bot"]
 \end{tikzcd}
 \end{equation}
-All six of the displayed functors out of $\fin$ are fully faithful.
+All five of the displayed functors out of $\fin$ are fully faithful.
 
 For each $k:\fin$ the functors $P\mapsto P(k)$ and $D\mapsto D(k)$ have left adjoints, namely $n\mapsto n\yon^k$ and $n\mapsto n\mdot k^\yon$ respectively. These are functorial in $k$ and in fact extend to two-variable adjunctions $\fin\times\poly\to\poly$ and $\fin\times\dir\to\dir$. Indeed, for $n\in\fin$ and $P,Q\in\poly$ (respectively $D,E\in\dir$), we have
 \begin{gather*}
@@ -454,9 +453,8 @@ For each $k:\fin$ the functors $P\mapsto P(k)$ and $D\mapsto D(k)$ have left adj
 where $nP$ and $nD$ denote $n$-fold coproducts and $P^n$ and $D^n$ denote $n$-fold products.
 
 
-The inclusion $\zero{D}\to D(0)$ from \cref{eqn.zerocontent} is natural and induces three other natural transformations on $\fin$ and $\dir$ via the adjunctions in \cref{eqn.adjoints_galore}:
+Consider the unique function $0\to 1$. The natural transformation induced by it, denoted $\pi_D\colon D(1)\to D(0)$, is equivalent to two natural transformations on $\dir$ via the adjunctions in \cref{eqn.adjoints_galore}:
 \begin{equation}\label{eqn.obtain_pi}
-\zero{D}\to D(0),\qquad
 n\mdot0^\yon\to n,\qquad
 D(1)\To{\pi_D} D(0),\qquad
 n\to n^\yon.
@@ -534,7 +532,7 @@ Each of the categories $\poly$ and $\dir$ has pullbacks, which we denote using `
 
 
 \begin{remark}
- By a result of Rosebrugh and Wood \cite{rosebrugh1994adjoint}, the category of finite sets is characterized amongst locally finite categories by the existence of the five left adjoints to its Yoneda embedding $k \mapsto y^k\colon \fin \to \fin^{\fin\op}$. The adjoint sextuple displayed in \eqref{eqn.adjoints_galore} is just the observation that these six functors restrict to the subcategory $\dir$.
+ By a result of Rosebrugh and Wood \cite{rosebrugh1994adjoint}, the category of finite sets is characterized amongst locally finite categories by the existence of the five left adjoints to its Yoneda embedding $k \mapsto y^k\colon \fin \to \fin^{\fin\op}$. The adjoint sextuple displayed in \eqref{eqn.adjoints_galore} is just the observation that five of these six functors restrict to the subcategory $\dir$.
 \end{remark}
 
 
